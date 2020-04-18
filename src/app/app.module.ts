@@ -18,6 +18,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TagSettingsComponent } from './tag-settings/tag-settings.component';
 import { AppInitService } from './services/app-init.service';
+import { ArticlesComponent } from './articles/articles.component';
 
 let config = new AuthServiceConfig([
   {
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'tags', pathMatch:'full' },
   { path: 'tags', component: TagSettingsComponent },
   { path: 'mailing', component: MailingSettingsComponent },
+  { path: 'articles', component: ArticlesComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     LoginComponent,
     MailingSettingsComponent,
     TagSettingsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,

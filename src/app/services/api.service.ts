@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/user';
 import { Tag } from '../models/tag';
 import { MailingSettings } from '../models/mailing-settings';
+import { Article } from '../models/article';
 
 @Injectable({
   providedIn: 'root'
@@ -59,12 +60,26 @@ export class ApiService {
       .post<MailingSettings>(url, settings)
       .toPromise();
   }
+
+  public async GetArticlesForRead(): Promise<Article[]> {
+    const url = this.baseUrl + 'articles/status/read';
+    return this.http
+      .get<Article[]>(url)
+      .toPromise();
+  }
+
+  public async GetArticlePdf(article: Article): Promise<Blob> {
+    const url = this.baseUrl + 'articles/pdf/' + article.id;
+
+    const response = await this.http
+      .get(url, { responseType: 'arraybuffer' })
+      .toPromise();
+
+    return new Blob([response], { type: 'application/pdf' });
+  }
 }
 
 class LoginResponse {
   token: string;
   user: User;
 }
-
-
-

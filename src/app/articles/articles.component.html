@@ -1,0 +1,12 @@
+<p>articles works!</p>
+
+<h3>Articles to read</h3>
+<ul>
+    <div *ngFor="let article of Articles">
+        <div>
+            <a (click)="OpenPdf(article)" href="javascript:void(0)">{{article.title}}</a>
+        </div>
+    </div>
+</ul>
+<br>
+<a routerLink="/mailing">Previous</a>
