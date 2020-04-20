@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { TagInputModule } from 'ngx-chips';
 import { TagsSelectorComponent } from './tags-selector/tags-selector.component';
 import { TagComponent } from './tag/tag.component';
-import { LoginComponent } from './login/login.component';
+import { GreetingComponent } from './greeting/greeting.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { MailingSettingsComponent } from './mailing-settings/mailing-settings.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -47,7 +47,7 @@ const appRoutes: Routes = [
     AppComponent,
     TagsSelectorComponent,
     TagComponent,
-    LoginComponent,
+    GreetingComponent,
     MailingSettingsComponent,
     TagSettingsComponent,
     NotFoundComponent,

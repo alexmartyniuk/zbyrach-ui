@@ -7,7 +7,7 @@ import { User } from '../models/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class GreetingComponent implements OnInit {
 
   public IsLogedIn: boolean = false;
   public UserName: string = "";
