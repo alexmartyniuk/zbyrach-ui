@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Mailing, ScheduleType } from '../../models/mailing';
 import { ApiService } from '../../services/api.service';
 import { AccountService } from '../../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mailing',
@@ -9,15 +10,13 @@ import { AccountService } from '../../services/account.service';
   styleUrls: ['./mailing.component.css']
 })
 export class MailingSettingsComponent implements OnInit {
-  private readonly NUMBER_OF_ARTICLES_DEFAULT: number = 5;
-  private readonly SCHEDULE_TYPE_DEFAULT: ScheduleType = ScheduleType.EveryWeek;
+  public userEmail: string;
+  public numberOfArticles: number = 0;
+  public schedule: ScheduleType = ScheduleType.Never;
+  public scheduleValues: { key: number, value: string; }[];
 
-  public NumberOfArticles: number = this.NUMBER_OF_ARTICLES_DEFAULT;
-  public Schedule: ScheduleType = this.SCHEDULE_TYPE_DEFAULT;
-  public ScheduleValues: { key: number, value: string; }[];
-
-  constructor(private api: ApiService, private accountService: AccountService) {
-    this.ScheduleValues = [
+  constructor(private router: Router, private api: ApiService, private accountService: AccountService) {
+    this.scheduleValues = [
       { key: 2, value: "Every Day" },
       { key: 3, value: "Every Week" },
       { key: 4, value: "Every Month" },
@@ -26,18 +25,22 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    const settings = await this.api.GetMyMailingSettins();
-    this.NumberOfArticles = settings.numberOfArticles;
-    this.Schedule = settings.scheduleType;
+    this.userEmail = this.accountService.getUser().email;
+    
+    const settings = await this.api.getMyMailingSettings();
+    this.numberOfArticles = settings.numberOfArticles;
+    this.schedule = settings.scheduleType;
   }
 
-  async Save() {
+  async save() {
     const settings = <Mailing>{
-      numberOfArticles: this.NumberOfArticles,
-      scheduleType: Number(this.Schedule)
+      numberOfArticles: this.numberOfArticles,
+      scheduleType: Number(this.schedule)
     };
 
-    await this.api.SetMyMailingSettins(settings);
+    await this.api.setMyMailingSettings(settings);
+    
+    this.router.navigate(['/']);
   }
 
 }

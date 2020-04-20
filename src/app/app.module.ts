@@ -30,7 +30,7 @@ export function provideConfig() {
 }
 
 export function appInit(appInitService: AppInitService) {
-  return () => appInitService.Login();
+  return () => appInitService.Init();
 }
 
 const appRoutes: Routes = [

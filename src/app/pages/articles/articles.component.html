@@ -1,12 +1,25 @@
-<p>articles works!</p>
+<div *ngIf="!areArticleFound">
+    <h1>Жодної статті не знайдено</h1>
+    <p>
+        Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук.
+    </p>
+    
+    <a routerLink="/tags">Налаштувати</a>
+</div>
 
-<h3>Articles to read</h3>
-<ul>
-    <div *ngFor="let article of Articles">
-        <div>
-            <a (click)="OpenPdf(article)" href="javascript:void(0)">{{article.title}}</a>
+<div *ngIf="areArticleFound">
+    <h1>Знайшлося дещо почитати</h1>    
+    <ul>
+        <div *ngFor="let article of articles">
+            <div>
+                <h3>{{ article.title }}</h3>
+                <img src="{{article.illustrationUrl}}" width="60px" height="60px"/>
+                <p>{{ article.description }}</p>
+                <span>{{ article.publicatedAt }} &nbsp; {{ article.readTime }}</span>
+                &nbsp;
+                <a (click)="openPdf(article)" href="javascript:void(0)">Pdf</a>                
+            </div>
+            <br>
         </div>
-    </div>
-</ul>
-<br>
-<a routerLink="/mailing">Previous</a>
+    </ul>
+</div>

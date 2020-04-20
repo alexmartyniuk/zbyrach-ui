@@ -14,7 +14,7 @@ export class AccountService {
       const googleResponse = await this.authService
         .signIn(GoogleLoginProvider.PROVIDER_ID);
 
-      const response = await this.api.Login(googleResponse.idToken);
+      const response = await this.api.login(googleResponse.idToken);
 
       this.setToken(response.token);
       this.setUser(response.user);
@@ -31,7 +31,7 @@ export class AccountService {
   public async logout(): Promise<any> {
     try {
       await this.authService.signOut();
-      await this.api.Logout();
+      await this.api.logout();
 
       this.removeToken();
       this.RemoveUser();

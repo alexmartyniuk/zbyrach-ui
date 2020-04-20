@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tag } from '../../models/tag';
 import { TagService } from '../../services/tag.service';
 import { AccountService } from '../../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tags',
@@ -16,7 +17,7 @@ export class TagsComponent implements OnInit {
 
   tags: Map<string, Tag> = new Map<string, Tag>();
 
-  constructor(private tagService: TagService, private accountService: AccountService) { }
+  constructor(private router: Router, private tagService: TagService, private accountService: AccountService) { }
 
   async ngOnInit() {
     const tags = await this.tagService.getMyTags();
@@ -49,7 +50,7 @@ export class TagsComponent implements OnInit {
     this.currentTagName = "";
   }
 
-  async addRelatedTag(tag: Tag): Promise<any> {
+  addRelatedTag(tag: Tag): void {
     if (!this.relatedTags.get(tag.name)) {
       this.relatedTags.set(tag.name, tag);
     }
@@ -74,14 +75,16 @@ export class TagsComponent implements OnInit {
   }
 
   async save(): Promise<void> {
-    const tagNames = Array.from(this.tags.values()).map(t => t.name);
-    return this.tagService.setMyTags(tagNames);
+    const tagNames = Array.from(this.tags.values()).map(t => t.name);    
+    await this.tagService.setMyTags(tagNames);
+
+    this.router.navigate(['/mailing']);
   }
 
   private async getRelatedTags(tag: Tag): Promise<void> {
     let relatedTags = await this.tagService.getRelatedTags(tag.name);
     for (let relatedTag of relatedTags) {
-      await this.addRelatedTag(relatedTag);
+      this.addRelatedTag(relatedTag);
     }
   }
 

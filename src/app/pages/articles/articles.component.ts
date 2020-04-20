@@ -10,15 +10,18 @@ import { Article } from '../../models/article';
 })
 export class ArticlesComponent implements OnInit {
 
-  public Articles: Article[];
+  public articles: Article[];
 
-  constructor(private accountService: AccountService, private articleService: ArticleService) { }
+  public areArticleFound: boolean = false;
+
+  constructor(private articleService: ArticleService) { }
 
   async ngOnInit() {
-    this.Articles = await this.articleService.getArticlesForRead();
+    this.articles = await this.articleService.getArticlesForRead();
+    this.areArticleFound = this.articles.length > 0;
   }
 
-  public OpenPdf(article: Article) {
+  public openPdf(article: Article) {
     this.articleService.openPdf(article);
   }
 

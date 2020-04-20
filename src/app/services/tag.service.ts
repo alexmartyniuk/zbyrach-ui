@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Tag } from '../models/tag';
-import { HttpClient } from '@angular/common/http';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class TagService {
   constructor(private api: ApiService) { }
 
   public async getRelatedTags(name: string): Promise<Tag[]> {
-    let relatedTags: Tag[] = await this.api.GetRelatedTags(name);
+    let relatedTags: Tag[] = await this.api.getRelatedTags(name);
 
     for (let relatedTag of relatedTags) {
       relatedTag.parentTagName = name;
@@ -21,10 +20,10 @@ export class TagService {
   }
 
   public async getMyTags(): Promise<Tag[]> {
-    return this.api.GetMyTags();
+    return this.api.getMyTags();
   }
 
   public async setMyTags(tags: string[]): Promise<void> {
-    return this.api.SetMyTags(tags);
+    return this.api.setMyTags(tags);
   }
 }

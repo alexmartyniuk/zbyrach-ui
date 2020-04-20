@@ -1,19 +1,19 @@
-<p>mailing-settings works!</p>
+<h1>Налаштування відправки</h1>
+
+<p>Вкажіть, як часть і скільки статей ви хочете отримувати на {{ userEmail }}</p>
+
 <div>
-    <div>Number of articles:</div>
-    <div><input type="number" [(ngModel)]="NumberOfArticles" ></div>
+    <div>Кількість статей: {{ numberOfArticles }}</div>
+    <div><input type="number" [(ngModel)]="numberOfArticles" ></div>
 </div>
 
 <div>
-    <div>Schedule:</div>
+    <div>Періодичність:</div>
     <div>
-        <select [(ngModel)]="Schedule">
-            <option *ngFor="let item of ScheduleValues" [value]="item.key">{{item.value}}</option>
+        <select [(ngModel)]="schedule">
+            <option *ngFor="let item of scheduleValues" [value]="item.key">{{ item.value }}</option>
          </select>
     </div>
 </div>
 
-<button (click)="Save()">Save</button>
-
-<a routerLink="/tags">Previous</a>
-<a routerLink="/articles">Next</a>
+<button (click)="save()">Зберегти</button>
