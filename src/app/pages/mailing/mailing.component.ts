@@ -4,9 +4,9 @@ import { ApiService } from '../../services/api.service';
 import { AccountService } from '../../services/account.service';
 
 @Component({
-  selector: 'app-mailing-settings',
-  templateUrl: './mailing-settings.component.html',
-  styleUrls: ['./mailing-settings.component.css']
+  selector: 'app-mailing',
+  templateUrl: './mailing.component.html',
+  styleUrls: ['./mailing.component.css']
 })
 export class MailingSettingsComponent implements OnInit {
   private readonly NUMBER_OF_ARTICLES_DEFAULT: number = 5;

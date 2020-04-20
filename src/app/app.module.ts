@@ -9,14 +9,13 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TagInputModule } from 'ngx-chips';
-import { TagsSelectorComponent } from './pages/tags/tags-selector/tags-selector.component';
-import { TagComponent } from './pages/tags/tag/tag.component';
+import { TagsComponent } from './pages/tags/tags.component';
+import { TagComponent } from './pages/tags/tag-item/tag-item.component';
 import { GreetingComponent } from './pages/greeting/greeting.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { MailingSettingsComponent } from './pages/mailing/mailing-settings.component';
+import { MailingSettingsComponent } from './pages/mailing/mailing.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { TagSettingsComponent } from './pages/tags/tags.component';
 import { AppInitService } from './services/app-init.service';
 import { ArticlesComponent } from './pages/articles/articles.component';
 
@@ -36,7 +35,7 @@ export function appInit(appInitService: AppInitService) {
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'tags', pathMatch:'full' },
-  { path: 'tags', component: TagSettingsComponent },
+  { path: 'tags', component: TagsComponent },
   { path: 'mailing', component: MailingSettingsComponent },
   { path: 'articles', component: ArticlesComponent },
   { path: '**', component: NotFoundComponent }
@@ -45,11 +44,11 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TagsSelectorComponent,
+    TagsComponent,
     TagComponent,
     GreetingComponent,
     MailingSettingsComponent,
-    TagSettingsComponent,
+    TagsComponent,
     NotFoundComponent,
     ArticlesComponent
   ],

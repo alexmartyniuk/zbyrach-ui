@@ -3,7 +3,7 @@ import { AccountService } from '../../services/account.service';
 import { User } from '../../models/user';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-greeting',
   templateUrl: './greeting.component.html',
   styleUrls: ['./greeting.component.css']
 })
