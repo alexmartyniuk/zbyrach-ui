@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MailingSettings, ScheduleType } from '../models/mailing-settings';
-import { ApiService } from '../services/api.service';
-import { AccountService } from '../services/account.service';
+import { Mailing, ScheduleType } from '../../models/mailing';
+import { ApiService } from '../../services/api.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-mailing-settings',
@@ -39,7 +39,7 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   async Save() {
-    const settings = <MailingSettings>{
+    const settings = <Mailing>{
       numberOfArticles: this.NumberOfArticles,
       scheduleType: Number(this.Schedule)
     };

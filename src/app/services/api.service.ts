@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/user';
 import { Tag } from '../models/tag';
-import { MailingSettings } from '../models/mailing-settings';
+import { Mailing } from '../models/mailing';
 import { Article } from '../models/article';
 
 @Injectable({
@@ -47,17 +47,17 @@ export class ApiService {
       .toPromise();
   }
 
-  public async GetMyMailingSettins(): Promise<MailingSettings> {
+  public async GetMyMailingSettins(): Promise<Mailing> {
     const url = this.baseUrl + 'mailing/settings/my';
     return this.http
-      .get<MailingSettings>(url)
+      .get<Mailing>(url)
       .toPromise();
   }
 
-  public async SetMyMailingSettins(settings: MailingSettings): Promise<MailingSettings> {
+  public async SetMyMailingSettins(settings: Mailing): Promise<Mailing> {
     const url = this.baseUrl + 'mailing/settings/my';
     return this.http
-      .post<MailingSettings>(url, settings)
+      .post<Mailing>(url, settings)
       .toPromise();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Tag } from '../models/tag';
+import { Tag } from '../../../models/tag';
 
 @Component({
   selector: 'mg-tag',

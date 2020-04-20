@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../services/account.service';
-import { User } from '../models/user';
+import { AccountService } from '../../services/account.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './greeting.component.html',
+  styleUrls: ['./greeting.component.css']
 })
 export class GreetingComponent implements OnInit {
 

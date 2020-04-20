@@ -1,4 +1,4 @@
-export class MailingSettings {
+export class Mailing {
     scheduleType: ScheduleType;
     numberOfArticles: number;
 }

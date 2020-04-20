@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tag } from '../models/tag';
-import { TagService } from '../services/tag.service';
-import { AccountService } from '../services/account.service';
+import { Tag } from '../../../models/tag';
+import { TagService } from '../../../services/tag.service';
+import { AccountService } from '../../../services/account.service';
 
 @Component({
   selector: 'mg-tags-selector',

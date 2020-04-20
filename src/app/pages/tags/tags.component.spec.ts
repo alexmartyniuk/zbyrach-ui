@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TagSettingsComponent } from './tag-settings.component';
+import { TagSettingsComponent } from './tags.component';
 
 describe('TagSettingsComponent', () => {
   let component: TagSettingsComponent;
