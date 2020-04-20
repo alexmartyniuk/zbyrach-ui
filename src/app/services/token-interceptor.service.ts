@@ -10,7 +10,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(private accountService: AccountService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.accountService.GetToken();
+    const token = this.accountService.getToken();
     let newHeaders = req.headers;
     if (token) {
       newHeaders = newHeaders.append('AuthToken', token);

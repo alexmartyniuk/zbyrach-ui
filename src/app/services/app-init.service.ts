@@ -9,9 +9,9 @@ export class AppInitService {
   constructor(private accountService: AccountService) { }
 
   public async Login(): Promise<void> {
-    const token = this.accountService.GetToken();
-    if (token) {
-      await this.accountService.LoginByToken(token);
-    }
+    // const token = this.accountService.GetToken();
+    // if (token) {
+    //   await this.accountService.LoginByToken(token);
+    // }
   }
 }

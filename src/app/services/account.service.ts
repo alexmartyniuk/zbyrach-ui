@@ -2,51 +2,38 @@ import { Injectable } from '@angular/core';
 import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { ApiService } from './api.service';
 import { User } from '../models/user';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-
-  private loginStateChangeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-  public LoginStateChanged$: Observable<boolean> = this.loginStateChangeSubject.asObservable();
-
   constructor(private api: ApiService, private authService: AuthService) { }
 
-  public async LoginWithGoogle(): Promise<User> {
+  public async login(): Promise<User> {
     try {
       const googleResponse = await this.authService
         .signIn(GoogleLoginProvider.PROVIDER_ID);
-      return this.LoginByToken(googleResponse.idToken);
-    } catch (e) {
-      return Promise.reject(e);
-    }
-  }
 
-  public async LoginByToken(token: string): Promise<User> {
-    try {
-      const response = await this.api.Login(token);
+      const response = await this.api.Login(googleResponse.idToken);
 
-      this.SetToken(response.token);
-      this.SetUser(response.user);
+      this.setToken(response.token);
+      this.setUser(response.user);
 
       return Promise.resolve(response.user);
     } catch (e) {
-      this.RemoveToken();
+      this.removeToken();
       this.RemoveUser();
 
       return Promise.reject(e);
     }
   }
 
-  public async Logout(): Promise<any> {
+  public async logout(): Promise<any> {
     try {
       await this.authService.signOut();
       await this.api.Logout();
 
-      this.RemoveToken();
+      this.removeToken();
       this.RemoveUser();
 
       return Promise.resolve();
@@ -55,35 +42,31 @@ export class AccountService {
     }
   }
 
-  public GetToken(): string {
-    return localStorage.getItem('token');
+  public isLogedIn(): boolean {
+    return this.getToken() != null;
   }
 
-  private SetToken(token: string) {
-    localStorage.setItem('token', token);
+  public getToken(): string {
+    return sessionStorage.getItem('token');
   }
 
-  private RemoveToken() {
-    localStorage.removeItem('token');
+  private setToken(token: string) {
+    sessionStorage.setItem('token', token);
   }
 
-  public GetUser(): User {
-    return JSON.parse(localStorage.getItem('user'));
+  private removeToken() {
+    sessionStorage.removeItem('token');
   }
 
-  public IsLogedIn(): boolean {
-    return this.loginStateChangeSubject.value;
+  public getUser(): User {
+    return JSON.parse(sessionStorage.getItem('user'));
   }
 
-  private SetUser(user: User) {
-    localStorage.setItem('user', JSON.stringify(user));
-    this.loginStateChangeSubject.next(true);
-    console.log('User has loged in');
+  private setUser(user: User) {
+    sessionStorage.setItem('user', JSON.stringify(user));
   }
 
   private RemoveUser() {
-    localStorage.removeItem('user');
-    this.loginStateChangeSubject.next(false);
-    console.log('User has loged out');
+    sessionStorage.removeItem('user');
   }
 }

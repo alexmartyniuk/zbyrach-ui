@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-greeting',
@@ -9,51 +8,28 @@ import { User } from '../../models/user';
 })
 export class GreetingComponent implements OnInit {
 
-  public IsLogedIn: boolean = false;
-  public UserName: string = "";
-  public UserPictureUrl: string = "";
+  public isLogedIn: boolean = false;
+  public userName: string;
 
   constructor(private accountService: AccountService) { }
 
   async ngOnInit() {
-    this.accountService.LoginStateChanged$.subscribe((logedin) => {
-      if (logedin) {
-        const user = this.accountService.GetUser();
-        this.setLogedIn(user);
-      } else {
-        this.setLogedOut();
-      }
-    });
+    if (this.accountService.isLogedIn()) {
+      this.setLogedIn();
+    }
   }
 
-  public async LogInWithGoogle(): Promise<void> {
+  public async logInWithGoogle(): Promise<void> {
     try {
-      await this.accountService.LoginWithGoogle();
+      await this.accountService.login();
+      this.setLogedIn();
     } catch (error) {
       console.log(error);
     }
   }
 
-  public async LogOut(): Promise<void> {
-    try {
-      await this.accountService.Logout();
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
-
-  private setLogedIn(user: User) {
-    this.UserName = user.name;
-    this.UserPictureUrl = user.pictureUrl;
-
-    this.IsLogedIn = true;
-  }
-
-  private setLogedOut() {
-    this.UserName = "";
-    this.UserPictureUrl = "";
-
-    this.IsLogedIn = false;
+  private setLogedIn() {
+    this.userName = this.accountService.getUser().name;
+    this.isLogedIn = true;
   }
 }

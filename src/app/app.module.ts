@@ -34,7 +34,8 @@ export function appInit(appInitService: AppInitService) {
 }
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'tags', pathMatch:'full' },
+  { path: '', redirectTo: 'greeting', pathMatch: 'full' },
+  { path: 'greeting', component: GreetingComponent },
   { path: 'tags', component: TagsComponent },
   { path: 'mailing', component: MailingSettingsComponent },
   { path: 'articles', component: ArticlesComponent },

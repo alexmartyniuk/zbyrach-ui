@@ -26,16 +26,9 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.accountService.LoginStateChanged$.subscribe(async (logedin) => {
-      if (logedin) {
-        const settings = await this.api.GetMyMailingSettins();
-        this.NumberOfArticles = settings.numberOfArticles;
-        this.Schedule = settings.scheduleType;
-      } else {
-        this.NumberOfArticles = this.NUMBER_OF_ARTICLES_DEFAULT;
-        this.Schedule = this.SCHEDULE_TYPE_DEFAULT;
-      }
-    });
+    const settings = await this.api.GetMyMailingSettins();
+    this.NumberOfArticles = settings.numberOfArticles;
+    this.Schedule = settings.scheduleType;
   }
 
   async Save() {

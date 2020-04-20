@@ -19,18 +19,11 @@ export class TagsComponent implements OnInit {
   constructor(private tagService: TagService, private accountService: AccountService) { }
 
   async ngOnInit() {
-    this.accountService.LoginStateChanged$.subscribe(async (logedin) => {
-      if (logedin) {
-        const tags = await this.tagService.getMyTags();
+    const tags = await this.tagService.getMyTags();
 
-        for (let tag of tags) {
-          this.addTag(tag);
-        }
-      } else {
-        this.tags.clear();
-        this.relatedTags.clear();
-      }
-    });
+    for (let tag of tags) {
+      this.addTag(tag);
+    }
   }
 
   async addCurrentTag(): Promise<any> {

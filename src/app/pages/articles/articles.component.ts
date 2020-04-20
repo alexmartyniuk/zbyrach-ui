@@ -14,14 +14,8 @@ export class ArticlesComponent implements OnInit {
 
   constructor(private accountService: AccountService, private articleService: ArticleService) { }
 
-  ngOnInit() {
-    this.accountService.LoginStateChanged$.subscribe(async (logedin) => {
-      if (logedin) {
-        this.Articles = await this.articleService.getArticlesForRead();
-      } else {
-        this.Articles = [];
-      }
-    });
+  async ngOnInit() {
+    this.Articles = await this.articleService.getArticlesForRead();
   }
 
   public OpenPdf(article: Article) {

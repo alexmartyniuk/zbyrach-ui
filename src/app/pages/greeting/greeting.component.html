@@ -1,11 +1,20 @@
-<h5>{{resultMessage}}</h5>
+<h1>Вас вітає Збирач!</h1>
 
-<div *ngIf="!IsLogedIn">
-    <button (click)="LogInWithGoogle()"> Google Login </button>
+<div *ngIf="!isLogedIn">
+    <p>
+        Ввійдіть, щоб налаштувати ваші вподобання та почати пошук статей.
+    </p>
+    
+    <button (click)="logInWithGoogle()"> Увійти з Google </button>
 </div>
 
-<div *ngIf="IsLogedIn">
-    <h3>{{ UserName }}</h3>
-    <img src="{{UserPictureUrl}}"/>
-    <button (click)="LogOut()">Logout</button>
+<div *ngIf="isLogedIn">
+    <p>
+        {{ userName }}, Збирач налаштований відправляти вас статті
+        за 5 тегами один раз на тиждень щоп'ятниці о 9:00.
+    </p>
+
+    <a routerLink="/articles">Переглянути статті</a>
+
+    <a routerLink="/tags">Змінити налаштування</a>
 </div>
