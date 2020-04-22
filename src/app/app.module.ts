@@ -18,6 +18,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AppInitService } from './services/app-init.service';
 import { ArticlesComponent } from './pages/articles/articles.component';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
 let config = new AuthServiceConfig([
   {
@@ -35,10 +36,10 @@ export function appInit(appInitService: AppInitService) {
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'greeting', pathMatch: 'full' },
-  { path: 'greeting', component: GreetingComponent },
-  { path: 'tags', component: TagsComponent },
-  { path: 'mailing', component: MailingSettingsComponent },
-  { path: 'articles', component: ArticlesComponent },
+  { path: 'greeting', component: GreetingComponent, canActivate: [AuthGuard] },
+  { path: 'tags', component: TagsComponent, canActivate: [AuthGuard] },
+  { path: 'mailing', component: MailingSettingsComponent, canActivate: [AuthGuard] },
+  { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 
