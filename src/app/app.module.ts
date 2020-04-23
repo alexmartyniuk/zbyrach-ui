@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
+  declarations: [   
     AppComponent,
     TagsComponent,
     TagComponent,
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     ArticlesComponent
   ],
   imports: [
+    Ng5SliderModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

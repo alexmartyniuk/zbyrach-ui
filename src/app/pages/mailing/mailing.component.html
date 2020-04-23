@@ -4,16 +4,22 @@
 
 <div>
     <div>Кількість статей: {{ numberOfArticles }}</div>
-    <div><input type="number" [(ngModel)]="numberOfArticles" ></div>
+    <div>        
+        <ng5-slider [(value)]="numberOfArticles" [options]="numberOfArticlesOptions"></ng5-slider>
+    </div>
 </div>
+
+<br>
+<br>
 
 <div>
     <div>Періодичність:</div>
     <div>
-        <select [(ngModel)]="schedule">
-            <option *ngFor="let item of scheduleValues" [value]="item.key">{{ item.value }}</option>
-         </select>
+        <ng5-slider [(value)]="schedule" [options]="scheduleOptions"></ng5-slider>        
     </div>
 </div>
+
+<br>
+<br>
 
 <button (click)="save()">Зберегти</button>
