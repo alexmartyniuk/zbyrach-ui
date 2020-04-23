@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { ApiService } from './api.service';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  constructor(private api: ApiService, private authService: AuthService) { }
+  constructor(private api: ApiService, private authService: AuthService, private router: Router) { }
 
   public async login(): Promise<User> {
     try {
@@ -22,7 +23,7 @@ export class AccountService {
       return Promise.resolve(response.user);
     } catch (e) {
       this.removeToken();
-      this.RemoveUser();
+      this.removeUser();
 
       return Promise.reject(e);
     }
@@ -34,7 +35,7 @@ export class AccountService {
       await this.api.logout();
 
       this.removeToken();
-      this.RemoveUser();
+      this.removeUser();
 
       return Promise.resolve();
     } catch (e) {
@@ -48,6 +49,11 @@ export class AccountService {
 
   public getToken(): string {
     return sessionStorage.getItem('token');
+  }
+
+  public authenticationFailedHandler(returnUrl: string = ""): void {    
+    this.removeToken();
+    this.router.navigate(['greeting']);
   }
 
   private setToken(token: string) {
@@ -66,7 +72,7 @@ export class AccountService {
     sessionStorage.setItem('user', JSON.stringify(user));
   }
 
-  private RemoveUser() {
+  private removeUser() {
     sessionStorage.removeItem('user');
   }
 }
