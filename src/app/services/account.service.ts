@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { ApiService } from './api.service';
 import { User } from '../models/user';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AccountService {
-  constructor(private api: ApiService, private authService: AuthService, private router: Router) { }
+  constructor(private api: ApiService, private authService: AuthService, private injector: Injector) { }
 
   public async login(): Promise<User> {
     try {
@@ -53,7 +53,8 @@ export class AccountService {
 
   public authenticationFailedHandler(returnUrl: string = ""): void {    
     this.removeToken();
-    this.router.navigate(['greeting']);
+    const router = this.injector.get(Router);
+    router.navigate(['greeting']);
   }
 
   private setToken(token: string) {
