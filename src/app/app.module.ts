@@ -36,7 +36,7 @@ export function appInit(appInitService: AppInitService) {
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'greeting', pathMatch: 'full' },
-  { path: 'greeting', component: GreetingComponent, canActivate: [AuthGuard] },
+  { path: 'greeting', component: GreetingComponent },
   { path: 'tags', component: TagsComponent, canActivate: [AuthGuard] },
   { path: 'mailing', component: MailingSettingsComponent, canActivate: [AuthGuard] },
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
