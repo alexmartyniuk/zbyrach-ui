@@ -16,15 +16,15 @@ export class MailingSettingsComponent implements OnInit {
   public numberOfArticlesOptions: Options;
   public schedule: ScheduleType = ScheduleType.Never;
   public scheduleOptions: Options;
-  
-  private numberOfArticlesValues: { [id: number] : string; } = {
-    1: "0",
-    2: "5",
-    3: "10",
-    4: "20",
+
+  private numberOfArticlesValues: { [id: number]: number; } = {
+    1: 0,
+    2: 5,
+    3: 10,
+    4: 20,
   };
 
-  private scheduleValues: { [id: number] : string; } = {
+  private scheduleValues: { [id: number]: string; } = {
     1: "Ніколи",
     2: "Раз на день",
     3: "Раз на тиждень",
@@ -39,9 +39,9 @@ export class MailingSettingsComponent implements OnInit {
       showTicks: true,
       hidePointerLabels: true,
       hideLimitLabels: true,
-      getLegend: (value: number): string => { 
-        return this.numberOfArticlesValues[value]; 
-      }      
+      getLegend: (value: number): string => {
+        return this.numberOfArticlesValues[value].toString();
+      }
     };
 
     this.scheduleOptions = {
@@ -51,29 +51,44 @@ export class MailingSettingsComponent implements OnInit {
       showTicks: true,
       hidePointerLabels: true,
       hideLimitLabels: true,
-      getLegend: (value: number): string => {         
+      getLegend: (value: number): string => {
         return this.scheduleValues[value];
-      }    
+      }
     }
   }
 
   async ngOnInit() {
     this.userEmail = this.accountService.getUser().email;
-    
+
     const settings = await this.api.getMyMailingSettings();
-    this.numberOfArticles = settings.numberOfArticles;
+
+    this.numberOfArticles = this.getKeyByValue(this.numberOfArticlesValues, settings.numberOfArticles);
+    console.log('read: ', this.numberOfArticles)
     this.schedule = settings.scheduleType;
   }
 
   async save() {
     const settings = <Mailing>{
-      numberOfArticles: this.numberOfArticles,
+      numberOfArticles: this.getValueByKey(this.numberOfArticlesValues, this.numberOfArticles),
       scheduleType: Number(this.schedule)
     };
+    console.log('write: ', settings.numberOfArticles)
 
     await this.api.setMyMailingSettings(settings);
-    
+
     this.router.navigate(['/']);
+  }
+
+  private getKeyByValue(dict: { [id: number]: number; }, value: number): number {
+    for (let key in dict) {
+      if (dict[key] == value) {
+        return parseInt(key);
+      }
+    }
+  }
+
+  private getValueByKey(dict: { [id: number]: number; }, value: number): number {
+    return dict[value];
   }
 
 }
