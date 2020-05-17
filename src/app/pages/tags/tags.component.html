@@ -1,23 +1,24 @@
 <h1>Налаштування ключових слів</h1>
 
-<p>Додайте ключові слова, що вас цікавлять. Наприклад: software development</p>
+<p>Додайте слова, що вас цікавлять</p>
 
 <div>
     <input [(ngModel)]="currentTagName" (keyup.enter)="addCurrentTag()">
-    <button (click)="addCurrentTag()">Add</button>
+    <button (click)="addCurrentTag()">+</button>
 </div>
 
 
 <ul>
     <li *ngFor="let tag of tags | keyvalue">
-        <app-tag-item [tag]='tag.value' (onRemove)='onRemoveTag($event)' (onClick)='onClickTag($event)'></app-tag-item>
+        <app-tag-item [tag]='tag.value' (onRemove)='onRemoveTag($event)' (onClick)='onClickTag($event)'>
+        </app-tag-item>
     </li>
 </ul>
 
-<p>Можуть бути цікаві:</p>
+<p>Вас також можуть зацікавити:</p>
 <ul>
     <li *ngFor="let tag of relatedTags | keyvalue">
-        <app-tag-item [tag]='tag.value' (onRemove)='onRemoveRelatedTag($event)' (onClick)='onClickRelatedTag($event)'>
+        <app-tag-item [tag]='tag.value' [isRemovingAllowed]='false' (onRemove)='onRemoveRelatedTag($event)' (onClick)='onClickRelatedTag($event)'>
         </app-tag-item>
     </li>
 </ul>

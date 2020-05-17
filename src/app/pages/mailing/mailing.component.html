@@ -1,11 +1,11 @@
 <h1>Налаштування відправки</h1>
 
-<p>Вкажіть, як часть і скільки статей ви хочете отримувати на {{ userEmail }}</p>
+<p>Вкажіть, як часто і скільки статей ви хочете отримувати на {{ userEmail }}</p>
 
 <div>
-    <div>Кількість статей:</div>
+    <div>Кількість статей: {{ numberOfArticles() }}</div>
     <div>        
-        <ng5-slider [(value)]="numberOfArticles" [options]="numberOfArticlesOptions"></ng5-slider>
+        <ng5-slider [(value)]="numberOfArticlesSlider" [options]="numberOfArticlesSliderOptions"></ng5-slider>
     </div>
 </div>
 
@@ -13,9 +13,9 @@
 <br>
 
 <div>
-    <div>Періодичність:</div>
+    <div>Періодичність: {{ schedule() }}</div>
     <div>
-        <ng5-slider [(value)]="schedule" [options]="scheduleOptions"></ng5-slider>        
+        <ng5-slider [(value)]="scheduleSlider" [options]="scheduleSliderOptions"></ng5-slider>        
     </div>
 </div>
 

@@ -1,4 +1,5 @@
 <div>
-    <div (click)='onElementClick()'>{{ tag.name }}</div>
-    <button (click)='onRemoveButtonClick()'>x</button>
+    <span (click)="onElementClick()">{{ tag.name }}</span>
+    
+    <button *ngIf="isRemovingAllowed" (click)="onRemoveButtonClick()">x</button>
 </div>

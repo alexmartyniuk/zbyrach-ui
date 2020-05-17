@@ -1,7 +1,7 @@
 <div *ngIf="!areArticleFound">
     <h1>Жодної статті не знайдено</h1>
     <p>
-        Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук.
+        Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук
     </p>
     
     <a routerLink="/tags">Налаштувати</a>
@@ -12,11 +12,11 @@
     <ul>
         <div *ngFor="let article of articles">
             <div>
-                <h3>{{ article.title }}</h3>
+                <div>{{ article.title }}</div>
                 <img src="{{article.illustrationUrl}}" width="60px" height="60px"/>
                 <p>{{ article.description }}</p>
                 <span>{{ article.publicatedAt }} &nbsp; {{ article.readTime }}</span>
-                &nbsp;
+                &nbsp; 
                 <a (click)="openPdf(article)" href="javascript:void(0)">Pdf</a>                
             </div>
             <br>
