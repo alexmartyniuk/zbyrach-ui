@@ -12,7 +12,7 @@ import { Options } from 'ng5-slider';
 })
 export class MailingSettingsComponent implements OnInit {
   public userEmail: string;
-  
+
   public numberOfArticlesSlider: number = 0;
   public numberOfArticlesSliderOptions: Options;
   public scheduleSlider: number = 0;
@@ -66,11 +66,17 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.userEmail = this.accountService.getUser().email;
+    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+      if (logedin) {
+        this.userEmail = this.accountService.getUser().email;
 
-    const settings = await this.api.getMyMailingSettings();
-    this.numberOfArticlesSlider = this.getKeyByValue(this.numberOfArticlesValues, settings.numberOfArticles);
-    this.scheduleSlider = this.getKeyByValue(this.scheduleTypeValues, settings.scheduleType);
+        const settings = await this.api.getMyMailingSettings();
+        this.numberOfArticlesSlider = this.getKeyByValue(this.numberOfArticlesValues, settings.numberOfArticles);
+        this.scheduleSlider = this.getKeyByValue(this.scheduleTypeValues, settings.scheduleType);
+      } else {
+        this.router.navigate(['/greeting']);
+      }
+    });
   }
 
   async save() {

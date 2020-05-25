@@ -14,22 +14,23 @@ export class GreetingComponent implements OnInit {
   constructor(private accountService: AccountService) { }
 
   async ngOnInit() {
-    if (this.accountService.isLogedIn()) {
-      this.setLogedIn();
-    }
+    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+      this.isLogedIn = logedin;
+      
+      if (logedin) {
+        const user = this.accountService.getUser();
+        this.userName = user.name;
+      } else {
+        this.userName = "";
+      }
+    });
   }
 
-  public async logInWithGoogle(): Promise<void> {
+  public async logIn(): Promise<void> {
     try {
       await this.accountService.login();
-      this.setLogedIn();
     } catch (error) {
       console.log(error);
     }
-  }
-
-  private setLogedIn() {
-    this.userName = this.accountService.getUser().name;
-    this.isLogedIn = true;
   }
 }

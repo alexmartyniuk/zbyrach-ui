@@ -11,20 +11,26 @@ import { Router } from '@angular/router';
 })
 export class TagsComponent implements OnInit {
 
-  currentTagName: string = "";
+  public currentTagName: string = "";
 
-  relatedTags: Map<string, Tag> = new Map<string, Tag>();
+  public relatedTags: Map<string, Tag> = new Map<string, Tag>();
 
-  tags: Map<string, Tag> = new Map<string, Tag>();
+  public tags: Map<string, Tag> = new Map<string, Tag>();
 
   constructor(private router: Router, private tagService: TagService, private accountService: AccountService) { }
 
   async ngOnInit() {
-    const tags = await this.tagService.getMyTags();
+    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+      if (logedin) {
+        const tags = await this.tagService.getMyTags();
 
-    for (let tag of tags) {
-      this.addTag(tag);
-    }
+        for (let tag of tags) {
+          this.addTag(tag);
+        }
+      } else {
+        this.router.navigate(['/greeting']);
+      }
+    });
   }
 
   async addCurrentTag(): Promise<any> {
@@ -75,7 +81,7 @@ export class TagsComponent implements OnInit {
   }
 
   async save(): Promise<void> {
-    const tagNames = Array.from(this.tags.values()).map(t => t.name);    
+    const tagNames = Array.from(this.tags.values()).map(t => t.name);
     await this.tagService.setMyTags(tagNames);
 
     this.router.navigate(['/mailing']);

@@ -3,22 +3,36 @@ import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { ApiService } from './api.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  constructor(private api: ApiService, private authService: AuthService, private injector: Injector) { }
+
+  private loginStateChangeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  public loginStateChanged$: Observable<boolean> = this.loginStateChangeSubject.asObservable();
+
+  constructor(private api: ApiService, private authService: AuthService, private injector: Injector) {
+    const token = this.getToken();
+    if (token) {
+      this.loginStateChangeSubject.next(true);
+    } else {
+      this.loginStateChangeSubject.next(false);
+    }
+  }
 
   public async login(): Promise<User> {
     try {
       const googleResponse = await this.authService
         .signIn(GoogleLoginProvider.PROVIDER_ID);
 
-      const response = await this.api.login(googleResponse.idToken);
+      const response = await this.api
+        .login(googleResponse.idToken);
 
-      this.setToken(response.token);
       this.setUser(response.user);
+      this.setToken(response.token);
 
       return Promise.resolve(response.user);
     } catch (e) {
@@ -44,14 +58,14 @@ export class AccountService {
   }
 
   public isLogedIn(): boolean {
-    return this.getToken() != null;
+    return this.loginStateChangeSubject.value;
   }
 
   public getToken(): string {
     return sessionStorage.getItem('token');
   }
 
-  public authenticationFailedHandler(returnUrl: string = ""): void {    
+  public authenticationFailedHandler(returnUrl: string = ""): void {
     this.removeToken();
     const router = this.injector.get(Router);
     router.navigate(['greeting']);
@@ -59,10 +73,12 @@ export class AccountService {
 
   private setToken(token: string) {
     sessionStorage.setItem('token', token);
+    this.loginStateChangeSubject.next(true);
   }
 
   private removeToken() {
     sessionStorage.removeItem('token');
+    this.loginStateChangeSubject.next(false);
   }
 
   public getUser(): User {
