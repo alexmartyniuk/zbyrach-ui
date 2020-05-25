@@ -13,7 +13,7 @@
         <div *ngFor="let article of articles">
             <div>
                 <div>{{ article.title }}</div>
-                <img src="{{article.illustrationUrl}}" width="60px" height="60px"/>
+                <img class="rounded-circle" src="{{ article.authorPhoto }}" title="{{ article.authorName }}"width="60px" height="60px"/>
                 <p>{{ article.description }}</p>
                 <span>{{ article.publicatedAt }} &nbsp; {{ article.readTime }}</span>
                 &nbsp; 
