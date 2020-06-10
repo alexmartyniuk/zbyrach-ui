@@ -1,0 +1,9 @@
+server {
+  listen $PORT default_server;
+  server_name zbyrach-ui.herokuapp.com;
+
+  location / {
+    root   /usr/share/nginx/html;
+    index  index.html;
+  }
+}
