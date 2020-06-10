@@ -24,7 +24,7 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("175396273730-4a2qpvrls8vh3kplihb48sdn37ev5vg5.apps.googleusercontent.com")
+    provider: new GoogleLoginProvider("519534075171-pdlfq0736fac74ueoijag6vc837pk5r5.apps.googleusercontent.com")
   },
 ]);
 export function provideConfig() {
