@@ -8,7 +8,6 @@ import { AccountService } from './services/account.service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'Ui';
   public isLogedIn: boolean;
   public userName: string;
   public userPictureUrl: string;
