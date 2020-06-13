@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ArticleService } from '../../services/artilcle.service';
 import { Article } from '../../models/article';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
@@ -14,11 +15,17 @@ export class ArticlesComponent implements OnInit {
 
   public areArticleFound: boolean = false;
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private router: Router, private accountService: AccountService, private articleService: ArticleService) { }
 
   async ngOnInit() {
-    this.articles = await this.articleService.getArticlesForRead();
-    this.areArticleFound = this.articles.length > 0;
+    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+      if (logedin) {
+        this.articles = await this.articleService.getArticlesForRead();
+        this.areArticleFound = this.articles.length > 0;
+      } else {
+        this.router.navigate(['/greeting']);
+      }
+    });
   }
 
   public openPdf(article: Article) {

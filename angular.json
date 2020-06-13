@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Ui": {
+    "zbyrach-ui": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Ui",
+            "outputPath": "dist/zbyrach-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Ui:build"
+            "browserTarget": "zbyrach-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Ui:build:production"
+              "browserTarget": "zbyrach-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Ui:build"
+            "browserTarget": "zbyrach-ui:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Ui:serve"
+            "devServerTarget": "zbyrach-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Ui:serve:production"
+              "devServerTarget": "zbyrach-ui:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Ui"
+  "defaultProject": "zbyrach-ui"
 }

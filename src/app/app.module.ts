@@ -21,7 +21,7 @@ import { AppInitService } from './services/app-init.service';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
-let config = new AuthServiceConfig([
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider("175396273730-4a2qpvrls8vh3kplihb48sdn37ev5vg5.apps.googleusercontent.com")
