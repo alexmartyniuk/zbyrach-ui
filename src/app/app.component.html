@@ -1,16 +1,18 @@
 <div class="container">
 
     <!-- Header -->
-    <div class="row justify-content-between align-items-center">
+    <div class="row justify-content-between align-items-center header">
         <div class="col">
-            <a routerLink="/greeting" class="navbar-brand">Збирач</a>
+            <a routerLink="/greeting" class="navbar-brand">
+                <img class="logo" src="/assets/img/Logo.png" alt="Збирач">    
+            </a>
         </div>
         <div *ngIf="isLogedIn" class="col text-right">
-            <div class="d-inline">
-                <img class="rounded-circle" width="50" src="{{ userPictureUrl }}" alt="User picture" />
+            <div class=" d-inline">
+                <img class="user-photo rounded-circle" width="50" src="{{ userPictureUrl }}" alt="User picture" />
             </div>
             <div class="dropdown show d-inline align-self-center">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                <a class="user-name dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     {{ userName }}
                 </a>
@@ -32,7 +34,7 @@
     </div>
 
     <!-- Body -->
-    <div class="row">
+    <div class="row body">
         <div class="col">
             <router-outlet></router-outlet>
         </div>

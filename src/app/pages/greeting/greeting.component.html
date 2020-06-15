@@ -21,16 +21,23 @@
 
 <div *ngIf="isLogedIn">
     <h1>Вітаю вас, {{ userName }}!</h1>
-    <p>
-        Ви отримуєте статті
-    </p>
-    <ul>
-        <li>за 5 тегами</li>
-        <li>щоп’ятниці о 9:00</li>
-        <li>один раз на тиждень</li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>
+                    Ви отримуєте статті
+                </p>
+                <ul>
+                    <li>за 5 тегами</li>
+                    <li>щоп’ятниці о 9:00</li>
+                    <li>один раз на тиждень</li>
+                </ul>
+            </div>
+            <div class="col">
+                <a routerLink="/tags" class="btn">Налаштувати</a>
+            </div>
+        </div>
+    </div>
 
-    <a routerLink="/tags">Налаштувати</a>
-
-    <a routerLink="/articles">Переглянути статті</a>
+    <a routerLink="/articles" class="btn btn-primary" >Переглянути статті</a>
 </div>

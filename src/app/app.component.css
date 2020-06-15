@@ -1,0 +1,48 @@
+::ng-deep html {
+    height: 100%;
+}
+
+::ng-deep body {
+    background-color: #eeeeee;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    color: #a64f05;
+}
+
+.container {
+    max-width: 556px;
+    min-height: 600px;
+    height: 100%;
+    margin: 21px auto;
+    background-color: #ffffff;
+    border: 1px solid #a64f05;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 48px;
+    background: #ff7e0f;
+    border-bottom: 1px solid #a64f05;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 66px;
+    height: 32px;
+}
+
+.user-photo {
+    width: 29px;
+    height: 29px;
+}
+
+.user-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #ffffff;
+}
