@@ -3,5 +3,14 @@ h1 {
     font-weight: 600;
     line-height: 25px;
     text-align: center;
-    padding: 42px;
+    padding: 40px;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.view-articles-button, .signin-button {
+    margin-top: 50px;
 }
