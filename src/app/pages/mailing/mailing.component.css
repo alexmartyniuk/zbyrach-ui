@@ -1,0 +1,46 @@
+::ng-deep.ng5-slider-bar {
+    background: #a64f05 !important;
+    height: 3px !important;
+}
+
+::ng-deep.ng5-slider-pointer {
+    width: 20px !important;
+    height: 20px !important;
+    top: -10px !important;
+    bottom: auto !important;
+    background-color: #ff7e0f !important;
+    margin-left: 10px !important;
+}
+
+::ng-deep.ng5-slider-pointer::after {
+    display: none;
+}
+
+::ng-deep.ng5-slider-tick {
+    background: #a64f05 !important;
+}
+
+::ng-deep.ng5-slider-tick-legend {
+    white-space: nowrap !important;
+}
+
+::ng-deep.ng5-slider-full-bar {
+    padding: 50px;
+}
+
+.save-button {
+    margin-top: 50px;
+}
+
+.slider {
+    margin-left: 30px;
+    margin-right: 50px;
+}
+
+.articles {
+    padding-top: 40px;
+}
+
+.schedule {
+    padding-top: 50px;
+}

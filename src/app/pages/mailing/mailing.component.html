@@ -2,24 +2,21 @@
 
 <p>Вкажіть, як часто і скільки статей ви хочете отримувати на {{ userEmail }}</p>
 
-<div>
-    <div>Кількість статей: {{ numberOfArticles() }}</div>
-    <div>        
+<div class="articles">
+    <div class="text-center">Кількість статей: {{ numberOfArticles() }}</div>
+    <div class="slider">        
         <ng5-slider [(value)]="numberOfArticlesSlider" [options]="numberOfArticlesSliderOptions"></ng5-slider>
     </div>
 </div>
 
-<br>
-<br>
-
-<div>
-    <div>Періодичність: {{ schedule() }}</div>
-    <div>
+<div class="schedule">
+    <div class="text-center">Періодичність: {{ schedule() }}</div>
+    <div class="slider">
         <ng5-slider [(value)]="scheduleSlider" [options]="scheduleSliderOptions"></ng5-slider>        
     </div>
 </div>
 
-<br>
-<br>
+<div class="text-center">
+    <button (click)="save()" class="btn btn-primary save-button">Зберегти</button>
+</div>
 
-<button (click)="save()">Зберегти</button>
