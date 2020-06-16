@@ -1,27 +1,33 @@
 <h1>Налаштування ключових слів</h1>
 
-<p>Додайте слова, що вас цікавлять</p>
+<div class="text-center">
+    <p>Додайте слова, що вас цікавлять</p>
+    <div class="container">
+        <input [(ngModel)]="currentTagName" (keyup.enter)="addCurrentTag()" type="text">
+        <button class="add" (click)="addCurrentTag()">
+            <img src="/assets/img/Button.png" alt="Додати" />
+        </button>
+    </div>
+</div>
 
-<div>
-    <input [(ngModel)]="currentTagName" (keyup.enter)="addCurrentTag()">
-    <button (click)="addCurrentTag()">+</button>
+<div class="tags">
+    <div *ngFor="let tag of tags | keyvalue">
+        <app-tag-item [tag]='tag.value' (onRemove)='onRemoveTag($event)' (onClick)='onClickTag($event)'>
+        </app-tag-item>
+    </div>
+</div>
+
+<div class="related-tags">
+    <p>Вас також можуть зацікавити:</p>
+    <div *ngFor="let tag of relatedTags | keyvalue">
+        <app-tag-item [tag]='tag.value' [isRemovingAllowed]='false' (onRemove)='onRemoveRelatedTag($event)'
+            (onClick)='onClickRelatedTag($event)'>
+        </app-tag-item>
+    </div>
 </div>
 
 
-<ul>
-    <li *ngFor="let tag of tags | keyvalue">
-        <app-tag-item [tag]='tag.value' (onRemove)='onRemoveTag($event)' (onClick)='onClickTag($event)'>
-        </app-tag-item>
-    </li>
-</ul>
+<div class="text-center">
+    <button class="btn btn-primary save-button" (click)="save()">Зберегти</button>
+</div>
 
-<p>Вас також можуть зацікавити:</p>
-<ul>
-    <li *ngFor="let tag of relatedTags | keyvalue">
-        <app-tag-item [tag]='tag.value' [isRemovingAllowed]='false' (onRemove)='onRemoveRelatedTag($event)' (onClick)='onClickRelatedTag($event)'>
-        </app-tag-item>
-    </li>
-</ul>
-<br>
-
-<button (click)="save()">Зберегти</button>

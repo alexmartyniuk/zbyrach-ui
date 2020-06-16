@@ -1,5 +1,12 @@
-<div>
-    <span (click)="onElementClick()">{{ tag.name }}</span>
-    
-    <button *ngIf="isRemovingAllowed" (click)="onRemoveButtonClick()">x</button>
-</div>
+<span class="root" 
+    [ngClass]="{'bold' : isRemovingAllowed}"
+    [ngClass]="{'pointer' : !isRemovingAllowed}"
+    [attr.title] = "!isRemovingAllowed ? 'Додати тег' : undefined">
+    <button *ngIf="isRemovingAllowed" (click)="onRemoveButtonClick()" title="Видалити тег">
+        <img src="/assets/img/Close.png" alt="Видалити"/>
+    </button>        
+
+    <span class="text" (click)="onElementClick()">
+        {{ tag.name }}
+    </span>
+</span>
