@@ -7,11 +7,7 @@ input[type="text"] {
     height: 44px;
     padding-left: 14px;
     padding-right: 50px;
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border: 1px solid #a0d18c;
+    outline: none !important;
 }
 
 button.add {
@@ -22,7 +18,6 @@ button.add {
     background-color: #ffffff;
     padding: 0;
     border: none;
-    outline:none;
 }
 
 .tags {
@@ -33,8 +28,8 @@ button.add {
     display: inline;
 }
 
-div.inline { 
-    float:left; 
+div.inline {
+    float: left;
 }
 
 .related-tags {

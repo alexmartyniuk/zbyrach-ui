@@ -29,6 +29,19 @@
     border: 1px solid #a64f05;
 }
 
+.btn:focus {
+    background-color: #a64f05;
+    color: #ffffff;
+    border: 1px solid #a64f05;
+}
+
+:focus {
+    outline-style: solid !important;
+    outline-width: thin !important;
+    outline-color: #ffbf86 !important;
+    box-shadow: none !important;
+}
+
 h1 {
     font-size: 18px;
     font-weight: 600;
