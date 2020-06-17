@@ -3,23 +3,36 @@
     <p>
         Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук
     </p>
-    
+
     <a routerLink="/tags">Налаштувати</a>
 </div>
 
 <div *ngIf="areArticleFound">
-    <h1>Знайшлося дещо почитати</h1>    
-    <ul>
-        <div *ngFor="let article of articles">
-            <div>
-                <div>{{ article.title }}</div>
-                <img class="rounded-circle" src="{{ article.authorPhoto }}" title="{{ article.authorName }}"width="60px" height="60px"/>
-                <p>{{ article.description }}</p>
-                <span>{{ article.publicatedAt }} &nbsp; {{ article.readTime }}</span>
-                &nbsp; 
-                <a (click)="openPdf(article)" href="javascript:void(0)">Pdf</a>                
+    <h1>Знайшлося дещо почитати</h1>
+    <div class="container">
+        <div *ngFor="let article of articles" class="row">
+            <div class="col-2 align-self-center">
+                <img class="rounded-circle" src="{{ article.authorPhoto }}" title="{{ article.authorName }}" />
             </div>
-            <br>
+            <div class="col-8 align-self-center">
+                <div class="title">
+                    <a href="{{ article.originalUrl }}" target="_blank">
+                        {{ article.title }}
+                    </a>
+                </div>
+                <div class="description">
+                    {{ article.description }}
+                </div>
+            </div>
+            <div class="col-2 align-self-center links">
+                <div>
+                    {{ article.publicatedAt | date:'d-M-yyyy' }}
+                </div>
+                <div>{{ article.readTime }}</div>
+                <div>
+                    <a (click)="openPdf(article)" href="javascript:void(0)">PDF</a>
+                </div>
+            </div>
         </div>
-    </ul>
+    </div>
 </div>

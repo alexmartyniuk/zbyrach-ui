@@ -32,7 +32,7 @@
     margin-top: 50px;
 }
 
-.slider {
+.slider, .description {
     margin-left: 30px;
     margin-right: 50px;
 }
