@@ -1,9 +1,9 @@
-.container {
+.articles {
     margin: 0;
     padding: 0;
 }
 
-.container div {
+.articles div {
     margin: 0;
     padding: 0;
 }
@@ -29,7 +29,7 @@
     line-height: 19px;
 }
 
-img {
+.author img {
     width: 70px;
     height: 70px;
     margin: 2px;

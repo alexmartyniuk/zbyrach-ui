@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="related-tags">
+<div *ngIf="isRelatedTagsExist()" class="related-tags">
     <p>Вас також можуть зацікавити:</p>
     <div *ngFor="let tag of relatedTags | keyvalue">
         <app-tag-item [tag]='tag.value' [isRemovingAllowed]='false' (onRemove)='onRemoveRelatedTag($event)'
@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="text-center">
+<div *ngIf="isTagsExist()" class="text-center">
     <button class="btn btn-primary save-button" (click)="save()">Зберегти</button>
 </div>
 

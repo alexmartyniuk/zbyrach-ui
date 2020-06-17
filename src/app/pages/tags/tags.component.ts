@@ -17,6 +17,14 @@ export class TagsComponent implements OnInit {
 
   public tags: Map<string, Tag> = new Map<string, Tag>();
 
+  public isTagsExist(): boolean {
+    return this.tags.size > 0;
+  }
+
+  public isRelatedTagsExist(): boolean {
+    return this.relatedTags.size > 0;
+  }
+
   constructor(private router: Router, private tagService: TagService, private accountService: AccountService) { }
 
   async ngOnInit() {
@@ -64,7 +72,13 @@ export class TagsComponent implements OnInit {
 
   onRemoveTag(tag: Tag): void {
     this.tags.delete(tag.name);
-    this.relatedTags.delete(tag.name);
+
+    for (let key of this.relatedTags.keys()) {
+      let relatedTag = this.relatedTags.get(key);
+      if (relatedTag.parentTagName == tag.name) {
+        this.relatedTags.delete(key);
+      }
+    }
   }
 
   onClickTag(tag: Tag): void {
