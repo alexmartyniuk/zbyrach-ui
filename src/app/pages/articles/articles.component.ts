@@ -12,20 +12,31 @@ import { Router } from '@angular/router';
 export class ArticlesComponent implements OnInit {
 
   public articles: Article[];
-
-  public areArticleFound: boolean = false;
+  public articlesFound: boolean = false;
+  public isLoading: boolean = true;
 
   constructor(private router: Router, private accountService: AccountService, private articleService: ArticleService) { }
 
   async ngOnInit() {
     this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
-        this.articles = await this.articleService.getArticlesForRead();
-        this.areArticleFound = this.articles.length > 0;
+        this.loadArticles();
       } else {
         this.router.navigate(['/greeting']);
       }
     });
+  }
+
+  private async loadArticles() {
+    try {
+      this.isLoading = true;
+      this.articles = await this.articleService.getArticlesForRead();
+      this.articlesFound = this.articles.length > 0;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public openPdf(article: Article) {

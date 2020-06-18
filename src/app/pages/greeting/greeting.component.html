@@ -28,7 +28,9 @@
 
     <div class="text-center">
         <button (click)="logIn()" class="btn btn-primary signin-button">
-            Увійти <img src="/assets/img/Google.png" width="20" />
+            Увійти 
+            <img *ngIf="!isLoading" src="/assets/img/Google.png" width="20" />
+            <img *ngIf="isLoading" src="/assets/img/loading-small.gif" width="20" />
         </button>
     </div>
 </div>
