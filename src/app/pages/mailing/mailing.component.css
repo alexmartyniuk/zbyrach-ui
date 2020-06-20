@@ -44,3 +44,11 @@
 .schedule {
     padding-top: 50px;
 }
+
+@media (max-width: 768px) {
+    .slider,
+    .description {
+        margin-left: 10px;
+        margin-right: 15px;
+    }
+}
