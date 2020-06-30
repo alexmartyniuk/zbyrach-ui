@@ -15,10 +15,13 @@ export class ArticleService {
 
   public async openPdf(article: Article): Promise<any> {
     const newTab = window.open('/assets/loading.html', '_blank');
+    try {
+      const blob = await this.api.getArticlePdf(article);
+      const url = window.URL.createObjectURL(blob);
 
-    const blob = await this.api.getArticlePdf(article);    
-    const url = window.URL.createObjectURL(blob);
-
-    newTab.location.href = url;
+      newTab.location.href = url;
+    } catch {
+      newTab.close();
+    }
   }
 }
