@@ -2,7 +2,7 @@
     <h1>Вітаю вас!</h1>
     <div class="container">
         <div class="row">
-            <div class="col-5">
+            <div class="col-12 col-sm-5">
                 <p>
                     Ви
                 </p>
@@ -19,7 +19,7 @@
                     <li>відправляю вам на пошту</li>
                 </ul>
             </div>
-            <div class="col-7 align-self-center text-center">
+            <div class="d-none d-sm-block col-sm-7 align-self-center text-center">
                 <img src="/assets/img/AnimationSmall.gif" alt="" width="300px" height="240px">
             </div>
         </div>
@@ -28,7 +28,7 @@
 
     <div class="text-center">
         <button (click)="logIn()" class="btn btn-primary signin-button">
-            Увійти 
+            Увійти
             <img *ngIf="!isLoading" src="/assets/img/Google.png" width="20" />
             <img *ngIf="isLoading" src="/assets/img/loading-small.gif" width="20" />
         </button>
