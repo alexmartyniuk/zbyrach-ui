@@ -27,10 +27,10 @@
     <h1>Знайшлося дещо почитати</h1>
     <div class="container articles">
         <div *ngFor="let article of articles" class="row">
-            <div class="col-2 align-self-center author">
+            <div class="col-2 col-md-2 align-self-center author">
                 <img class="rounded-circle" src="{{ article.authorPhoto }}" title="{{ article.authorName }}" />
             </div>
-            <div class="col-8 align-self-center">
+            <div class="col-9 col-md-8 align-self-center">
                 <div class="title">
                     <a href="{{ article.originalUrl }}" target="_blank">
                         {{ article.title }}
@@ -40,11 +40,13 @@
                     {{ article.description }}
                 </div>
             </div>
-            <div class="col-2 align-self-center links">
-                <div>
+            <div class="col-1 col-md-2 align-self-center links">
+                <div class="publicated-date">
                     {{ article.publicatedAt | date:'d-M-yyyy' }}
                 </div>
-                <div>{{ article.readTime }}</div>
+                <div class="readtime">
+                  {{ article.readTime }}
+                </div>
                 <div>
                     <a (click)="openPdf(article)" href="javascript:void(0)">PDF</a>
                 </div>

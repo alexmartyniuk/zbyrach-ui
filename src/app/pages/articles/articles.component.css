@@ -45,4 +45,8 @@
     .container {
         max-width: none !important;
     }
+
+    .description, .publicated-date, .readtime {
+      display: none;
+    }
 }
