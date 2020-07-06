@@ -11,8 +11,8 @@
     color: #a64f05;
 }
 
-.container {
-    max-width: 556px;
+.page {
+    max-width: 768px;
     min-height: 600px;
     height: 100%;
     margin: 21px auto;
@@ -54,4 +54,16 @@
     font-size: 14px;
     line-height: 19px;
     color: #a64f05;
+}
+
+@media (max-width: 768px) {
+    .page {
+        height: 100%;
+        margin: 0;
+        border: none;
+    }
+
+    ::ng-deep body {
+        background-color: #ffffff;
+    }
 }
