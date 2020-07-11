@@ -1,0 +1,8 @@
+.dark-backdrop {
+  opacity: 25% !important;
+  background-color: gray !important;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #a64f05 !important;
+}

@@ -13,7 +13,6 @@ export class ArticlesComponent implements OnInit {
 
   public articles: Article[];
   public articlesFound: boolean = false;
-  public isLoading: boolean = true;
 
   constructor(private router: Router, private accountService: AccountService, private articleService: ArticleService) { }
 
@@ -28,13 +27,8 @@ export class ArticlesComponent implements OnInit {
   }
 
   private async loadArticles() {
-    try {
-      this.isLoading = true;
-      this.articles = await this.articleService.getArticlesForRead();
-      this.articlesFound = this.articles.length > 0;
-    } finally {
-      this.isLoading = false;
-    }
+    this.articles = await this.articleService.getArticlesForRead();
+    this.articlesFound = this.articles.length > 0;
   }
 
   public openPdf(article: Article) {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-greeting',
@@ -10,10 +9,9 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class GreetingComponent implements OnInit {
 
   public isLogedIn: boolean = false;
-  public isLoading: boolean = false;
   public userName: string;
 
-  constructor(private accountService: AccountService, private notificationService: NotificationService) { }
+  constructor(private accountService: AccountService) { }
 
   async ngOnInit() {
     this.accountService.loginStateChanged$.subscribe(async (logedin) => {
@@ -29,13 +27,6 @@ export class GreetingComponent implements OnInit {
   }
 
   public async logIn(): Promise<void> {
-    try {
-      this.isLoading = true;
-      await this.accountService.login();
-
-      this.notificationService.showSuccessMessage("Ви успішно увійшли!");
-    } finally {
-      this.isLoading = false;
-    }
+    await this.accountService.login();
   }
 }

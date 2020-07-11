@@ -7,6 +7,9 @@ import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NotifierModule, NotifierOptions } from "angular-notifier";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSpinner } from '@angular/material';
+import { OverlayModule } from '@angular/cdk/overlay'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +25,7 @@ import { AppInitService } from './services/app-init.service';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
+import { LoadingInterceptorService } from './services/loading-interceptor.service';
 
 const config = new AuthServiceConfig([
   {
@@ -48,42 +52,42 @@ const appRoutes: Routes = [
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
-      horizontal: {
-          position: "right",
-          distance: 12
-      },
-      vertical: {
-          position: "bottom",
-          distance: 12,
-          gap: 10
-      }
+    horizontal: {
+      position: "right",
+      distance: 12
+    },
+    vertical: {
+      position: "bottom",
+      distance: 12,
+      gap: 10
+    }
   },
   theme: "material",
   behaviour: {
-      autoHide: 5000,
-      onClick: false,
-      onMouseover: "pauseAutoHide",
-      showDismissButton: true,
-      stacking: 4
+    autoHide: 5000,
+    onClick: false,
+    onMouseover: "pauseAutoHide",
+    showDismissButton: true,
+    stacking: 4
   },
   animations: {
-      enabled: true,
-      show: {
-          preset: "slide",
-          speed: 300,
-          easing: "ease"
-      },
-      hide: {
-          preset: "fade",
-          speed: 300,
-          easing: "ease",
-          offset: 50
-      },
-      shift: {
-          speed: 300,
-          easing: "ease"
-      },
-      overlap: 150
+    enabled: true,
+    show: {
+      preset: "slide",
+      speed: 300,
+      easing: "ease"
+    },
+    hide: {
+      preset: "fade",
+      speed: 300,
+      easing: "ease",
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: "ease"
+    },
+    overlap: 150
   }
 };
 
@@ -96,7 +100,7 @@ const notifierDefaultOptions: NotifierOptions = {
     MailingSettingsComponent,
     TagsComponent,
     NotFoundComponent,
-    ArticlesComponent
+    ArticlesComponent,
   ],
   imports: [
     Ng5SliderModule,
@@ -109,7 +113,9 @@ const notifierDefaultOptions: NotifierOptions = {
     TagInputModule,
     HttpClientModule,
     SocialLoginModule.initialize(config),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatProgressSpinnerModule,
+    OverlayModule
   ],
   providers: [
     {
@@ -127,12 +133,18 @@ const notifierDefaultOptions: NotifierOptions = {
       multi: true
     },
     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptorService,
+      multi: true
+    },
+    {
       provide: APP_INITIALIZER,
       useFactory: appInit,
       multi: true,
       deps: [AppInitService]
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MatSpinner],
 })
 export class AppModule { }
