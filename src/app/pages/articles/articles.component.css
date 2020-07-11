@@ -35,6 +35,10 @@
     margin: 2px;
 }
 
+.settings-button {
+  margin-top: 50px;
+}
+
 @media (max-width: 768px) {
     .author img {
         width: 50px;
