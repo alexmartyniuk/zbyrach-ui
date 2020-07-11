@@ -32,8 +32,6 @@ export class ArticlesComponent implements OnInit {
       this.isLoading = true;
       this.articles = await this.articleService.getArticlesForRead();
       this.articlesFound = this.articles.length > 0;
-    } catch (error) {
-      console.log(error);
     } finally {
       this.isLoading = false;
     }

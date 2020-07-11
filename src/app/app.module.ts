@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { Ng5SliderModule } from 'ng5-slider';
+import { NotifierModule, NotifierOptions } from "angular-notifier";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AppInitService } from './services/app-init.service';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { ErrorInterceptorService } from './services/error-interceptor.service';
 
 const config = new AuthServiceConfig([
   {
@@ -44,8 +46,49 @@ const appRoutes: Routes = [
   { path: '**', component: NotFoundComponent }
 ];
 
+const notifierDefaultOptions: NotifierOptions = {
+  position: {
+      horizontal: {
+          position: "right",
+          distance: 12
+      },
+      vertical: {
+          position: "bottom",
+          distance: 12,
+          gap: 10
+      }
+  },
+  theme: "material",
+  behaviour: {
+      autoHide: 5000,
+      onClick: false,
+      onMouseover: "pauseAutoHide",
+      showDismissButton: true,
+      stacking: 4
+  },
+  animations: {
+      enabled: true,
+      show: {
+          preset: "slide",
+          speed: 300,
+          easing: "ease"
+      },
+      hide: {
+          preset: "fade",
+          speed: 300,
+          easing: "ease",
+          offset: 50
+      },
+      shift: {
+          speed: 300,
+          easing: "ease"
+      },
+      overlap: 150
+  }
+};
+
 @NgModule({
-  declarations: [   
+  declarations: [
     AppComponent,
     TagsComponent,
     TagComponent,
@@ -57,6 +100,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     Ng5SliderModule,
+    NotifierModule.withConfig(notifierDefaultOptions),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -75,6 +119,11 @@ const appRoutes: Routes = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true
     },
     {
