@@ -9,7 +9,6 @@
 }
 
 .title a {
-    font-weight: bold;
     font-size: 14px;
     line-height: 19px;
     color: #a64f05;
@@ -17,9 +16,10 @@
 
 .description {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 12px;
     line-height: 19px;
+    color: #848484;
 }
 
 .links div {
