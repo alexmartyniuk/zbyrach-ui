@@ -3,20 +3,26 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import { Observable, throwError } from 'rxjs';
 import { catchError} from 'rxjs/operators';
 import { NotificationService } from './notification.service';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorInterceptorService implements HttpInterceptor {
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService, private accountService: AccountService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
-        console.error(error);
-        return throwError('Error communicating to the server.');
+        if (error.status == 401) {
+          this.notificationService.showErrorMessage("Помилка доступу. Будь ласка, увійдіть повторно.");
+          this.accountService.authenticationFailedHandler(req.url);
+        } else {
+          this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
+          console.error(error);
+          return throwError('Error communicating to the server.');
+        }
       })
     )
   }

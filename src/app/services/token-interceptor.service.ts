@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AccountService } from './account.service';
 import 'rxjs/add/operator/catch';
 
@@ -19,12 +19,6 @@ export class TokenInterceptorService implements HttpInterceptor {
     }
 
     const authRequest = req.clone({ headers: newHeaders });
-    return next.handle(authRequest).catch((err: HttpErrorResponse) => {
-      if (err.status == 401) {
-        this.accountService.authenticationFailedHandler(req.url);
-      }
-
-      return throwError(err);
-    });
+    return next.handle(authRequest);
   }
 }
