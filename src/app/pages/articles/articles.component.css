@@ -21,8 +21,8 @@
 }
 
 .article-text {
-    flex: 1; 
-    padding: 0 10px;    
+    flex: 1;
+    padding: 0 10px;
 }
 
 .article-title a {
@@ -52,24 +52,25 @@
 }
 
 .settings-button {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 @media (max-width: 768px) {
-    .author img {
+    .article-author {
+        flex: 0 0 50px;
+        padding: 0;
+    }
+    .article-author img {
         width: 50px;
         height: 50px;
         margin: 1px;
     }
-
     .container {
         max-width: none !important;
     }
-
-    .description, .publicated-date, .readtime {
-      display: none;
+    .article-description, .publicated-date, .readtime {
+        display: none;
     }
-
     .article-links {
         flex: 0 0 30px;
         padding: 0;
