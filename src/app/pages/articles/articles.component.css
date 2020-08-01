@@ -3,18 +3,35 @@
     padding: 0;
 }
 
-.articles div {
+.article {
+    display: flex;
     margin: 0;
+    padding: 10px 0px;
+}
+
+.article-author {
+    flex: 0 0 70px;
     padding: 0;
 }
 
-.title a {
+.article-author img {
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+}
+
+.article-text {
+    flex: 1; 
+    padding: 0 10px;    
+}
+
+.article-title a {
     font-size: 14px;
     line-height: 19px;
     color: #a64f05;
 }
 
-.description {
+.article-description {
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -22,17 +39,16 @@
     color: #848484;
 }
 
-.links div {
+.article-links {
+    flex: 0 0 70px;
+    padding: 0;
+}
+
+.article-links div {
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 19px;
-}
-
-.author img {
-    width: 70px;
-    height: 70px;
-    margin: 2px;
 }
 
 .settings-button {
@@ -52,5 +68,10 @@
 
     .description, .publicated-date, .readtime {
       display: none;
+    }
+
+    .article-links {
+        flex: 0 0 30px;
+        padding: 0;
     }
 }
