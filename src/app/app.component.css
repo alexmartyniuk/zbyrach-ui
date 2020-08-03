@@ -13,7 +13,7 @@
 
 .page {
     max-width: 768px;
-    min-height: 600px;    
+    min-height: 100%;    
     margin: 0 auto;
     background-color: #ffffff;
     border: 1px solid #a64f05;
