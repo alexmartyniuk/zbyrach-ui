@@ -17,6 +17,8 @@ export class TagComponent implements OnInit {
 
   @Input() isRemovingAllowed: boolean = true;
 
+  @Input() isActive: boolean = true;
+
   @Output() onRemove: EventEmitter<Tag> = new EventEmitter<Tag>();
 
   @Output() onClick: EventEmitter<Tag> = new EventEmitter<Tag>();

@@ -20,7 +20,6 @@ export class ErrorInterceptorService implements HttpInterceptor {
           this.accountService.authenticationFailedHandler(req.url);
         } else {
           this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
-          console.error(error);
           return throwError('Error communicating to the server.');
         }
       })

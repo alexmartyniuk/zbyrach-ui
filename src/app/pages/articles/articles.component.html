@@ -19,6 +19,13 @@
 
 <div *ngIf="articlesFound">
     <h1>Знайшлося дещо почитати</h1>
+    <div class="filter-caption">Фільтр:</div>
+    <div class="tags">
+        <div *ngFor="let tag of tags | keyvalue">
+            <app-tag-item [tag]='tag.value' [isRemovingAllowed]='false' [isActive]='isActive(tag.value)' (onClick)='onClickTag($event)'>
+            </app-tag-item>
+        </div>
+    </div>
     <div class="articles">
         <div *ngFor="let article of articles" class="row article">
             <div class="article-author">

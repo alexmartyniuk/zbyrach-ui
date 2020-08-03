@@ -3,6 +3,7 @@ import { AccountService } from '../../services/account.service';
 import { ArticleService } from '../../services/artilcle.service';
 import { Article } from '../../models/article';
 import { Router } from '@angular/router';
+import { Tag } from 'src/app/models/tag';
 
 @Component({
   selector: 'app-articles',
@@ -11,8 +12,11 @@ import { Router } from '@angular/router';
 })
 export class ArticlesComponent implements OnInit {
 
-  public articles: Article[];
+  public articlesOriginal: Article[];
   public articlesFound: boolean = false;
+
+  public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
+  public tags: Map<string, Tag> = new Map<string, Tag>();
 
   constructor(private router: Router, private accountService: AccountService, private articleService: ArticleService) { }
 
@@ -26,13 +30,38 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
+  public get articles(): Article[] {
+    return this.articlesOriginal.filter(a => {
+      return a.tags.filter(t => this.tagsActivity.get(t)).length > 0;
+    });
+  }
+
   private async loadArticles() {
-    this.articles = await this.articleService.getArticlesForRead();
-    this.articlesFound = this.articles.length > 0;
+    this.articlesOriginal = await this.articleService.getArticlesForRead();
+    this.articlesFound = this.articlesOriginal.length > 0;
+    this.tagsActivity.clear();
+
+    this.articlesOriginal.forEach(a => {
+      a.tags.forEach(t => {
+        this.tagsActivity.set(t, true);
+
+        let newTag: Tag = { 'name': t, 'url': null, 'parentTagName': null };
+        this.tags.set(t, newTag);
+      });
+    });
   }
 
   public openPdf(article: Article) {
     this.articleService.openPdf(article);
+  }
+
+  public onClickTag(tag: Tag): void {
+    const active = this.tagsActivity.get(tag.name)
+    this.tagsActivity.set(tag.name, !active);
+  }
+
+  public isActive(tag: Tag): boolean {
+    return this.tagsActivity.get(tag.name);
   }
 
 }

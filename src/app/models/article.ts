@@ -11,4 +11,5 @@ export class Article {
     commentsCount: number;
     likesCount: number;
     readTime: string;
+    tags: string[];
 }
