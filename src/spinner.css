@@ -1,6 +1,7 @@
 .dark-backdrop {
-  opacity: 25% !important;
+  opacity: 10% !important;
   background-color: gray !important;
+  visibility: visible !important;
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {
