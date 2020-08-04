@@ -18,6 +18,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
         if (error.status == 401) {
           this.notificationService.showErrorMessage("Помилка доступу. Будь ласка, увійдіть повторно.");
           this.accountService.authenticationFailedHandler(req.url);
+          return throwError('Request is not authorized.');
         } else {
           this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
           return throwError('Error communicating to the server.');
