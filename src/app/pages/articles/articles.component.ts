@@ -32,8 +32,15 @@ export class ArticlesComponent implements OnInit {
 
   public get articles(): Article[] {
     return this.articlesOriginal.filter(a => {
+      if([...this.tagsActivity.values()].includes(true) === false){
+        return true;
+      }
       return a.tags.filter(t => this.tagsActivity.get(t)).length > 0;
     });
+  }
+
+  public get isOnlyOneTag(): boolean {
+    return this.tags.size === 1;
   }
 
   private async loadArticles() {
@@ -43,7 +50,7 @@ export class ArticlesComponent implements OnInit {
 
     this.articlesOriginal.forEach(a => {
       a.tags.forEach(t => {
-        this.tagsActivity.set(t, true);
+        this.tagsActivity.set(t, false);
 
         let newTag: Tag = { 'name': t, 'url': null, 'parentTagName': null };
         this.tags.set(t, newTag);

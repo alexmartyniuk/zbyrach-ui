@@ -1,4 +1,4 @@
-.h1 {
+h1 {
     padding-bottom: 20px;
 }
 
@@ -6,10 +6,12 @@
     font-style: normal;
     font-weight: 400;    
     color: #848484;
-    padding-left: 10px;
+}
+.filter {
+    padding-bottom: 10px;
 }
 
-.tags div {
+.filter div {
     display: inline;
 }
 
@@ -43,7 +45,7 @@
 .article-title a {
     font-size: 14px;
     line-height: 19px;
-    color: #a64f05;
+    color: #862f00;
 }
 
 .article-description {

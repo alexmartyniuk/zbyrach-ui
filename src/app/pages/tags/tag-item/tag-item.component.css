@@ -21,6 +21,7 @@ button {
 
 span.text {
     margin: 10px;
+    vertical-align: middle;
 }
 
 .pointer {
