@@ -16,9 +16,7 @@
   z-index: 10000;
   will-change: transform;
   backface-visibility: hidden;
-  right: 12px;
-  left: 12px;
-  bottom: 12px;
+  margin-left: 12px;
 }
 
 .notifier__notification--material {
