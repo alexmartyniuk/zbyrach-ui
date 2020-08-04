@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Tag } from '../../../models/tag';
 
 @Component({
   selector: 'app-tag-item',
@@ -13,15 +12,15 @@ export class TagComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() tag: Tag;
+  @Input() tag: string;
 
   @Input() isRemovingAllowed: boolean = true;
 
   @Input() isActive: boolean = true;
 
-  @Output() onRemove: EventEmitter<Tag> = new EventEmitter<Tag>();
+  @Output() onRemove: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output() onClick: EventEmitter<Tag> = new EventEmitter<Tag>();
+  @Output() onClick: EventEmitter<string> = new EventEmitter<string>();
 
   onRemoveButtonClick(): void {
     this.onRemove.emit(this.tag);

@@ -12,7 +12,7 @@
 
 <div class="tags">
     <div *ngFor="let tag of tags | keyvalue">
-        <app-tag-item [tag]='tag.value' (onRemove)='onRemoveTag($event)' (onClick)='onClickTag($event)'>
+        <app-tag-item [tag]='tag.value.name' [isRemovingAllowed]='true' (onRemove)='onRemoveTag($event)'>
         </app-tag-item>
     </div>
 </div>
@@ -20,8 +20,7 @@
 <div *ngIf="isRelatedTagsExist()" class="related-tags">
     <p>Вас також можуть зацікавити:</p>
     <div *ngFor="let tag of relatedTags | keyvalue">
-        <app-tag-item [tag]='tag.value' [isRemovingAllowed]='false' (onRemove)='onRemoveRelatedTag($event)'
-            (onClick)='onClickRelatedTag($event)'>
+        <app-tag-item [tag]='tag.value.name' [isRemovingAllowed]='false' (onClick)='onClickRelatedTag($event)'>
         </app-tag-item>
     </div>
 </div>
