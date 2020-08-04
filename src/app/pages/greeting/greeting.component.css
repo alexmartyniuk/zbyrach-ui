@@ -5,3 +5,13 @@ p {
 .view-articles-button, .signin-button {
     margin-top: 50px;
 }
+
+.text {
+    padding-left: 40px;
+}
+
+@media (max-width: 768px) {
+    .text {
+        padding-left: 20px;
+    }
+}

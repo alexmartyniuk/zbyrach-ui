@@ -12,7 +12,7 @@ import { Options } from 'ng5-slider';
 })
 export class MailingSettingsComponent implements OnInit {
   public userEmail: string;
-
+  public showContent: boolean = false;
   public numberOfArticlesSlider: number = 0;
   public numberOfArticlesSliderOptions: Options;
   public scheduleSlider: number = 0;
@@ -36,7 +36,7 @@ export class MailingSettingsComponent implements OnInit {
     1: "Ніколи",
     2: "Раз на день",
     3: "Раз на тиждень",
-    4: "Раз в місяць",
+    4: "Раз у місяць",
   };
 
   constructor(private router: Router, private api: ApiService, private accountService: AccountService) {
@@ -73,6 +73,7 @@ export class MailingSettingsComponent implements OnInit {
         const settings = await this.api.getMyMailingSettings();
         this.numberOfArticlesSlider = this.getKeyByValue(this.numberOfArticlesValues, settings.numberOfArticles);
         this.scheduleSlider = this.getKeyByValue(this.scheduleTypeValues, settings.scheduleType);
+        this.showContent = true;        
       } else {
         this.router.navigate(['/greeting']);
       }

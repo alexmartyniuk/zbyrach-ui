@@ -1,25 +1,25 @@
 <div *ngIf="!isLogedIn">
     <h1>Вітаю вас!</h1>
-    <div class="container">
+    <div class="container-flex">
         <div class="row">
-            <div class="col-12 col-sm-5">
+            <div class="col-12 col-sm-6 text">
                 <p>
                     Ви
                 </p>
                 <ul>
-                    <li>обираєте теги</li>
-                    <li>вказуєте періодичність</li>
+                    <li>обираєте слова, що вас цікавлять</li>
+                    <li>вказуєте періодичність відправки</li>
                 </ul>
 
                 <p>
                     Я
                 </p>
                 <ul>
-                    <li>шукаю дописи</li>
-                    <li>відправляю вам на пошту</li>
+                    <li>шукаю статті за обраними словами</li>
+                    <li>відправляю їх вам на пошту</li>
                 </ul>
             </div>
-            <div class="d-none d-sm-block col-sm-7 align-self-center text-center">
+            <div class="d-none d-sm-block col-sm-6 align-self-center text-center">
                 <img src="/assets/img/AnimationSmall.gif" alt="" width="300px" height="240px">
             </div>
         </div>
@@ -36,9 +36,9 @@
 
 <div *ngIf="isLogedIn">
     <h1>Вітаю вас, {{ userName }}!</h1>
-    <div class="container">
+    <div class="container-flex">
         <div class="row">
-            <div class="col col-sm-6">
+            <div class="col col-sm-6 text">
                 <p>
                     Ви отримуєте статті
                 </p>
