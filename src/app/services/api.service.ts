@@ -77,6 +77,12 @@ export class ApiService {
 
     return new Blob([response], { type: 'application/pdf' });
   }
+
+  public async unsubscribe(token: string): Promise<User> {
+    return this.http
+      .post<User>(this.baseUrl + 'mailing/unsubscribe/' + token, {})
+      .toPromise();
+  }
 }
 
 class LoginResponse {

@@ -26,6 +26,7 @@ import { ArticlesComponent } from './pages/articles/articles.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { LoadingInterceptorService } from './services/loading-interceptor.service';
+import { UnsubscribeComponent } from './pages/unsubscribe/unsubscribe.component';
 
 const config = new AuthServiceConfig([
   {
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
   { path: 'tags', component: TagsComponent, canActivate: [AuthGuard] },
   { path: 'mailing', component: MailingSettingsComponent, canActivate: [AuthGuard] },
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
+  { path: 'unsubscribe/:token', component: UnsubscribeComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -101,6 +103,7 @@ const notifierDefaultOptions: NotifierOptions = {
     TagsComponent,
     NotFoundComponent,
     ArticlesComponent,
+    UnsubscribeComponent,
   ],
   imports: [
     Ng5SliderModule,

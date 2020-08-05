@@ -1,0 +1,19 @@
+<div *ngIf="isDataLoaded">
+    <div *ngIf="!isError">
+        <h1>Підписку скасовано</h1>
+        <div class="message">
+            <b>{{ user.email }}</b>, був успішно відписаний від усіх повідомлень!
+        </div>
+    </div>
+
+    <div *ngIf="isError">
+        <h1>Некоректний токен</h1>
+    </div>
+
+    <div class="text-center">
+        <button (click)="logIn()" class="btn btn-primary signin-button" title="Увійти з Google">
+            Увійти
+            <img src="/assets/img/google-login.png" width="20" />
+        </button>
+    </div>
+</div>
