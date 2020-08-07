@@ -9,8 +9,8 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSpinner } from '@angular/material';
-import { OverlayModule } from '@angular/cdk/overlay'
-
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TagInputModule } from 'ngx-chips';
@@ -27,6 +27,7 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { LoadingInterceptorService } from './services/loading-interceptor.service';
 import { UnsubscribeComponent } from './pages/unsubscribe/unsubscribe.component';
+import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
 
 const config = new AuthServiceConfig([
   {
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
   { path: 'greeting', component: GreetingComponent },
   { path: 'tags', component: TagsComponent, canActivate: [AuthGuard] },
   { path: 'mailing', component: MailingSettingsComponent, canActivate: [AuthGuard] },
+  { path: 'articles/:articleId', component: ViewPdfComponent },
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
   { path: 'unsubscribe/:token', component: UnsubscribeComponent },
   { path: '**', component: NotFoundComponent }
@@ -104,6 +106,7 @@ const notifierDefaultOptions: NotifierOptions = {
     NotFoundComponent,
     ArticlesComponent,
     UnsubscribeComponent,
+    ViewPdfComponent,
   ],
   imports: [
     Ng5SliderModule,
@@ -118,7 +121,8 @@ const notifierDefaultOptions: NotifierOptions = {
     SocialLoginModule.initialize(config),
     RouterModule.forRoot(appRoutes),
     MatProgressSpinnerModule,
-    OverlayModule
+    OverlayModule,
+    PdfViewerModule
   ],
   providers: [
     {

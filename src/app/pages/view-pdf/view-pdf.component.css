@@ -1,0 +1,18 @@
+.container {
+    min-height: 600px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.show {
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+}
+
+.hide {
+    display: block;
+    position: absolute;
+    left: -1000px;
+}

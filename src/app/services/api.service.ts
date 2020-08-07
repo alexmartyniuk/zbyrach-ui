@@ -69,7 +69,7 @@ export class ApiService {
   }
 
   public async getArticlePdf(article: Article): Promise<Blob> {
-    const url = this.baseUrl + 'articles/pdf/' + article.id;
+    const url = this.baseUrl + 'articles/' + article.id + '/pdf';
 
     const response = await this.http
       .get(url, { responseType: 'arraybuffer' })
@@ -82,6 +82,10 @@ export class ApiService {
     return this.http
       .post<User>(this.baseUrl + 'mailing/unsubscribe/' + token, {})
       .toPromise();
+  }
+
+  public getArticleInlinePdfUrl(articleId: string): string {
+    return this.baseUrl + 'articles/' + articleId + '/pdf/?inline=true';
   }
 }
 

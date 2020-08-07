@@ -33,9 +33,9 @@
             </div>
             <div class="article-text">
                 <div class="article-title">
-                    <a href="{{ article.originalUrl }}" target="_blank">
+                    <a [routerLink]="['/articles', article.id]">
                         {{ article.title }}
-                    </a>
+                    </a>                
                 </div>
                 <div class="article-description">
                     {{ article.description }}

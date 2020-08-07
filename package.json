@@ -23,6 +23,7 @@
     "@angular/router": "~8.2.14",
     "angular-notifier": "^6.0.1",
     "angularx-social-login": "^2.2.1",
+    "ng2-pdf-viewer": "^6.3.2",
     "ng5-slider": "^1.2.4",
     "ngx-chips": "^2.1.0",
     "rxjs": "~6.4.0",
