@@ -3,6 +3,11 @@ export class Mailing {
     numberOfArticles: number;
 }
 
+export class SettingsSummary {
+    scheduleType: ScheduleType;
+    numberOfTags: number;
+}
+
 export enum ScheduleType
 {
     Undefined = 0,
