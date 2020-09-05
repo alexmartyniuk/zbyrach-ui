@@ -1,25 +1,22 @@
 h1 {
     padding-bottom: 20px;
 }
-
 .filter-caption {
     font-style: normal;
     font-weight: 400;    
     color: #848484;
+    padding: 6px;
 }
 .filter {
     padding-bottom: 10px;
 }
-
-.filter div {
+.filter-tag {
     display: inline;
 }
-
 .articles {
     margin: 0;
     padding: 0;
 }
-
 .settings-button {
     margin-top: 50px;
 }
