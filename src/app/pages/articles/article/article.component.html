@@ -1,0 +1,22 @@
+<div class="article">
+    <div class="article-author">
+        <img class="rounded-circle" src="{{ article.authorPhoto }}" title="{{ article.authorName }}" />
+    </div>
+    <div class="article-text" title="{{ article.description }}">
+        <div class="article-title">
+            <a [routerLink]="['/articles', article.id]">
+                {{ article.title }}
+            </a>                
+        </div>
+        <div class="article-info">
+            {{ article.authorName }} | {{ article.publicatedAt | date:'d-M-yyyy' }} | {{ article.readTime }}
+        </div>
+    </div>
+    <div class="article-links">
+        <div title="Відкрити PDF у новій вкладці">
+            <a (click)="openPdf(article)" href="javascript:void(0)">
+                <img src="/assets/img/pdf-small.png" alt="">
+            </a>
+        </div>
+    </div>
+</div>

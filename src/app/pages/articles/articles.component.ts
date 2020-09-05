@@ -53,10 +53,6 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
-  public openPdf(article: Article) {
-    this.articleService.openPdf(article);
-  }
-
   public onClickTag(tag: string): void {
     const active = this.tagsActivity.get(tag)
     this.tagsActivity.set(tag, !active);

@@ -28,6 +28,7 @@ import { ErrorInterceptorService } from './services/error-interceptor.service';
 import { LoadingInterceptorService } from './services/loading-interceptor.service';
 import { UnsubscribeComponent } from './pages/unsubscribe/unsubscribe.component';
 import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
+import { ArticleComponent } from './pages/articles/article/article.component';
 
 const config = new AuthServiceConfig([
   {
@@ -107,6 +108,7 @@ const notifierDefaultOptions: NotifierOptions = {
     ArticlesComponent,
     UnsubscribeComponent,
     ViewPdfComponent,
+    ArticleComponent,
   ],
   imports: [
     Ng5SliderModule,

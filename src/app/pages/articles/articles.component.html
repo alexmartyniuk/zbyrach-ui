@@ -27,31 +27,8 @@
         </div>
     </div>
     <div class="articles">
-        <div *ngFor="let article of articles" class="row article">
-            <div class="article-author">
-                <img class="rounded-circle" src="{{ article.authorPhoto }}" title="{{ article.authorName }}" />
-            </div>
-            <div class="article-text">
-                <div class="article-title">
-                    <a [routerLink]="['/articles', article.id]">
-                        {{ article.title }}
-                    </a>                
-                </div>
-                <div class="article-description">
-                    {{ article.description }}
-                </div>
-            </div>
-            <div class="article-links">
-                <div class="publicated-date">
-                    {{ article.publicatedAt | date:'d-M-yyyy' }}
-                </div>
-                <div class="readtime">
-                  {{ article.readTime }}
-                </div>
-                <div>
-                    <a (click)="openPdf(article)" href="javascript:void(0)">PDF</a>
-                </div>
-            </div>
+        <div *ngFor="let article of articles">
+            <app-article [article]='article'></app-article>
         </div>
     </div>
 </div>
