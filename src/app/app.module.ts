@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -29,6 +29,10 @@ import { LoadingInterceptorService } from './services/loading-interceptor.servic
 import { UnsubscribeComponent } from './pages/unsubscribe/unsubscribe.component';
 import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
 import { ArticleComponent } from './pages/articles/article/article.component';
+import uk from '@angular/common/locales/uk';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(uk);
 
 const config = new AuthServiceConfig([
   {
@@ -151,7 +155,11 @@ const notifierDefaultOptions: NotifierOptions = {
       useFactory: appInit,
       multi: true,
       deps: [AppInitService]
-    }
+    },
+    { 
+      provide: LOCALE_ID, 
+      useValue: "uk-UA" 
+    },
   ],
   bootstrap: [AppComponent],
   entryComponents: [MatSpinner],
