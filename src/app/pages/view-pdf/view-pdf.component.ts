@@ -26,8 +26,9 @@ export class ViewPdfComponent implements OnInit {
 
   ngOnInit() {
     const articleId = this.route.snapshot.paramMap.get('articleId');
+    const userId = this.route.snapshot.paramMap.get('userId');
     this.uiService.showSpinner();
-    this.pdfSrc = this.apiService.getArticleInlinePdfUrl(articleId);;
+    this.pdfSrc = this.apiService.getArticleInlinePdfUrl(articleId, userId);
   }
 
   onLoadComplete(pdf: PDFDocumentProxy) {

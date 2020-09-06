@@ -75,8 +75,8 @@ export class ApiService {
       .toPromise();
   }
 
-  public async getArticlePdf(article: Article): Promise<Blob> {
-    const url = this.baseUrl + 'articles/' + article.id + '/pdf';
+  public async getArticlePdf(articleId: number, userId: number): Promise<Blob> {
+    const url = this.baseUrl + 'articles/' + articleId + '/pdf/?inline=false&userId=' + userId;
 
     const response = await this.http
       .get(url, { responseType: 'arraybuffer' })
@@ -85,14 +85,14 @@ export class ApiService {
     return new Blob([response], { type: 'application/pdf' });
   }
 
+  public getArticleInlinePdfUrl(articleId: string, userId: string): string {
+    return this.baseUrl + 'articles/' + articleId + '/pdf/?inline=true&userId=' + userId;
+  }
+
   public async unsubscribe(token: string): Promise<User> {
     return this.http
       .post<User>(this.baseUrl + 'mailing/unsubscribe/' + token, {})
       .toPromise();
-  }
-
-  public getArticleInlinePdfUrl(articleId: string): string {
-    return this.baseUrl + 'articles/' + articleId + '/pdf/?inline=true';
   }
 }
 

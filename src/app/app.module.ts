@@ -53,7 +53,7 @@ const appRoutes: Routes = [
   { path: 'greeting', component: GreetingComponent },
   { path: 'tags', component: TagsComponent, canActivate: [AuthGuard] },
   { path: 'mailing', component: MailingSettingsComponent, canActivate: [AuthGuard] },
-  { path: 'articles/:articleId', component: ViewPdfComponent },
+  { path: 'articles/:articleId/user/:userId', component: ViewPdfComponent },
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
   { path: 'unsubscribe/:token', component: UnsubscribeComponent },
   { path: '**', component: NotFoundComponent }
