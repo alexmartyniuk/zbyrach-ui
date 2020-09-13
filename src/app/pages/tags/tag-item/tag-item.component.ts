@@ -18,6 +18,8 @@ export class TagComponent implements OnInit {
 
   @Input() isActive: boolean = true;
 
+  @Input() isSmall: boolean = false;
+
   @Output() onRemove: EventEmitter<string> = new EventEmitter<string>();
 
   @Output() onClick: EventEmitter<string> = new EventEmitter<string>();

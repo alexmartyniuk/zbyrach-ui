@@ -1,11 +1,28 @@
 span.root {
     display: inline-block;
+    border: 1px solid #bd9d81;
+    opacity: 0.6;
+}
+
+span.big {
+    display: inline-block;
     height: 30px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
     border: 1px solid #bd9d81;
     margin: 4px 4px;
+    opacity: 0.6;
+}
+
+span.small {
+    display: inline-block;
+    height: 20px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    border: 1px solid #bd9d81;
+    margin: 2px 2px;
     opacity: 0.6;
 }
 

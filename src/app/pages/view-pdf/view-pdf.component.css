@@ -4,6 +4,11 @@
     padding-left: 0;
 }
 
+.toolbar {
+    padding: 10px;
+    height: 40px;
+}
+
 .show {
     display: block;
     margin-left: -15px;

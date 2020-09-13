@@ -10,13 +10,12 @@
         </div>
         <div class="article-info">
             {{ article.authorName }} | {{ article.publicatedAt | date:'d MMMM' }} | {{ article.readTime }}
-        </div>
-    </div>
-    <div class="article-links">
-        <div title="Відкрити PDF у новій вкладці">
-            <a (click)="openPdf(article)" href="javascript:void(0)">
-                <img src="/assets/img/pdf-small.png" alt="">
-            </a>
+            <div class="float-right">
+                <div *ngFor="let tag of article.tags" class="filter-tag">
+                    <app-tag-item [tag]='tag' [isRemovingAllowed]='false' [isActive]='false' [isSmall]='true'>
+                    </app-tag-item>
+                </div>
+            </div>
         </div>
     </div>
 </div>

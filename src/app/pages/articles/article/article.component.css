@@ -35,24 +35,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 19px;
     color: #848484;
-}
-
-.article-links {
-    flex: 0 0 50px;
-    padding: 0;
-}
-
-.article-links {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 19px;
-}
-
-.article-links div {
-    padding-top: 14px;
 }
 
 @media (max-width: 768px) {
@@ -70,12 +53,5 @@
     }
     .article-info {
         display: none;
-    }
-    .article-links {
-        flex: 0 0 30px;
-        padding: 0;
-    }
-    .article-links img {
-        height: 36px;
     }
 }

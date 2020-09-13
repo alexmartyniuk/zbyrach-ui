@@ -1,4 +1,11 @@
 <div class="container">
+    <div *ngIf="pdfLoaded" class="toolbar">
+        <div class="float-right" title="Відкрити PDF у новій вкладці">
+            <a (click)="openPdf(articleId)" href="javascript:void(0)">
+                <img src="/assets/img/pdf-small.png" alt="">
+            </a>
+        </div>
+    </div>
     <pdf-viewer 
         [src]="pdfSrc" 
         [(page)]="pageCurrent"

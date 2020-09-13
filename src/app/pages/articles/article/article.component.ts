@@ -23,7 +23,7 @@ export class ArticleComponent implements OnInit {
   }
 
   public openPdf(article: Article) {
-    this.articleService.openPdf(article);
+    this.articleService.openPdf(article.id);
   }
 
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UiService } from 'src/app/services/ui.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { ArticleService } from 'src/app/services/artilcle.service';
 
 @Component({
   selector: 'app-view-pdf',
@@ -17,18 +18,21 @@ export class ViewPdfComponent implements OnInit {
   isError: boolean;
   pageCurrent: number = 0;
   pagesCount: number = 0;
+  articleId: string;
+  userId: string;
 
   constructor(
     private route: ActivatedRoute, 
     private apiService: ApiService, 
     private uiService: UiService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,
+    private articleService: ArticleService) { }
 
   ngOnInit() {
-    const articleId = this.route.snapshot.paramMap.get('articleId');
-    const userId = this.route.snapshot.paramMap.get('userId');
+    this.articleId = this.route.snapshot.paramMap.get('articleId');
+    this.userId = this.route.snapshot.paramMap.get('userId');
     this.uiService.showSpinner();
-    this.pdfSrc = this.apiService.getArticleInlinePdfUrl(articleId, userId);
+    this.pdfSrc = this.apiService.getArticleInlinePdfUrl(this.articleId, this.userId);
   }
 
   onLoadComplete(pdf: PDFDocumentProxy) {
@@ -41,5 +45,9 @@ export class ViewPdfComponent implements OnInit {
     this.isError = true;
     this.uiService.hideSpinner();
     this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
+  }
+
+  public openPdf(articleId: number) {
+    this.articleService.openPdf(articleId);
   }
 }

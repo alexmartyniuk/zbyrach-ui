@@ -14,11 +14,11 @@ export class ArticleService {
     return this.api.getArticlesForRead();
   }
 
-  public async openPdf(article: Article): Promise<any> {
+  public async openPdf(articleId: number): Promise<any> {
     const newTab = window.open('/assets/loading.html', '_blank');
     try {
       const user = this.accountService.getUser();
-      const blob = await this.api.getArticlePdf(article.id, user.id);
+      const blob = await this.api.getArticlePdf(articleId, user.id);
       const url = window.URL.createObjectURL(blob);
 
       newTab.location.href = url;
