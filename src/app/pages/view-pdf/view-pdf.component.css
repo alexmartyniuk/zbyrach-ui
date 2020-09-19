@@ -21,3 +21,7 @@
     position: absolute;
     left: -1000px;
 }
+
+:host ::ng-deep .ng2-pdf-viewer-container {
+    overflow-x: inherit !important;
+}

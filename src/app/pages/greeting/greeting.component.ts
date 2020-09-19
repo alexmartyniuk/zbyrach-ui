@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ApiService } from 'src/app/services/api.service';
 import { ScheduleType } from 'src/app/models/mailing';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-greeting',
@@ -22,10 +23,16 @@ export class GreetingComponent implements OnInit {
     3: "раз на тиждень",
     4: "раз на місяць",
   };
+  private returnUrl: string;
 
-  constructor(private accountService: AccountService, private api: ApiService) { }
+  constructor(
+    private accountService: AccountService, 
+    private api: ApiService, 
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   async ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       this.isLogedIn = logedin;
 
@@ -36,6 +43,8 @@ export class GreetingComponent implements OnInit {
         const settingSummary = await this.api.getSettingsSummary();
         this.tagsText = this.getTagsText(settingSummary.numberOfTags);
         this.scheduleText = this.getScheduleText(settingSummary.scheduleType);
+
+        this.router.navigateByUrl(this.returnUrl);
       } else {
         this.userName = "";
       }

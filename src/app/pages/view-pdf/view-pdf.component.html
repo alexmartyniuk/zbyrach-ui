@@ -6,17 +6,19 @@
             </a>
         </div>
     </div>
-    <pdf-viewer 
-        [src]="pdfSrc" 
-        [(page)]="pageCurrent"
-        [show-all]="true"
-        [render-text]="true"
-        [stick-to-page]="true"
-        [show-borders]="false"
-        [ngClass]="{'show' : pdfLoaded, 'hide' : !pdfLoaded }"
-        (after-load-complete)="onLoadComplete($event)"
-        (error)="onError($event)">
-    </pdf-viewer>
+    <div>
+        <pdf-viewer 
+            [src]="pdfSrc" 
+            [(page)]="pageCurrent"
+            [show-all]="true"
+            [render-text]="true"
+            [stick-to-page]="true"
+            [show-borders]="false"
+            [ngClass]="{'show' : pdfLoaded, 'hide' : !pdfLoaded }"
+            (after-load-complete)="onLoadComplete($event)"
+            (error)="onError($event)">
+        </pdf-viewer>
+    </div>
     <div *ngIf="!pdfLoaded && !isError">
         <h1>
             Завантаження статті...
@@ -24,7 +26,7 @@
     </div>    
     <div *ngIf="isError">
         <h1>
-            Нажаль, неможливо завантажити статтю
+            Нажаль, не вдалося завантажити статтю
         </h1>        
     </div> 
 </div>
