@@ -25,3 +25,7 @@
 :host ::ng-deep .ng2-pdf-viewer-container {
     overflow-x: inherit !important;
 }
+
+:host ::ng-deep .pdfViewer.removePageBorders .page {
+  margin: 0 auto 0 !important;
+}
