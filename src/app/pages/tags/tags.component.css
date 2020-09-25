@@ -7,6 +7,7 @@ input[type="text"] {
     height: 44px;
     padding-left: 14px;
     padding-right: 50px;
+    padding-bottom: 4px;
     outline: none !important;
 }
 
@@ -18,6 +19,11 @@ button.add {
     background-color: #ffffff;
     padding: 0;
     border: none;
+}
+
+button.add>img{
+  height: 30px;
+  width: 30px;
 }
 
 .tags {
