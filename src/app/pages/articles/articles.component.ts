@@ -3,6 +3,7 @@ import { AccountService } from '../../services/account.service';
 import { ArticleService } from '../../services/artilcle.service';
 import { Article } from '../../models/article';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-articles',
@@ -13,19 +14,23 @@ export class ArticlesComponent implements OnInit {
 
   public articlesOriginal: Article[];
   public articlesFound: boolean = false;
-
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
+  private subscription: Subscription;
 
   constructor(private router: Router, private accountService: AccountService, private articleService: ArticleService) { }
 
   async ngOnInit() {
-    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.loadArticles();
       } else {
         this.router.navigate(['/greeting']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   public get articles(): Article[] {

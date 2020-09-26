@@ -15,11 +15,22 @@ export class AccountService {
   public loginStateChanged$: Observable<boolean> = this.loginStateChangeSubject.asObservable();
 
   constructor(private api: ApiService, private authService: AuthService, private injector: Injector) {
+
+    window.addEventListener("storage", this.storageEventListener.bind(this));
+
     const token = this.getToken();
     if (token) {
       this.loginStateChangeSubject.next(true);
     } else {
       this.loginStateChangeSubject.next(false);
+    }
+  }
+
+  private storageEventListener(event: StorageEvent) {
+    if (event.storageArea == localStorage) {
+      if (event.key == 'token' && event.newValue == null) {
+        this.removeToken();
+      }  
     }
   }
 
@@ -61,35 +72,35 @@ export class AccountService {
     return this.loginStateChangeSubject.value;
   }
 
-  public getToken(): string {
-    return sessionStorage.getItem('token');
-  }
-
   public authenticationFailedHandler(returnUrl: string = ""): void {
     this.removeToken();
     const router = this.injector.get(Router);
     router.navigate(['greeting']);
   }
 
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }
+
   private setToken(token: string) {
-    sessionStorage.setItem('token', token);
+    localStorage.setItem('token', token);
     this.loginStateChangeSubject.next(true);
   }
 
   private removeToken() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
     this.loginStateChangeSubject.next(false);
   }
 
   public getUser(): User {
-    return JSON.parse(sessionStorage.getItem('user'));
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   private setUser(user: User) {
-    sessionStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   private removeUser() {
-    sessionStorage.removeItem('user');
+    localStorage.removeItem('user');
   }
 }

@@ -3,6 +3,7 @@ import { Tag } from '../../models/tag';
 import { TagService } from '../../services/tag.service';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tags',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class TagsComponent implements OnInit {
 
+  private subscription: Subscription;
+  
   public currentTagName: string = "";
 
   public relatedTags: Map<string, Tag> = new Map<string, Tag>();
@@ -28,7 +31,7 @@ export class TagsComponent implements OnInit {
   constructor(private router: Router, private tagService: TagService, private accountService: AccountService) { }
 
   async ngOnInit() {
-    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         const tags = await this.tagService.getMyTags();
 
@@ -39,6 +42,10 @@ export class TagsComponent implements OnInit {
         this.router.navigate(['/greeting']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   public async addCurrentTag(): Promise<any> {

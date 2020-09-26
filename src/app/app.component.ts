@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AccountService } from './services/account.service';
 
 @Component({
@@ -11,13 +12,13 @@ export class AppComponent implements OnInit {
   public isLogedIn: boolean;
   public userName: string;
   public userPictureUrl: string;
+  private subscription: Subscription;
 
   constructor(private accountService: AccountService) {
-
   }
 
   async ngOnInit() {
-    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       this.isLogedIn = logedin;
 
       if (logedin) {
@@ -29,6 +30,10 @@ export class AppComponent implements OnInit {
         this.userPictureUrl = "";
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   public async logout(): Promise<any> {

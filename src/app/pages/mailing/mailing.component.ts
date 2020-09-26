@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { Options } from 'ng5-slider';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mailing',
@@ -39,6 +40,8 @@ export class MailingSettingsComponent implements OnInit {
     4: "Раз у місяць",
   };
 
+  private subscription: Subscription;
+
   constructor(private router: Router, private api: ApiService, private accountService: AccountService) {
     this.numberOfArticlesSliderOptions = {
       floor: 1,
@@ -66,10 +69,10 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.userEmail = this.accountService.getUser().email;
-
+        
         const settings = await this.api.getMyMailingSettings();
         this.numberOfArticlesSlider = this.getKeyByValue(this.numberOfArticlesValues, settings.numberOfArticles);
         this.scheduleSlider = this.getKeyByValue(this.scheduleTypeValues, settings.scheduleType);
@@ -78,6 +81,10 @@ export class MailingSettingsComponent implements OnInit {
         this.router.navigate(['/greeting']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   async save() {
