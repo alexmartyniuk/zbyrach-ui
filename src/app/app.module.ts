@@ -8,7 +8,7 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSpinner } from '@angular/material';
+import { MatSpinner } from '@angular/material/progress-spinner';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
