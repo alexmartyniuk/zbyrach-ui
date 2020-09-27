@@ -10,9 +10,9 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./unsubscribe.component.css']
 })
 export class UnsubscribeComponent implements OnInit {
-  private user: User;
-  private isError: boolean = false;
-  private isDataLoaded: boolean = false;
+  public user: User;
+  public isError: boolean = false;
+  public isDataLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private accountService: AccountService, private injector: Injector) { }
 

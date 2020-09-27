@@ -47,7 +47,7 @@ export class ViewPdfComponent implements OnInit {
     this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
   }
 
-  public openPdf(articleId: number) {
-    this.articleService.openPdf(articleId);
+  public openPdf(articleId: string) {
+    this.articleService.openPdf(Number(articleId));
   }
 }
