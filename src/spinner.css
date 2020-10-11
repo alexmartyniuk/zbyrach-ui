@@ -1,11 +1,11 @@
 .dark-backdrop {
   opacity: 0.1 !important;
-  background-color: gray !important;
+  background-color:#D6E3F0 !important;
   visibility: visible !important;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {
-  stroke: #a64f05 !important;
+  stroke: #576987 !important;
 }

@@ -9,6 +9,10 @@
     height: 40px;
 }
 
+.toolbar img {
+  height: 34px;
+}
+
 .show {
     display: block;
     margin-left: -15px;

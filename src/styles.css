@@ -1,50 +1,50 @@
 .btn-primary {
     padding: 8px 14px;
-    background-color: #ff7e0f;
-    border: 1px solid #a64f05;
+    background-color: #202A40;
+    border: 1px solid #202A40;
     border-radius: 20px;
     font-size: 16px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 19px;
     text-align: center;
 }
 
 .btn-secondary {
     padding: 8px 14px;
-    color: #a64f05;
-    background-color: #ffffff;
-    border: 1px solid #a64f05;
+    color: black;
+    background-color: #F7F7F8;
+    border: 1px solid #202A40;
     border-radius: 20px;
     font-size: 14px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 19px;
     text-align: center;
 }
 
 .btn:hover {
-    background-color: #a64f05;
-    color: #ffffff;
-    border: 1px solid #a64f05;
+    background-color:#576987;
+    color: #F7F7F8;
+    border: 1px solid #202A40;
 }
 
 .btn:focus {
-    background-color: #a64f05;
-    color: #ffffff;
-    border: 1px solid #a64f05;
+    background-color: #576987;
+    color: black;
+    border: 1px solid #202A40;
 }
 
 :focus {
     outline-style: solid !important;
     outline-width: thin !important;
-    outline-color: #ffbf86 !important;
+    outline-color: #D6E3F0 !important;
     box-shadow: none !important;
 }
 
 h1 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 400;
     line-height: 25px;
     text-align: center;
     padding: 40px;
@@ -52,4 +52,4 @@ h1 {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: sans-serif; }

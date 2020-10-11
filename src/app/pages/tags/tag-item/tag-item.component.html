@@ -1,8 +1,8 @@
 <span class="root"
-    [ngClass]="{'bold' : isRemovingAllowed, 'pointer' : !isRemovingAllowed, 'active': isActive, 'small': isSmall, 'big': !isSmall }"
+    [ngClass]="{'pointer' : !isRemovingAllowed, 'active': isActive, 'small': isSmall, 'big': !isSmall }"
     [attr.title] = "!isRemovingAllowed ? 'Додати тег' : undefined">
     <button *ngIf="isRemovingAllowed" (click)="onRemoveButtonClick()" title="Видалити тег">
-        <img src="/assets/img/Close.png" alt="Видалити"/>
+        <img src="/assets/img/btn-close.png" alt="Видалити"/>
     </button>
 
     <span [ngClass]="{'text' : !isRemovingAllowed, 'button' : isRemovingAllowed }" (click)="onElementClick()">

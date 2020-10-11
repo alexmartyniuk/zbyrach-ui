@@ -2,13 +2,13 @@
     <div *ngIf="pdfLoaded" class="toolbar">
         <div class="float-right" title="Відкрити PDF у новій вкладці">
             <a (click)="openPdf(articleId)" href="javascript:void(0)">
-                <img src="/assets/img/pdf-small.png" alt="">
+                <img src="/assets/img/pdf-small.png" alt="Відкрити PDF файл">
             </a>
         </div>
     </div>
     <div>
-        <pdf-viewer 
-            [src]="pdfSrc" 
+        <pdf-viewer
+            [src]="pdfSrc"
             [(page)]="pageCurrent"
             [show-all]="true"
             [render-text]="true"
@@ -22,11 +22,11 @@
     <div *ngIf="!pdfLoaded && !isError">
         <h1>
             Завантаження статті...
-        </h1>        
-    </div>    
+        </h1>
+    </div>
     <div *ngIf="isError">
         <h1>
             Нажаль, не вдалося завантажити статтю
-        </h1>        
-    </div> 
+        </h1>
+    </div>
 </div>

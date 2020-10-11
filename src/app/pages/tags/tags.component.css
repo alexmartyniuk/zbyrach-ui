@@ -1,52 +1,52 @@
 input[type="text"] {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    border: 1px solid #a64f05;
-    width: 264px;
-    height: 44px;
-    padding-left: 14px;
-    padding-right: 50px;
-    padding-bottom: 4px;
-    outline: none !important;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #202A40;
+  width: 264px;
+  height: 44px;
+  padding-left: 14px;
+  padding-right: 50px;
+  padding-bottom: 4px;
+  outline: none !important;
 }
 
 button.add {
-    margin-left: -38px;
-    height: 30px;
-    width: 30px;
-    border: 0;
-    background-color: #ffffff;
-    padding: 0;
-    border: none;
+  margin-left: -38px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  background-color: white;
+  padding: 0;
+  border: none;
 }
 
-button.add>img{
+button.add>img {
   height: 30px;
   width: 30px;
 }
 
 .tags {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .tags div {
-    display: inline;
+  display: inline;
 }
 
 div.inline {
-    float: left;
+  float: left;
 }
 
 .related-tags {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .related-tags div {
-    display: inline;
+  display: inline;
 }
 
 .save-button {
-    margin: 20px;
-    width: 160px;
+  margin: 20px;
+  width: 160px;
 }
