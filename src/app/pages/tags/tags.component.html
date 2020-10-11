@@ -20,7 +20,7 @@
 <div *ngIf="isRelatedTagsExist()" class="related-tags">
     <p>Вас також можуть зацікавити:</p>
     <div *ngFor="let tag of relatedTags | keyvalue">
-        <app-tag-item [tag]='tag.value.name' [isRemovingAllowed]='false' (onClick)='onClickRelatedTag($event)'>
+        <app-tag-item [tag]='tag.value.name' [isRemovingAllowed]='false' [isActive]='false' (onClick)='onClickRelatedTag($event)'>
         </app-tag-item>
     </div>
 </div>

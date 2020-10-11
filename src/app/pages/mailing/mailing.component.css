@@ -1,54 +1,54 @@
 ::ng-deep.ng5-slider-bar {
-    background: #a64f05 !important;
-    height: 3px !important;
+  background: #576987 !important;
+  height: 3px !important;
 }
 
 ::ng-deep.ng5-slider-pointer {
-    width: 20px !important;
-    height: 20px !important;
-    top: -10px !important;
-    bottom: auto !important;
-    background-color: #ff7e0f !important;
-    margin-left: 10px !important;
+  width: 20px !important;
+  height: 20px !important;
+  top: -10px !important;
+  bottom: auto !important;
+  background-color: #202A40 !important;
+  margin-left: 10px !important;
 }
 
 ::ng-deep.ng5-slider-pointer::after {
-    display: none;
+  display: none;
 }
 
 ::ng-deep.ng5-slider-tick {
-    background: #a64f05 !important;
+  background: #576987 !important;
 }
 
 ::ng-deep.ng5-slider-tick-legend {
-    white-space: nowrap !important;
+  white-space: nowrap !important;
+  transform: translate(-90%,0) !important;
 }
 
 ::ng-deep.ng5-slider-full-bar {
-    padding: 50px;
+  padding: 50px;
 }
 
 .save-button {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .slider, .description {
-    margin-left: 30px;
-    margin-right: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .articles {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .schedule {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 @media (max-width: 768px) {
-    .slider,
-    .description {
-        margin-left: 10px;
-        margin-right: 15px;
-    }
+  .slider, .description {
+    margin-left: 10px;
+    margin-right: 15px;
+  }
 }

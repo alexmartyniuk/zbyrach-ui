@@ -88,3 +88,35 @@
          url('/assets/fonts/open-sans-v17-latin_cyrillic-ext_cyrillic-800italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
          url('/assets/fonts/open-sans-v17-latin_cyrillic-ext_cyrillic-800italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
+
+  @font-face {
+    font-family: 'Tinos';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Tinos Regular'),
+         url('/assets/fonts/Tinos-Regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Tinos';
+    font-weight: 400;
+    font-style: italic;
+    src: local('Tinos Italic'),
+         url('/assets/fonts/Tinos-Italic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Tinos';
+    font-weight: 600;
+    font-style: normal;
+    src: local('Tinos Bold'),
+         url('/assets/fonts/Tinos-Bold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Tinos';
+    font-weight: 600;
+    font-style: italic;
+    src: local('Tinos Italic'),
+         url('/assets/fonts/Tinos-BoldItalic.woff') format('woff');
+  }
