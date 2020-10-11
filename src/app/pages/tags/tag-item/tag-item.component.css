@@ -18,7 +18,6 @@ span.big {
 
 span.small {
   display: inline-block;
-  height: 20px;
   -webkit-border-radius: 14px;
   -moz-border-radius: 14px;
   border-radius: 14px;
@@ -58,6 +57,14 @@ span.button {
 }
 
 .active {
+  opacity: 1 !important;
+}
+
+span.root:hover {
+  opacity: 1 !important;
+}
+
+span.root:focus {
   opacity: 1 !important;
 }
 

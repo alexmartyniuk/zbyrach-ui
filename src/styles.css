@@ -1,6 +1,6 @@
 .btn-primary {
     padding: 8px 14px;
-    background-color: #576987;
+    background-color: #202A40;
     border: 1px solid #202A40;
     border-radius: 20px;
     font-size: 16px;
@@ -24,15 +24,15 @@
 }
 
 .btn:hover {
-    background-color: #D6E3F0;
-    color: black;
-    border: 1px solid #576987;
+    background-color:#576987;
+    color: #F7F7F8;
+    border: 1px solid #202A40;
 }
 
 .btn:focus {
-    background-color: #D6E3F0;
+    background-color: #576987;
     color: black;
-    border: 1px solid #576987;
+    border: 1px solid #202A40;
 }
 
 :focus {
@@ -43,8 +43,7 @@
 }
 
 h1 {
-    font-family: 'Tinos';
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 25px;
     text-align: center;

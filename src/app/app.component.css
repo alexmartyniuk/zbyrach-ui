@@ -16,14 +16,14 @@
   min-height: 100%;
   margin: 0 auto;
   background-color: #FFFFFF;
-  border: 1px solid #202A40;
+  border: 1px solid #576987;
   box-sizing: border-box;
 }
 
 .header {
   height: 48px;
-  background: #202A40;
-  border-bottom: 1px solid #202A40;
+  background: #576987;
+  border-bottom: 1px solid #576987;
   box-sizing: border-box;
 }
 

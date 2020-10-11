@@ -7,7 +7,7 @@
                 Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук
             </div>
             <div class="d-none d-sm-block col-sm-6 align-self-center text-center">
-                <img src="/assets/img/AnimationSmall.gif" alt="" width="300px" height="240px">
+                <img src="/assets/img/animation-small.gif" alt="" width="300px" height="240px">
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
 </div>
 
 <div *ngIf="articlesFound">
-    <h1>Знайшлося дещо почитати</h1>    
+    <h1>Знайшлося дещо почитати</h1>
     <div *ngIf="!isOnlyOneTag" class="filter">
         <div class="filter-caption">Фільтр:</div>
         <div *ngFor="let tag of tagsActivity | keyvalue" class="filter-tag">
