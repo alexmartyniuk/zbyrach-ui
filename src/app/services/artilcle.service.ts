@@ -14,6 +14,10 @@ export class ArticleService {
     return this.api.getArticlesForRead();
   }
 
+  public async getLastSentArticles(): Promise<Article[]> {
+    return this.api.getLastSentArticles();
+  }
+
   public async openPdf(articleId: number): Promise<any> {
     const newTab = window.open('/assets/loading.html', '_blank');
     try {

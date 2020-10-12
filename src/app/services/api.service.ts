@@ -75,6 +75,13 @@ export class ApiService {
       .toPromise();
   }
 
+  public async getLastSentArticles(): Promise<Article[]> {
+    const url = this.baseUrl + 'articles/status/sent';
+    return this.http
+      .get<Article[]>(url)
+      .toPromise();
+  }
+
   public async getArticlePdf(articleId: number, userId: number): Promise<Blob> {
     const url = this.baseUrl + 'articles/' + articleId + '/pdf/?inline=false&userId=' + userId;
 
