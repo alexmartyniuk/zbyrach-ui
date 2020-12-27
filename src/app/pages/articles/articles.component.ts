@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ArticleService } from '../../services/artilcle.service';
 import { Article } from '../../models/article';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,7 +17,10 @@ export class ArticlesComponent implements OnInit {
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
   private subscription: Subscription;
 
-  constructor(private router: Router, private accountService: AccountService, private articleService: ArticleService) { }
+  constructor(private router: Router, 
+    private accountService: AccountService, 
+    private articleService: ArticleService,
+    private route: ActivatedRoute) { }
 
   async ngOnInit() {
     this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
@@ -47,7 +50,12 @@ export class ArticlesComponent implements OnInit {
   }
 
   private async loadArticles() {
-    this.articlesOriginal = await this.articleService.getArticlesForRead();
+    const lastSent = this.route.snapshot.data?.lastSent;
+    if (lastSent) {
+      this.articlesOriginal = await this.articleService.getLastSentArticles();
+    } else {
+      this.articlesOriginal = await this.articleService.getArticlesForRead();
+    }    
     this.articlesFound = this.articlesOriginal.length > 0;
     this.tagsActivity.clear();
 
