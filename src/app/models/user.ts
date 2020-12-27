@@ -3,5 +3,5 @@ export class User {
     name: string;
     email: string;
     pictureUrl: string;
+    isAdmin: boolean;
   }
-  

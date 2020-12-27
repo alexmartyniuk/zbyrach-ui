@@ -1,0 +1,56 @@
+<h1>Статистика</h1>
+<div class="container-flex">
+  <div class="row">
+    <table class="center">
+      <tr>
+        <td>Користувачі</td>
+        <td>{{ usersCount }}</td>
+      </tr>
+      <tr>
+        <td>Статті</td>
+        <td>{{ articlesCount }}</td>
+      </tr>
+      <tr>
+        <td>Теги</td>
+        <td>{{ tagsCount }}</td>
+      </tr>
+      <tr>
+        <td>Розмір БД</td>
+        <td>{{ dbTotalSizeInBytes }}</td>
+      </tr>
+      <tr>
+        <td>Кількість записів в БД</td>
+        <td>{{ dbTotalRowsCount }}</td>
+      </tr>
+      <tr>
+        <td>PDF кеш кількість</td>
+        <td>{{ pdfsCount }}</td>
+      </tr>
+      <tr>
+        <td>PDF кеш розмір</td>
+        <td>{{ pdfsSize }}</td>
+      </tr>
+      <tr>
+        <td>
+          <p>Видалити статті старіші за:</p>
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                  #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </td>
+        <td>
+          <div>
+            <a href="javascript:void(0)" (click)="cleanup()" class="btn btn-primary cleanup-button">Видалити</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

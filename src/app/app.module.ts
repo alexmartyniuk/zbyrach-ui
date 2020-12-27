@@ -31,6 +31,8 @@ import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
 import { ArticleComponent } from './pages/articles/article/article.component';
 import uk from '@angular/common/locales/uk';
 import { registerLocaleData } from '@angular/common';
+import { AdminComponent } from './pages/admin/admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(uk);
 
@@ -56,6 +58,7 @@ const appRoutes: Routes = [
   { path: 'articles/:articleId/user/:userId', component: ViewPdfComponent },
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
   { path: 'unsubscribe/:token', component: UnsubscribeComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -113,6 +116,7 @@ const notifierDefaultOptions: NotifierOptions = {
     UnsubscribeComponent,
     ViewPdfComponent,
     ArticleComponent,
+    AdminComponent,
   ],
   imports: [
     Ng5SliderModule,
@@ -128,7 +132,8 @@ const notifierDefaultOptions: NotifierOptions = {
     RouterModule.forRoot(appRoutes),
     MatProgressSpinnerModule,
     OverlayModule,
-    PdfViewerModule
+    PdfViewerModule,
+    NgbModule
   ],
   providers: [
     {
@@ -156,9 +161,9 @@ const notifierDefaultOptions: NotifierOptions = {
       multi: true,
       deps: [AppInitService]
     },
-    { 
-      provide: LOCALE_ID, 
-      useValue: "uk-UA" 
+    {
+      provide: LOCALE_ID,
+      useValue: "uk-UA"
     },
   ],
   bootstrap: [AppComponent],

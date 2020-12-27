@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   public isLogedIn: boolean;
   public userName: string;
   public userPictureUrl: string;
+  public isAdmin: boolean = false;
+
   private subscription: Subscription;
 
   constructor(private accountService: AccountService) {
@@ -24,10 +26,12 @@ export class AppComponent implements OnInit {
       if (logedin) {
         const user = this.accountService.getUser();
         this.userName = user.name;
+        this.isAdmin = user.isAdmin;
         this.userPictureUrl = user.pictureUrl;
       } else {
         this.userName = "";
         this.userPictureUrl = "";
+        this.isAdmin = false;
       }
     });
   }

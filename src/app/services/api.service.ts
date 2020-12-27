@@ -4,12 +4,12 @@ import { User } from '../models/user';
 import { Tag } from '../models/tag';
 import { Mailing, SettingsSummary } from '../models/mailing';
 import { Article } from '../models/article';
+import { Statistic as Statistic } from '../models/statistic';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-
   constructor(private http: HttpClient) { }
 
   private baseUrl = 'https://zbyrach-api.herokuapp.com/';
@@ -92,6 +92,20 @@ export class ApiService {
   public async unsubscribe(token: string): Promise<User> {
     return this.http
       .post<User>(this.baseUrl + 'mailing/unsubscribe/' + token, {})
+      .toPromise();
+  }
+
+  public async getStatistic(): Promise<Statistic> {
+    const url = this.baseUrl + 'statistic';
+    return this.http
+      .get<Statistic>(url)
+      .toPromise();
+  }
+
+  public async cleanup(daysCleanup: number): Promise<any> {
+    const url = this.baseUrl + 'cleanup/' + daysCleanup;
+    return this.http
+      .delete(url)
       .toPromise();
   }
 }
