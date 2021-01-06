@@ -19,6 +19,19 @@ export class TagService {
     return relatedTags;
   }
 
+  public async isTagExist(name: string): Promise<boolean> {
+    try {
+      await this.api.getShortTagInfo(name);
+      return true;
+    }
+    catch (error) {
+      if (error.status === 404) {
+        return false;
+      }
+      throw error;
+    }
+  }
+
   public async getMyTags(): Promise<Tag[]> {
     return this.api.getMyTags();
   }

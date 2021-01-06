@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
 import { AccountService } from './account.service';
 
@@ -19,10 +19,13 @@ export class ErrorInterceptorService implements HttpInterceptor {
           this.notificationService.showErrorMessage("Помилка доступу. Будь ласка, увійдіть повторно.");
           this.accountService.authenticationFailedHandler(req.url);
           return throwError('Request is not authorized.');
-        } else {
-          this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
-          return throwError('Error communicating to the server.');
-        }
+        } else
+          if (error.status >= 500) {
+            this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
+            return throwError('Error communicating to the server.');
+          } else {
+            return throwError(error);
+          }
       })
     )
   }

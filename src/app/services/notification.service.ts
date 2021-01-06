@@ -16,4 +16,8 @@ export class NotificationService {
   public showErrorMessage(message: string): void {
     this.notifierService.notify("error", message);
   }
+
+  public showWarningMessage(message: string): void {
+    this.notifierService.notify("warning", message);
+  }
 }

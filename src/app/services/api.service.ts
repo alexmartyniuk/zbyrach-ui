@@ -33,6 +33,13 @@ export class ApiService {
       .toPromise();
   }
 
+  public async getShortTagInfo(name: string): Promise<Tag> {
+    const url = this.baseUrl + `tags/${name}/short`;
+    return this.http
+      .get<Tag>(url)
+      .toPromise();
+  }
+
   public async getMyTags(): Promise<Tag[]> {
     const url = this.baseUrl + 'tags/my';
     return this.http

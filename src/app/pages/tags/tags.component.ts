@@ -4,6 +4,7 @@ import { TagService } from '../../services/tag.service';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-tags',
@@ -13,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class TagsComponent implements OnInit {
 
   private subscription: Subscription;
-  
+
   public currentTagName: string = "";
 
   public relatedTags: Map<string, Tag> = new Map<string, Tag>();
@@ -28,7 +29,7 @@ export class TagsComponent implements OnInit {
     return this.relatedTags.size > 0;
   }
 
-  constructor(private router: Router, private tagService: TagService, private accountService: AccountService) { }
+  constructor(private router: Router, private tagService: TagService, private accountService: AccountService, private notificationService: NotificationService) { }
 
   async ngOnInit() {
     this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
@@ -53,14 +54,22 @@ export class TagsComponent implements OnInit {
       return;
     }
 
-    if (!this.tags.get(this.currentTagName)) {
-      let newTag: Tag = { 'name': this.currentTagName, 'url': null, 'parentTagName': null };
-      this.tags.set(this.currentTagName, newTag);
-      await this.getRelatedTags(newTag);
+    if (this.tags.get(this.currentTagName)) {
+      this.currentTagName = "";
+      return;
     }
 
+    const tagExists = await this.tagService.isTagExist(this.currentTagName);
+    if (!tagExists) {
+      this.notificationService.showWarningMessage(`Не вдалося знайти тег "${this.currentTagName}"`);
+      return;
+    }
+
+    let newTag: Tag = { 'name': this.currentTagName, 'url': null, 'parentTagName': null };
+    this.tags.set(this.currentTagName, newTag);
+    await this.getRelatedTags(newTag);
     this.currentTagName = "";
-  }  
+  }
 
   public onRemoveTag(tagName: string): void {
     this.tags.delete(tagName);
@@ -98,7 +107,7 @@ export class TagsComponent implements OnInit {
   private async getRelatedTags(tag: Tag): Promise<void> {
     const relatedTags = await this.tagService.getRelatedTags(tag.name);
     for (let relatedTag of relatedTags) {
-      relatedTag.parentTagName = tag.name;      
+      relatedTag.parentTagName = tag.name;
       this.relatedTags.set(relatedTag.name, relatedTag);
     }
   }
