@@ -1,0 +1,16 @@
+{
+  "Greeting": {
+      "You": "Ви",
+      "SelectWords": "обираєте слова, що вас цікавлять",
+      "SpecifyPeriodicity": "вказуєте періодичність відправки",
+      "I": "Я",
+      "SearchArticlesByWords": "шукаю статті за обраними словами",
+      "SendToYourEmail": "відправляю їх вам на пошту",
+      "Login": "Увійти",
+      "LoginWithGoogle": "Увійти з Google",
+      "Hello": "Вітаю вас, {{name}}",
+      "YouReceiveArticles": "Ви отримуєте статті",
+      "Settings": "Налаштувати",
+      "Articles": "Переглянути статті"
+  }
+}

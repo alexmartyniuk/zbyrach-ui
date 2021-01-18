@@ -34,6 +34,11 @@ import { registerLocaleData } from '@angular/common';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// import ngx-translate and the http loader
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+
 registerLocaleData(uk);
 
 const config = new AuthServiceConfig([
@@ -56,7 +61,7 @@ const appRoutes: Routes = [
   { path: 'tags', component: TagsComponent, canActivate: [AuthGuard] },
   { path: 'mailing', component: MailingSettingsComponent, canActivate: [AuthGuard] },
   { path: 'articles/:articleId/user/:userId', component: ViewPdfComponent },
-  { path: 'articles/sent', component: ArticlesComponent, data : { lastSent : true}, canActivate: [AuthGuard] },
+  { path: 'articles/sent', component: ArticlesComponent, data: { lastSent: true }, canActivate: [AuthGuard] },
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
   { path: 'unsubscribe/:token', component: UnsubscribeComponent },
   { path: 'admin', component: AdminComponent },
@@ -134,7 +139,17 @@ const notifierDefaultOptions: NotifierOptions = {
     MatProgressSpinnerModule,
     OverlayModule,
     PdfViewerModule,
-    NgbModule
+    NgbModule,
+
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    })
   ],
   providers: [
     {
@@ -171,3 +186,8 @@ const notifierDefaultOptions: NotifierOptions = {
   entryComponents: [MatSpinner],
 })
 export class AppModule { }
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

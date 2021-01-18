@@ -1,0 +1,16 @@
+{
+  "Greeting": {
+      "You": "You",
+      "SelectWords": "select keywords that are interesting",
+      "SpecifyPeriodicity": "specify periodicity of sending",
+      "I": "I",
+      "SearchArticlesByWords": "search articles by selected keywords",
+      "SendToYourEmail": "send them to your email",
+      "Login": "Login",
+      "LoginWithGoogle": "Login with Google",
+      "Hello": "Hello, {{name}}",
+      "YouReceiveArticles": "You receive articles",
+      "Settings": "Settings",
+      "Articles": "Go to Articles"
+  }
+}

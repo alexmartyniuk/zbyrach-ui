@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AccountService } from './services/account.service';
 
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private translate: TranslateService) {
+    translate.setDefaultLang('uk');
   }
 
   async ngOnInit() {
