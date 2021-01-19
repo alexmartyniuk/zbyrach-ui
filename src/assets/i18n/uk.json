@@ -28,5 +28,16 @@
     "OncePerMonth": "раз на місяць",
     "ByTag": "за {{number}} тегом",
     "ByTags": "за {{number}} тегами"
+  },
+  "Mailing": {
+    "SendingSettings": "Налаштування відправки",
+    "SpecifyHowOftenYouWantToReceive": "Вкажіть, як часто і скільки статей ви хочете отримувати на" ,
+    "NumberOfArticles": "Кількість статей:",
+    "Periodicity": "Періодичність:",
+    "Save": "Зберегти",
+    "Never": "Ніколи",
+    "OncePerDay": "Раз на день",
+    "OncePerWeek": "Раз на тиждень",
+    "OncePerMonth": "Раз на місяць"
   }
 }

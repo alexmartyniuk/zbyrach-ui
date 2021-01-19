@@ -5,6 +5,7 @@ import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { Options } from 'ng5-slider';
 import { Subscription } from 'rxjs';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-mailing',
@@ -34,15 +35,32 @@ export class MailingSettingsComponent implements OnInit {
   };
 
   private scheduleValues: { [id: number]: string; } = {
-    1: "Ніколи",
-    2: "Раз на день",
-    3: "Раз на тиждень",
-    4: "Раз у місяць",
+    1: "Mailing.Never",
+    2: "Mailing.OncePerDay",
+    3: "Mailing.OncePerWeek",
+    4: "Mailing.OncePerMonth",
   };
 
-  private subscription: Subscription;
+  private loginStateSubscription: Subscription;
+  private langChangeSubscription: Subscription;
 
-  constructor(private router: Router, private api: ApiService, private accountService: AccountService) {
+  constructor(private router: Router, private api: ApiService, private accountService: AccountService,
+    private translate: TranslateService) {
+
+    this.langChangeSubscription = translate.onDefaultLangChange.subscribe((event: LangChangeEvent) => {
+      this.scheduleSliderOptions = {
+        floor: 1,
+        ceil: 4,
+        step: 1,
+        showTicks: true,
+        hidePointerLabels: true,
+        hideLimitLabels: true,
+        getLegend: (value: number): string => {
+          return this.translate.instant(this.scheduleValues[value]);
+        }
+      }
+    });
+
     this.numberOfArticlesSliderOptions = {
       floor: 1,
       ceil: 4,
@@ -54,29 +72,17 @@ export class MailingSettingsComponent implements OnInit {
         return this.numberOfArticlesValues[value].toString();
       }
     };
-
-    this.scheduleSliderOptions = {
-      floor: 1,
-      ceil: 4,
-      step: 1,
-      showTicks: true,
-      hidePointerLabels: true,
-      hideLimitLabels: true,
-      getLegend: (value: number): string => {
-        return this.scheduleValues[value];
-      }
-    }
   }
 
   async ngOnInit() {
-    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.userEmail = this.accountService.getUser().email;
-        
+
         const settings = await this.api.getMyMailingSettings();
         this.numberOfArticlesSlider = this.getKeyByValue(this.numberOfArticlesValues, settings.numberOfArticles);
         this.scheduleSlider = this.getKeyByValue(this.scheduleTypeValues, settings.scheduleType);
-        this.showContent = true;        
+        this.showContent = true;
       } else {
         this.router.navigate(['/greeting']);
       }
@@ -84,7 +90,8 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.loginStateSubscription.unsubscribe();
+    this.langChangeSubscription.unsubscribe();
   }
 
   async save() {

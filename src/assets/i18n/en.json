@@ -28,5 +28,16 @@
     "OncePerMonth": "once a month",
     "ByTag": "by {{number}} keyword",
     "ByTags": "by {{number}} keywords"
+  },
+  "Mailing": {
+    "SendingSettings": "Sending Settings",
+    "SpecifyHowOftenYouWantToReceive": "Specify how often and how many articles do you want to receive on" ,
+    "NumberOfArticles": "Number of articles:",
+    "Periodicity": "How often:",
+    "Save": "Save",
+    "Never": "Never",
+    "OncePerDay": "Once a day",
+    "OncePerWeek": "Once a week",
+    "OncePerMonth": "Once a month"
   }
 }
