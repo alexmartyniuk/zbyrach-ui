@@ -1,16 +1,32 @@
 {
+  "Header": {
+    "LogoTitle": "Збирач",
+    "ChangeLanguage": "In English",
+    "GoToArticles": "Переглянути статті",
+    "CustomizeTags": "Налаштувати теги",
+    "CustomizeSending": "Налаштувати відправку",
+    "GoToAdmin": "Адмін",
+    "Logout": "Вийти"
+  },
   "Greeting": {
-      "You": "Ви",
-      "SelectWords": "обираєте слова, що вас цікавлять",
-      "SpecifyPeriodicity": "вказуєте періодичність відправки",
-      "I": "Я",
-      "SearchArticlesByWords": "шукаю статті за обраними словами",
-      "SendToYourEmail": "відправляю їх вам на пошту",
-      "Login": "Увійти",
-      "LoginWithGoogle": "Увійти з Google",
-      "Hello": "Вітаю вас, {{name}}",
-      "YouReceiveArticles": "Ви отримуєте статті",
-      "Settings": "Налаштувати",
-      "Articles": "Переглянути статті"
+    "You": "Ви",
+    "SelectWords": "обираєте слова, що вас цікавлять",
+    "SpecifyPeriodicity": "вказуєте періодичність відправки",
+    "I": "Я",
+    "SearchArticlesByWords": "шукаю статті за обраними словами",
+    "SendToYourEmail": "відправляю їх вам на пошту",
+    "Login": "Увійти",
+    "LoginWithGoogle": "Увійти з Google",
+    "Hello": "Вітаю вас, {{name}}",
+    "YouReceiveArticles": "Ви отримуєте статті",
+    "Settings": "Налаштувати",
+    "Articles": "Переглянути статті",
+    "Unknown": "невідомо",
+    "Never": "ніколи",
+    "OncePerDay": "раз на день",
+    "OncePerWeek": "раз на тиждень",
+    "OncePerMonth": "раз на місяць",
+    "ByTag": "за {{number}} тегом",
+    "ByTags": "за {{number}} тегами"
   }
 }

@@ -16,13 +16,14 @@ export class GreetingComponent implements OnInit {
   public userName: string;
   public tagsText: string = "";
   public scheduleText: string = "";
+  public numberOfTags: number;
 
   private scheduleValues: { [id: number]: string; } = {
-    0: "невідомо",
-    1: "ніколи",
-    2: "раз на день",
-    3: "раз на тиждень",
-    4: "раз на місяць",
+    0: "Greeting.Unknown",
+    1: "Greeting.Never",
+    2: "Greeting.OncePerDay",
+    3: "Greeting.OncePerWeek",
+    4: "Greeting.OncePerMonth",
   };
   private returnUrl: string;
   private subscription: Subscription;
@@ -45,6 +46,7 @@ export class GreetingComponent implements OnInit {
         const settingSummary = await this.api.getSettingsSummary();
         this.tagsText = this.getTagsText(settingSummary.numberOfTags);
         this.scheduleText = this.getScheduleText(settingSummary.scheduleType);
+        this.numberOfTags = settingSummary.numberOfTags;
 
         this.router.navigateByUrl(this.returnUrl);
       } else {
@@ -59,9 +61,9 @@ export class GreetingComponent implements OnInit {
 
   private getTagsText(numberOfTags: number): string {
     if (numberOfTags % 10 == 1 && (numberOfTags > 20 || numberOfTags < 10)) {
-      return `за ${numberOfTags} тегом`;
+      return "Greeting.ByTag";
     } else {
-      return `за ${numberOfTags} тегами`;
+      return "Greeting.ByTags";
     }
   }
 

@@ -43,8 +43,8 @@
                   {{ 'Greeting.YouReceiveArticles' | translate }}
                 </p>
                 <ul>
-                    <li>{{ tagsText }} </li>
-                    <li>{{ scheduleText }}</li>
+                    <li>{{ tagsText | translate: {'number':numberOfTags} }} </li>
+                    <li>{{ scheduleText | translate }}</li>
                 </ul>
             </div>
             <div class="d-none d-sm-block col-sm-6 align-self-center text-center">
