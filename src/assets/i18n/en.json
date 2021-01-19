@@ -39,5 +39,11 @@
     "OncePerDay": "Once a day",
     "OncePerWeek": "Once a week",
     "OncePerMonth": "Once a month"
+  },
+  "Articles": {
+    "NoArticlesFound": "No articles found",
+    "CustomizePreferencesAndWait ": "Customize your preferences and wait till I am searching",
+    "Settings": "Settings",
+    "ArticlesWereFound": "I've found something"
   }
 }

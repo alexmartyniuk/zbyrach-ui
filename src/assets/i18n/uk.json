@@ -39,5 +39,11 @@
     "OncePerDay": "Раз на день",
     "OncePerWeek": "Раз на тиждень",
     "OncePerMonth": "Раз на місяць"
+  },
+  "Articles": {
+    "NoArticlesFound": "Жодної статті не знайдено",
+    "CustomizePreferencesAndWait ": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
+    "Settings": "Налаштувати",
+    "ArticlesWereFound": "Знайшлося дещо почитати"
   }
 }
