@@ -45,5 +45,20 @@
     "CustomizePreferencesAndWait ": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
     "Settings": "Налаштувати",
     "ArticlesWereFound": "Знайшлося дещо почитати"
+  },
+  "Tags": {
+    "TagsSettings": "Налаштування ключових слів",
+    "TagWasNotFound": "Не вдалося знайти тег {{tag}}",
+    "AddTags": "Додайте слова, що вас цікавлять",
+    "Add": "Додати",
+    "YouMayBeInterested": "Вас також можуть зацікавити:",
+    "Save": "Зберегти",
+    "AddTag": "Додати тег",
+    "RemoveTag": "Видалити тег"
+  },
+  "Unsubscribe": {
+    "SubscriptionCanceled": "Підписку скасовано",
+    "UserWasUnsubscribed": ", був успішно відписаний від усіх повідомлень!",
+    "InvalidToken": "Некоректний токен"
   }
 }

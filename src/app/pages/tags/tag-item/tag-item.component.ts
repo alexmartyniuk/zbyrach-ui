@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tag-item',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TagComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,10 @@ export class TagComponent implements OnInit {
 
   onElementClick(): void {
     this.onClick.emit(this.tag);
+  }
+
+  public get title() {
+    return !this.isRemovingAllowed ? this.translate.instant('Tags.AddTag') : undefined
   }
 
 }

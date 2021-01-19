@@ -45,5 +45,20 @@
     "CustomizePreferencesAndWait ": "Customize your preferences and wait till I am searching",
     "Settings": "Settings",
     "ArticlesWereFound": "I've found something"
+  },
+  "Tags": {
+    "TagsSettings": "Keywords settings",
+    "TagWasNotFound": "Can't find keyword {{tag}}",
+    "AddTags": "Add keywords you are interested in",
+    "Add": "Add",
+    "YouMayBeInterested": "You also may be interested in:",
+    "Save": "Save",
+    "AddTag": "Add keyword",
+    "RemoveTag": "Remove keyword"
+  },
+  "Unsubscribe": {
+    "SubscriptionCanceled": "Subscription canceled",
+    "UserWasUnsubscribed": ", was successfully unsubscribed from all notifications!",
+    "InvalidToken": "Invalid token"
   }
 }

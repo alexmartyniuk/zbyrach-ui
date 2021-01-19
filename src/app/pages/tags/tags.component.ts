@@ -5,6 +5,7 @@ import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tags',
@@ -13,7 +14,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class TagsComponent implements OnInit {
 
-  private subscription: Subscription;
+  private loginStateSubscription: Subscription;
 
   public currentTagName: string = "";
 
@@ -29,10 +30,11 @@ export class TagsComponent implements OnInit {
     return this.relatedTags.size > 0;
   }
 
-  constructor(private router: Router, private tagService: TagService, private accountService: AccountService, private notificationService: NotificationService) { }
+  constructor(private router: Router, private tagService: TagService, private accountService: AccountService,
+    private notificationService: NotificationService, private translate: TranslateService) { }
 
   async ngOnInit() {
-    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         const tags = await this.tagService.getMyTags();
 
@@ -46,7 +48,7 @@ export class TagsComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.loginStateSubscription.unsubscribe();
   }
 
   public async addCurrentTag(): Promise<any> {
@@ -61,7 +63,7 @@ export class TagsComponent implements OnInit {
 
     const tagExists = await this.tagService.isTagExist(this.currentTagName);
     if (!tagExists) {
-      this.notificationService.showWarningMessage(`Не вдалося знайти тег "${this.currentTagName}"`);
+      this.notificationService.showWarningMessage(this.translate.instant('Tags.TagWasNotFound', {tag: this.currentTagName}));
       return;
     }
 

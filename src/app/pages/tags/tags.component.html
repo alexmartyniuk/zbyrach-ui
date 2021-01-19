@@ -1,11 +1,11 @@
-<h1>Налаштування ключових слів</h1>
+<h1>{{ 'Tags.TagsSettings' | translate }}</h1>
 
 <div class="text-center">
-    <p>Додайте слова, що вас цікавлять</p>
+    <p>{{ 'Tags.AddTags' | translate }}</p>
     <div class="container">
         <input [(ngModel)]="currentTagName" (keyup.enter)="addCurrentTag()" type="text">
         <button class="add" (click)="addCurrentTag()">
-            <img src="/assets/img/btn-add.png" alt="Додати" />
+            <img src="/assets/img/btn-add.png" alt="{{ 'Tags.Add' | translate }}" />
         </button>
     </div>
 </div>
@@ -18,7 +18,7 @@
 </div>
 
 <div *ngIf="isRelatedTagsExist()" class="related-tags">
-    <p>Вас також можуть зацікавити:</p>
+    <p>{{ 'Tags.YouMayBeInterested' | translate }}</p>
     <div *ngFor="let tag of relatedTags | keyvalue">
         <app-tag-item [tag]='tag.value.name' [isRemovingAllowed]='false' [isActive]='false' (onClick)='onClickRelatedTag($event)'>
         </app-tag-item>
@@ -27,6 +27,6 @@
 
 
 <div *ngIf="isTagsExist()" class="text-center">
-    <button class="btn btn-primary save-button" (click)="save()">Зберегти</button>
+    <button class="btn btn-primary save-button" (click)="save()">{{ 'Tags.Save' | translate }}</button>
 </div>
 
