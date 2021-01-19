@@ -45,36 +45,16 @@ export class MailingSettingsComponent implements OnInit {
   private langChangeSubscription: Subscription;
 
   constructor(private router: Router, private api: ApiService, private accountService: AccountService,
-    private translate: TranslateService) {
-
-    this.langChangeSubscription = translate.onDefaultLangChange.subscribe((event: LangChangeEvent) => {
-      this.scheduleSliderOptions = {
-        floor: 1,
-        ceil: 4,
-        step: 1,
-        showTicks: true,
-        hidePointerLabels: true,
-        hideLimitLabels: true,
-        getLegend: (value: number): string => {
-          return this.translate.instant(this.scheduleValues[value]);
-        }
-      }
-    });
-
-    this.numberOfArticlesSliderOptions = {
-      floor: 1,
-      ceil: 4,
-      step: 1,
-      showTicks: true,
-      hidePointerLabels: true,
-      hideLimitLabels: true,
-      getLegend: (value: number): string => {
-        return this.numberOfArticlesValues[value].toString();
-      }
-    };
-  }
+    private translate: TranslateService) { }
 
   async ngOnInit() {
+    this.langChangeSubscription = this.translate.onDefaultLangChange.subscribe((event: LangChangeEvent) => {
+      console.warn('Language changed');
+      this.initSliderOptions();
+    });
+
+    this.initSliderOptions();
+
     this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.userEmail = this.accountService.getUser().email;
@@ -125,4 +105,29 @@ export class MailingSettingsComponent implements OnInit {
     return dict[value];
   }
 
+  private initSliderOptions(): void {
+    this.scheduleSliderOptions = {
+      floor: 1,
+      ceil: 4,
+      step: 1,
+      showTicks: true,
+      hidePointerLabels: true,
+      hideLimitLabels: true,
+      getLegend: (value: number): string => {
+        return this.translate.instant(this.scheduleValues[value]);
+      }
+    }
+
+    this.numberOfArticlesSliderOptions = {
+      floor: 1,
+      ceil: 4,
+      step: 1,
+      showTicks: true,
+      hidePointerLabels: true,
+      hideLimitLabels: true,
+      getLegend: (value: number): string => {
+        return this.numberOfArticlesValues[value].toString();
+      }
+    };
+  }
 }

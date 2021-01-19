@@ -1,8 +1,8 @@
 <div class="container">
     <div *ngIf="pdfLoaded" class="toolbar">
-        <div class="float-right" title="Відкрити PDF у новій вкладці">
+        <div class="float-right" title="{{ 'ViewPdf.OpenInNewTab' | translate }}">
             <a (click)="openPdf(articleId)" href="javascript:void(0)">
-                <img src="/assets/img/pdf-small.png" alt="Відкрити PDF файл">
+                <img src="/assets/img/pdf-small.png" alt="{{ 'ViewPdf.OpenInNewTab' | translate }}">
             </a>
         </div>
     </div>
@@ -21,12 +21,12 @@
     </div>
     <div *ngIf="!pdfLoaded && !isError">
         <h1>
-            Завантаження статті...
+          {{ 'ViewPdf.ArticleLoading' | translate }}
         </h1>
     </div>
     <div *ngIf="isError">
         <h1>
-            Нажаль, не вдалося завантажити статтю
+          {{ 'ViewPdf.CantLoadArticle' | translate }}
         </h1>
     </div>
 </div>

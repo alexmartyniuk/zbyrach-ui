@@ -44,7 +44,8 @@
     "NoArticlesFound": "Жодної статті не знайдено",
     "CustomizePreferencesAndWait ": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
     "Settings": "Налаштувати",
-    "ArticlesWereFound": "Знайшлося дещо почитати"
+    "ArticlesWereFound": "Знайшлося дещо почитати",
+    "Filter": "Фільтр"
   },
   "Tags": {
     "TagsSettings": "Налаштування ключових слів",
@@ -60,5 +61,19 @@
     "SubscriptionCanceled": "Підписку скасовано",
     "UserWasUnsubscribed": ", був успішно відписаний від усіх повідомлень!",
     "InvalidToken": "Некоректний токен"
+  },
+  "NotFound": {
+    "NothingThere": "Вибачте, тут нічого немає. Спробуйте почати з початку.",
+    "ToTheMainPage": "На головну сторінку"
+  },
+  "ViewPdf": {
+    "OpenInNewTab": "Відкрити PDF у новій вкладці",
+    "OpenPdfFile": "Відкрити PDF файл",
+    "ArticleLoading": "Завантаження статті...",
+    "CantLoadArticle": "Нажаль, не вдалося завантажити статтю"
+  },
+  "General": {
+    "LoginAgain": "Помилка доступу. Будь ласка, увійдіть повторно.",
+    "ServerError": "Помилка виконання запиту до серверу."
   }
 }

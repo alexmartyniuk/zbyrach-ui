@@ -44,7 +44,8 @@
     "NoArticlesFound": "No articles found",
     "CustomizePreferencesAndWait ": "Customize your preferences and wait till I am searching",
     "Settings": "Settings",
-    "ArticlesWereFound": "I've found something"
+    "ArticlesWereFound": "I've found something",
+    "Filter": "Filter"
   },
   "Tags": {
     "TagsSettings": "Keywords settings",
@@ -60,5 +61,19 @@
     "SubscriptionCanceled": "Subscription canceled",
     "UserWasUnsubscribed": ", was successfully unsubscribed from all notifications!",
     "InvalidToken": "Invalid token"
+  },
+  "NotFound": {
+    "NothingThere": "Sorry, there is nothing here. Try to start from the beginning.",
+    "ToTheMainPage": "To the start page"
+  },
+  "ViewPdf": {
+    "OpenInNewTab": "Open PDF in a new tab",
+    "OpenPdfFile": "Open PDF file",
+    "ArticleLoading": "Article is loading...",
+    "CantLoadArticle": "Sorry. Can't download the article"
+  },
+  "General": {
+    "LoginAgain": "Access denied. Please login again.",
+    "ServerError": "Request to the server failed."
   }
 }

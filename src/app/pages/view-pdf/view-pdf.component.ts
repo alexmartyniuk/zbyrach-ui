@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UiService } from 'src/app/services/ui.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { ArticleService } from 'src/app/services/artilcle.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-view-pdf',
@@ -13,8 +14,8 @@ import { ArticleService } from 'src/app/services/artilcle.service';
 })
 export class ViewPdfComponent implements OnInit {
 
-  pdfLoaded: boolean = false;  
-  pdfSrc: string;  
+  pdfLoaded: boolean = false;
+  pdfSrc: string;
   isError: boolean;
   pageCurrent: number = 0;
   pagesCount: number = 0;
@@ -22,11 +23,12 @@ export class ViewPdfComponent implements OnInit {
   userId: string;
 
   constructor(
-    private route: ActivatedRoute, 
-    private apiService: ApiService, 
+    private route: ActivatedRoute,
+    private apiService: ApiService,
     private uiService: UiService,
     private notificationService: NotificationService,
-    private articleService: ArticleService) { }
+    private articleService: ArticleService,
+    private translate: TranslateService) { }
 
   ngOnInit() {
     this.articleId = this.route.snapshot.paramMap.get('articleId');
@@ -44,7 +46,7 @@ export class ViewPdfComponent implements OnInit {
   onError(error: any) {
     this.isError = true;
     this.uiService.hideSpinner();
-    this.notificationService.showErrorMessage("Помилка виконання запиту до серверу.");
+    this.notificationService.showErrorMessage(this.translate.instant('General.ServerError'));
   }
 
   public openPdf(articleId: string) {
