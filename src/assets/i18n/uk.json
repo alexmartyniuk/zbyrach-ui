@@ -1,0 +1,79 @@
+{
+  "Header": {
+    "LogoTitle": "Збирач",
+    "ChangeLanguage": "In English",
+    "GoToArticles": "Переглянути статті",
+    "CustomizeTags": "Налаштувати теги",
+    "CustomizeSending": "Налаштувати відправку",
+    "GoToAdmin": "Адмін",
+    "Logout": "Вийти"
+  },
+  "Greeting": {
+    "You": "Ви",
+    "SelectWords": "обираєте слова, що вас цікавлять",
+    "SpecifyPeriodicity": "вказуєте періодичність відправки",
+    "I": "Я",
+    "SearchArticlesByWords": "шукаю статті за обраними словами",
+    "SendToYourEmail": "відправляю їх вам на пошту",
+    "Login": "Увійти",
+    "LoginWithGoogle": "Увійти з Google",
+    "Hello": "Вітаю вас, {{name}}",
+    "YouReceiveArticles": "Ви отримуєте статті",
+    "Settings": "Налаштувати",
+    "Articles": "Переглянути статті",
+    "Unknown": "невідомо",
+    "Never": "ніколи",
+    "OncePerDay": "раз на день",
+    "OncePerWeek": "раз на тиждень",
+    "OncePerMonth": "раз на місяць",
+    "ByTag": "за {{number}} тегом",
+    "ByTags": "за {{number}} тегами"
+  },
+  "Mailing": {
+    "SendingSettings": "Налаштування відправки",
+    "SpecifyHowOftenYouWantToReceive": "Вкажіть, як часто і скільки статей ви хочете отримувати на" ,
+    "NumberOfArticles": "Кількість статей:",
+    "Periodicity": "Періодичність:",
+    "Save": "Зберегти",
+    "Never": "Ніколи",
+    "OncePerDay": "Раз на день",
+    "OncePerWeek": "Раз на тиждень",
+    "OncePerMonth": "Раз на місяць"
+  },
+  "Articles": {
+    "NoArticlesFound": "Жодної статті не знайдено",
+    "CustomizePreferencesAndWait ": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
+    "Settings": "Налаштувати",
+    "ArticlesWereFound": "Знайшлося дещо почитати",
+    "Filter": "Фільтр"
+  },
+  "Tags": {
+    "TagsSettings": "Налаштування ключових слів",
+    "TagWasNotFound": "Не вдалося знайти тег {{tag}}",
+    "AddTags": "Додайте слова, що вас цікавлять",
+    "Add": "Додати",
+    "YouMayBeInterested": "Вас також можуть зацікавити:",
+    "Save": "Зберегти",
+    "AddTag": "Додати тег",
+    "RemoveTag": "Видалити тег"
+  },
+  "Unsubscribe": {
+    "SubscriptionCanceled": "Підписку скасовано",
+    "UserWasUnsubscribed": ", був успішно відписаний від усіх повідомлень!",
+    "InvalidToken": "Некоректний токен"
+  },
+  "NotFound": {
+    "NothingThere": "Вибачте, тут нічого немає. Спробуйте почати з початку.",
+    "ToTheMainPage": "На головну сторінку"
+  },
+  "ViewPdf": {
+    "OpenInNewTab": "Відкрити PDF у новій вкладці",
+    "OpenPdfFile": "Відкрити PDF файл",
+    "ArticleLoading": "Завантаження статті...",
+    "CantLoadArticle": "Нажаль, не вдалося завантажити статтю"
+  },
+  "General": {
+    "LoginAgain": "Помилка доступу. Будь ласка, увійдіть повторно.",
+    "ServerError": "Помилка виконання запиту до серверу."
+  }
+}

@@ -15,15 +15,15 @@ export class ArticlesComponent implements OnInit {
   public articlesOriginal: Article[];
   public articlesFound: boolean = false;
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
-  private subscription: Subscription;
+  private loginStateSubscription: Subscription;
 
-  constructor(private router: Router, 
-    private accountService: AccountService, 
+  constructor(private router: Router,
+    private accountService: AccountService,
     private articleService: ArticleService,
     private route: ActivatedRoute) { }
 
   async ngOnInit() {
-    this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
+    this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.loadArticles();
       } else {
@@ -33,14 +33,14 @@ export class ArticlesComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.loginStateSubscription.unsubscribe();
   }
 
   public get articles(): Article[] {
     return this.articlesOriginal.filter(a => {
       if([...this.tagsActivity.values()].includes(true) === false){
         return true;
-      } 
+      }
       return a.tags.filter(t => this.tagsActivity.get(t)).length > 0;
     });
   }
@@ -55,7 +55,7 @@ export class ArticlesComponent implements OnInit {
       this.articlesOriginal = await this.articleService.getLastSentArticles();
     } else {
       this.articlesOriginal = await this.articleService.getArticlesForRead();
-    }    
+    }
     this.articlesFound = this.articlesOriginal.length > 0;
     this.tagsActivity.clear();
 

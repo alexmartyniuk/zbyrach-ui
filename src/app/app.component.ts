@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AccountService } from './services/account.service';
 
@@ -15,8 +16,23 @@ export class AppComponent implements OnInit {
   public isAdmin: boolean = false;
 
   private subscription: Subscription;
+  private _currentLanguage: string;
 
-  constructor(private accountService: AccountService) {
+  private set currentLanguage(value: string) {
+    this._currentLanguage = value;
+    this.translate.setDefaultLang(this._currentLanguage);
+  }
+
+  private get currentLanguage(): string {
+    return this._currentLanguage;
+  }
+
+  constructor(private accountService: AccountService, private translate: TranslateService) {
+    let language = localStorage.getItem('lang');
+    if (!language) {
+      language = 'en';
+    }
+    this.currentLanguage = language;
   }
 
   async ngOnInit() {
@@ -48,4 +64,12 @@ export class AppComponent implements OnInit {
     await this.accountService.login();
   }
 
+  public changeLanguage(): void {
+    if (this.currentLanguage === 'uk') {
+      this.currentLanguage = 'en';
+    } else {
+      this.currentLanguage = 'uk';
+    }
+    localStorage.setItem('lang', this.currentLanguage);
+  }
 }

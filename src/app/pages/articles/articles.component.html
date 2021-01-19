@@ -1,34 +1,33 @@
-
 <div *ngIf="!articlesFound">
-    <h1>Жодної статті не знайдено</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 align-self-center">
-                Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук
-            </div>
-            <div class="d-none d-sm-block col-sm-6 align-self-center text-center">
-                <img src="/assets/img/animation-small.gif" alt="" width="300px" height="240px">
-            </div>
-        </div>
+  <h1>{{ 'Articles.NoArticlesFound' | translate }}</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 align-self-center">
+        {{ 'Articles.CustomizePreferencesAndWait' | translate }}
+      </div>
+      <div class="d-none d-sm-block col-sm-6 align-self-center text-center">
+        <img src="/assets/img/animation-small.gif" alt="" width="300px" height="240px">
+      </div>
     </div>
+  </div>
 
-    <div class="text-center">
-        <a routerLink="/tags" class="btn btn-primary settings-button">Налаштувати</a>
-    </div>
+  <div class="text-center">
+    <a routerLink="/tags" class="btn btn-primary settings-button"> {{ 'Articles.Settings' | translate }}</a>
+  </div>
 </div>
 
 <div *ngIf="articlesFound">
-    <h1>Знайшлося дещо почитати</h1>
-    <div *ngIf="!isOnlyOneTag" class="filter">
-        <div class="filter-caption">Фільтр:</div>
-        <div *ngFor="let tag of tagsActivity | keyvalue" class="filter-tag">
-            <app-tag-item [tag]='tag.key' [isRemovingAllowed]='false' [isActive]='tag.value' (onClick)='onClickTag($event)'>
-            </app-tag-item>
-        </div>
+  <h1>{{ 'Articles.ArticlesWereFound' | translate }}</h1>
+  <div *ngIf="!isOnlyOneTag" class="filter">
+    <div class="filter-caption">{{ 'Articles.Filter' | translate }}:</div>
+    <div *ngFor="let tag of tagsActivity | keyvalue" class="filter-tag">
+      <app-tag-item [tag]='tag.key' [isRemovingAllowed]='false' [isActive]='tag.value' (onClick)='onClickTag($event)'>
+      </app-tag-item>
     </div>
-    <div class="articles">
-        <div *ngFor="let article of articles">
-            <app-article [article]='article'></app-article>
-        </div>
+  </div>
+  <div class="articles">
+    <div *ngFor="let article of articles">
+      <app-article [article]='article'></app-article>
     </div>
+  </div>
 </div>

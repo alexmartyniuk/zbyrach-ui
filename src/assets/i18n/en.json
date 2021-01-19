@@ -1,0 +1,79 @@
+{
+  "Header": {
+    "LogoTitle": "Zbyrach",
+    "ChangeLanguage": "Українською",
+    "GoToArticles": "Articles",
+    "CustomizeTags": "Keyword settings",
+    "CustomizeSending": "Sending settings",
+    "GoToAdmin": "Admin",
+    "Logout": "Logout"
+  },
+  "Greeting": {
+    "You": "You",
+    "SelectWords": "select keywords that are interesting",
+    "SpecifyPeriodicity": "specify periodicity of sending",
+    "I": "I",
+    "SearchArticlesByWords": "search articles by selected keywords",
+    "SendToYourEmail": "send them to your email",
+    "Login": "Login",
+    "LoginWithGoogle": "Login with Google",
+    "Hello": "Hello, {{name}}",
+    "YouReceiveArticles": "You receive articles",
+    "Settings": "Settings",
+    "Articles": "Go to Articles",
+    "Unknown": "unknown",
+    "Never": "never",
+    "OncePerDay": "once a day",
+    "OncePerWeek": "once a week",
+    "OncePerMonth": "once a month",
+    "ByTag": "by {{number}} keyword",
+    "ByTags": "by {{number}} keywords"
+  },
+  "Mailing": {
+    "SendingSettings": "Sending Settings",
+    "SpecifyHowOftenYouWantToReceive": "Specify how often and how many articles do you want to receive on" ,
+    "NumberOfArticles": "Number of articles:",
+    "Periodicity": "How often:",
+    "Save": "Save",
+    "Never": "Never",
+    "OncePerDay": "Once a day",
+    "OncePerWeek": "Once a week",
+    "OncePerMonth": "Once a month"
+  },
+  "Articles": {
+    "NoArticlesFound": "No articles found",
+    "CustomizePreferencesAndWait ": "Customize your preferences and wait till I am searching",
+    "Settings": "Settings",
+    "ArticlesWereFound": "I've found something",
+    "Filter": "Filter"
+  },
+  "Tags": {
+    "TagsSettings": "Keywords settings",
+    "TagWasNotFound": "Can't find keyword {{tag}}",
+    "AddTags": "Add keywords you are interested in",
+    "Add": "Add",
+    "YouMayBeInterested": "You also may be interested in:",
+    "Save": "Save",
+    "AddTag": "Add keyword",
+    "RemoveTag": "Remove keyword"
+  },
+  "Unsubscribe": {
+    "SubscriptionCanceled": "Subscription canceled",
+    "UserWasUnsubscribed": ", was successfully unsubscribed from all notifications!",
+    "InvalidToken": "Invalid token"
+  },
+  "NotFound": {
+    "NothingThere": "Sorry, there is nothing here. Try to start from the beginning.",
+    "ToTheMainPage": "To the start page"
+  },
+  "ViewPdf": {
+    "OpenInNewTab": "Open PDF in a new tab",
+    "OpenPdfFile": "Open PDF file",
+    "ArticleLoading": "Article is loading...",
+    "CantLoadArticle": "Sorry. Can't download the article"
+  },
+  "General": {
+    "LoginAgain": "Access denied. Please login again.",
+    "ServerError": "Request to the server failed."
+  }
+}
