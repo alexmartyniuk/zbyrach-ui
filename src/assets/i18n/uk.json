@@ -9,6 +9,7 @@
     "Logout": "Вийти"
   },
   "Greeting": {
+    "HelloYou": "Вітаю вас!",
     "You": "Ви",
     "SelectWords": "обираєте слова, що вас цікавлять",
     "SpecifyPeriodicity": "вказуєте періодичність відправки",

@@ -9,6 +9,7 @@
     "Logout": "Logout"
   },
   "Greeting": {
+    "HelloYou": "Hello!",
     "You": "You",
     "SelectWords": "select keywords that are interesting",
     "SpecifyPeriodicity": "specify periodicity of sending",
