@@ -43,14 +43,14 @@
   },
   "Articles": {
     "NoArticlesFound": "No articles found",
-    "CustomizePreferencesAndWait ": "Customize your preferences and wait till I am searching",
+    "CustomizePreferencesAndWait": "Customize your preferences and wait while I am searching",
     "Settings": "Settings",
     "ArticlesWereFound": "I've found something",
     "Filter": "Filter"
   },
   "Tags": {
     "TagsSettings": "Keywords settings",
-    "TagWasNotFound": "Can't find keyword {{tag}}",
+    "TagWasNotFound": "Can't find keyword '{{tag}}'",
     "AddTags": "Add keywords you are interested in",
     "Add": "Add",
     "YouMayBeInterested": "You also may be interested in:",

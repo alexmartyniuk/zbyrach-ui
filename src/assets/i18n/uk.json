@@ -43,14 +43,14 @@
   },
   "Articles": {
     "NoArticlesFound": "Жодної статті не знайдено",
-    "CustomizePreferencesAndWait ": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
+    "CustomizePreferencesAndWait": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
     "Settings": "Налаштувати",
     "ArticlesWereFound": "Знайшлося дещо почитати",
     "Filter": "Фільтр"
   },
   "Tags": {
     "TagsSettings": "Налаштування ключових слів",
-    "TagWasNotFound": "Не вдалося знайти тег {{tag}}",
+    "TagWasNotFound": "Не вдалося знайти тег '{{tag}}'",
     "AddTags": "Додайте слова, що вас цікавлять",
     "Add": "Додати",
     "YouMayBeInterested": "Вас також можуть зацікавити:",

@@ -16,23 +16,11 @@ export class AppComponent implements OnInit {
   public isAdmin: boolean = false;
 
   private subscription: Subscription;
-  private _currentLanguage: string;
-
-  private set currentLanguage(value: string) {
-    this._currentLanguage = value;
-    this.translate.setDefaultLang(this._currentLanguage);
-  }
-
-  private get currentLanguage(): string {
-    return this._currentLanguage;
-  }
 
   constructor(private accountService: AccountService, private translate: TranslateService) {
-    let language = localStorage.getItem('lang');
-    if (!language) {
-      language = 'en';
-    }
-    this.currentLanguage = language;
+    let lang = this.accountService.getLanguage();
+    if (!lang) lang = 'en';
+    this.translate.setDefaultLang(lang);
   }
 
   async ngOnInit() {
@@ -64,12 +52,11 @@ export class AppComponent implements OnInit {
     await this.accountService.login();
   }
 
-  public changeLanguage(): void {
-    if (this.currentLanguage === 'uk') {
-      this.currentLanguage = 'en';
+  public async changeLanguage(): Promise<void> {
+    if (await this.accountService.getLanguage() === 'uk') {
+      await this.accountService.setLanguage('en');
     } else {
-      this.currentLanguage = 'uk';
+      await this.accountService.setLanguage('uk');
     }
-    localStorage.setItem('lang', this.currentLanguage);
   }
 }

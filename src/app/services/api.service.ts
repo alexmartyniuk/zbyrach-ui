@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user';
+import { SetLanuageRequest, User, LoginResponse } from '../models/user';
 import { Tag } from '../models/tag';
 import { Mailing, SettingsSummary } from '../models/mailing';
 import { Article } from '../models/article';
@@ -12,7 +12,7 @@ import { Statistic as Statistic } from '../models/statistic';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'https://zbyrach-api.herokuapp.com/';
+  private baseUrl = 'http://localhost:5000/';
 
   public async login(token: string): Promise<LoginResponse> {
     return this.http
@@ -122,9 +122,10 @@ export class ApiService {
       .delete(url)
       .toPromise();
   }
-}
 
-class LoginResponse {
-  token: string;
-  user: User;
+  public async setLanguage(request: SetLanuageRequest): Promise<any> {
+    return this.http
+      .post<User>(this.baseUrl + 'account/language', request)
+      .toPromise();
+  }
 }

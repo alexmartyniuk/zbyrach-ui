@@ -1,9 +1,10 @@
 import { Injectable, Injector } from '@angular/core';
 import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { ApiService } from './api.service';
-import { User } from '../models/user';
+import { SetLanuageRequest, User } from '../models/user';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AccountService {
 
   public loginStateChanged$: Observable<boolean> = this.loginStateChangeSubject.asObservable();
 
-  constructor(private api: ApiService, private authService: AuthService, private injector: Injector) {
+  constructor(private api: ApiService, private authService: AuthService, private injector: Injector,
+    private translate: TranslateService) {
 
     window.addEventListener("storage", this.storageEventListener.bind(this));
 
@@ -30,7 +32,7 @@ export class AccountService {
     if (event.storageArea == localStorage) {
       if (event.key == 'token' && event.newValue == null) {
         this.removeToken();
-      }  
+      }
     }
   }
 
@@ -44,6 +46,7 @@ export class AccountService {
 
       this.setUser(response.user);
       this.setToken(response.token);
+      this.translate.setDefaultLang(this.getLanguage());
 
       return Promise.resolve(response.user);
     } catch (e) {
@@ -78,6 +81,20 @@ export class AccountService {
     router.navigate(['greeting']);
   }
 
+  public async setLanguage(language: string): Promise<void> {
+    const changed = this.getLanguage() !== language;
+    localStorage.setItem('lang', language);
+    this.translate.setDefaultLang(language);
+
+    if (this.isLogedIn() && changed) {
+      await this.api.setLanguage({language: language});
+    }
+  }
+
+  public getLanguage(): string {
+    return localStorage.getItem('lang');
+  }
+
   public getToken(): string {
     return localStorage.getItem('token');
   }
@@ -98,6 +115,9 @@ export class AccountService {
 
   private setUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
+    if (user.language) {
+      localStorage.setItem('lang', user.language);
+    }
   }
 
   private removeUser() {
