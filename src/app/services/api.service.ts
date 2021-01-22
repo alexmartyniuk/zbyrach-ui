@@ -12,7 +12,8 @@ import { Statistic as Statistic } from '../models/statistic';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'https://zbyrach-api.herokuapp.com/';
+  // TODO: replace url
+  private baseUrl = 'https://localhost:5001/';
 
   public async login(token: string): Promise<LoginResponse> {
     return this.http

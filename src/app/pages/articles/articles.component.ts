@@ -4,6 +4,7 @@ import { ArticleService } from '../../services/artilcle.service';
 import { Article } from '../../models/article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SignalrService } from 'src/app/services/signalr.service';
 
 @Component({
   selector: 'app-articles',
@@ -16,16 +17,20 @@ export class ArticlesComponent implements OnInit {
   public articlesFound: boolean = false;
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
   private loginStateSubscription: Subscription;
+  private newArticleSubscription: Subscription;
 
   constructor(private router: Router,
     private accountService: AccountService,
     private articleService: ArticleService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    public signalrService: SignalrService) { }
 
   async ngOnInit() {
+    this.newArticleSubscription = this.signalrService.onNewArticle$.subscribe(this.onNewArticle);
     this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.loadArticles();
+        this.signalrService.startConnection(this.accountService.getUser());
       } else {
         this.router.navigate(['/greeting']);
       }
@@ -34,11 +39,13 @@ export class ArticlesComponent implements OnInit {
 
   ngOnDestroy() {
     this.loginStateSubscription.unsubscribe();
+    this.newArticleSubscription.unsubscribe();
+    this.signalrService.stopConnection(this.accountService.getUser());
   }
 
   public get articles(): Article[] {
     return this.articlesOriginal.filter(a => {
-      if([...this.tagsActivity.values()].includes(true) === false){
+      if ([...this.tagsActivity.values()].includes(true) === false) {
         return true;
       }
       return a.tags.filter(t => this.tagsActivity.get(t)).length > 0;
@@ -64,6 +71,10 @@ export class ArticlesComponent implements OnInit {
         this.tagsActivity.set(t, false);
       });
     });
+  }
+
+  private onNewArticle(article: Article) {
+
   }
 
   public onClickTag(tag: string): void {
