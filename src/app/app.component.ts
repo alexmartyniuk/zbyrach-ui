@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
 
   constructor(private accountService: AccountService, private translate: TranslateService) {
     let lang = this.accountService.getLanguage();
-    if (!lang) lang = 'en';
+    if (!lang) {
+      lang = this.accountService.defaultLanguage;
+    }
     this.translate.setDefaultLang(lang);
   }
 

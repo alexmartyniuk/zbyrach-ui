@@ -15,6 +15,8 @@ export class AccountService {
 
   public loginStateChanged$: Observable<boolean> = this.loginStateChangeSubject.asObservable();
 
+  public defaultLanguage: string = 'en';
+
   constructor(private api: ApiService, private authService: AuthService, private injector: Injector,
     private translate: TranslateService) {
 
@@ -46,7 +48,11 @@ export class AccountService {
 
       this.setUser(response.user);
       this.setToken(response.token);
-      this.translate.setDefaultLang(this.getLanguage());
+      if (this.getLanguage()) {
+        this.translate.setDefaultLang(this.getLanguage());
+      } else {
+        this.translate.setDefaultLang(this.defaultLanguage);
+      }
 
       return Promise.resolve(response.user);
     } catch (e) {
@@ -87,7 +93,7 @@ export class AccountService {
     this.translate.setDefaultLang(language);
 
     if (this.isLogedIn() && changed) {
-      await this.api.setLanguage({language: language});
+      await this.api.setLanguage({ language: language });
     }
   }
 
