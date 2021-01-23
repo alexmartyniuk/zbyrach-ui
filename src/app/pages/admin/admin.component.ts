@@ -73,7 +73,7 @@ export class AdminComponent implements OnInit {
 
   private daysCleanup(): number {
     const date1 = new Date();
-    const date2 = new Date(this.model.year, this.model.month, this.model.day);
+    const date2 = new Date(this.model.year, this.model.month - 1, this.model.day);   
     return Math.round((date1.getTime() - date2.getTime()) / (1000 * 3600 * 24));
   }
 
