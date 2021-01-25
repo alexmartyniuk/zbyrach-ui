@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // TODO: replace url
-  private baseUrl = 'https://localhost:5001/';
+  private baseUrl = 'https://zbyrach-api.herokuapp.com/';
 
   public async login(token: string): Promise<LoginResponse> {
     return this.http
