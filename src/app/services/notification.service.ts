@@ -10,14 +10,14 @@ export class NotificationService {
   }
 
   public showSuccessMessage(message: string): void {
-    this.notifierService.notify("success", message);
+    this.notifierService.notify('success', message);
   }
 
   public showErrorMessage(message: string): void {
-    this.notifierService.notify("error", message);
+    this.notifierService.notify('error', message);
   }
 
   public showWarningMessage(message: string): void {
-    this.notifierService.notify("warning", message);
+    this.notifierService.notify('warning', message);
   }
 }

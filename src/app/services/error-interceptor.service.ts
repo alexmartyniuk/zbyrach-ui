@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ErrorInterceptorService implements HttpInterceptor {
 
   constructor(private notificationService: NotificationService, private accountService: AccountService,
-    private translate: TranslateService) { }
+              private translate: TranslateService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
@@ -29,6 +29,6 @@ export class ErrorInterceptorService implements HttpInterceptor {
             return throwError(error);
           }
       })
-    )
+    );
   }
 }

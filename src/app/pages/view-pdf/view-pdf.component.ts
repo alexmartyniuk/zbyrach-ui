@@ -14,11 +14,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ViewPdfComponent implements OnInit {
 
-  pdfLoaded: boolean = false;
+  pdfLoaded = false;
   pdfSrc: string;
   isError: boolean;
-  pageCurrent: number = 0;
-  pagesCount: number = 0;
+  pageCurrent = 0;
+  pagesCount = 0;
   articleId: string;
   userId: string;
 

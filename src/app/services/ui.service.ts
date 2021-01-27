@@ -21,7 +21,7 @@ export class UiService {
                 .global()
                 .centerHorizontally()
                 .centerVertically()
-        })
+        });
     }
 
     public showSpinner(){

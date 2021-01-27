@@ -9,7 +9,7 @@ import { UiService } from './ui.service';
 })
 export class LoadingInterceptorService implements HttpInterceptor {
 
-  private activeRequests: number = 0;
+  private activeRequests = 0;
 
   constructor(private uiService: UiService) { }
 

@@ -10,9 +10,9 @@ export class TagService {
   constructor(private api: ApiService) { }
 
   public async getRelatedTags(name: string): Promise<Tag[]> {
-    let relatedTags: Tag[] = await this.api.getRelatedTags(name);
+    const relatedTags: Tag[] = await this.api.getRelatedTags(name);
 
-    for (let relatedTag of relatedTags) {
+    for (const relatedTag of relatedTags) {
       relatedTag.parentTagName = name;
     }
 

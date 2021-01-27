@@ -9,6 +9,6 @@ export class AppInitService {
   constructor(private accountService: AccountService) { }
 
   public async Init(): Promise<void> {
-    //do something on App start
+    // do something on App start
   }
 }

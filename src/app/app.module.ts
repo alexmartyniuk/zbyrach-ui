@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { Ng5SliderModule } from 'ng5-slider';
-import { NotifierModule, NotifierOptions } from "angular-notifier";
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -44,7 +44,7 @@ registerLocaleData(uk);
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("519534075171-pdlfq0736fac74ueoijag6vc837pk5r5.apps.googleusercontent.com")
+    provider: new GoogleLoginProvider('519534075171-pdlfq0736fac74ueoijag6vc837pk5r5.apps.googleusercontent.com')
   },
 ]);
 export function provideConfig() {
@@ -71,39 +71,39 @@ const appRoutes: Routes = [
 const notifierDefaultOptions: NotifierOptions = {
   position: {
     horizontal: {
-      position: "right",
+      position: 'right',
       distance: 12
     },
     vertical: {
-      position: "bottom",
+      position: 'bottom',
       distance: 12,
       gap: 10
     }
   },
-  theme: "material",
+  theme: 'material',
   behaviour: {
     autoHide: 5000,
-    onClick: "hide",
-    onMouseover: "pauseAutoHide",
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
     showDismissButton: false,
     stacking: 4
   },
   animations: {
     enabled: true,
     show: {
-      preset: "slide",
+      preset: 'slide',
       speed: 300,
-      easing: "ease"
+      easing: 'ease'
     },
     hide: {
-      preset: "fade",
+      preset: 'fade',
       speed: 300,
-      easing: "ease",
+      easing: 'ease',
       offset: 50
     },
     shift: {
       speed: 300,
-      easing: "ease"
+      easing: 'ease'
     },
     overlap: 150
   }
@@ -179,7 +179,7 @@ const notifierDefaultOptions: NotifierOptions = {
     },
     {
       provide: LOCALE_ID,
-      useValue: "uk-UA"
+      useValue: 'uk-UA'
     },
   ],
   bootstrap: [AppComponent],

@@ -16,7 +16,7 @@ export class ApiService {
 
   public async login(token: string): Promise<LoginResponse> {
     return this.http
-      .post<LoginResponse>(this.baseUrl + 'account/login', { token: token })
+      .post<LoginResponse>(this.baseUrl + 'account/login', { token })
       .toPromise();
   }
 

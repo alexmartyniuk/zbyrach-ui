@@ -11,8 +11,8 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class UnsubscribeComponent implements OnInit {
   public user: User;
-  public isError: boolean = false;
-  public isDataLoaded: boolean = false;
+  public isError = false;
+  public isDataLoaded = false;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private accountService: AccountService, private injector: Injector) { }
 

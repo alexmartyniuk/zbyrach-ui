@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../models/article';
-import * as signalR from "@aspnet/signalr";
+import * as signalR from '@aspnet/signalr';
 import { Observable, Subject } from 'rxjs';
 import { User } from '../models/user';
 import { AccountService } from './account.service';
@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignalrService {
 
-  private hubConnection: signalR.HubConnection
+  private hubConnection: signalR.HubConnection;
 
   private onNewArticleSubject: Subject<Article> = new Subject<Article>();
 
@@ -49,7 +49,7 @@ export class SignalrService {
 
       await this.hubConnection.stop();
     } catch (err) {
-      console.error('Error while stoping connection: ' + err)
+      console.error('Error while stoping connection: ' + err);
     }
   }
 }

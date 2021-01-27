@@ -16,7 +16,7 @@ export class TagsComponent implements OnInit {
 
   private loginStateSubscription: Subscription;
 
-  public currentTagName: string = "";
+  public currentTagName = '';
 
   public relatedTags: Map<string, Tag> = new Map<string, Tag>();
 
@@ -31,14 +31,14 @@ export class TagsComponent implements OnInit {
   }
 
   constructor(private router: Router, private tagService: TagService, private accountService: AccountService,
-    private notificationService: NotificationService, private translate: TranslateService) { }
+              private notificationService: NotificationService, private translate: TranslateService) { }
 
   async ngOnInit() {
     this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         const tags = await this.tagService.getMyTags();
 
-        for (let tag of tags) {
+        for (const tag of tags) {
           this.addTag(tag);
         }
       } else {
@@ -57,7 +57,7 @@ export class TagsComponent implements OnInit {
     }
 
     if (this.tags.get(this.currentTagName)) {
-      this.currentTagName = "";
+      this.currentTagName = '';
       return;
     }
 
@@ -67,17 +67,17 @@ export class TagsComponent implements OnInit {
       return;
     }
 
-    let newTag: Tag = { 'name': this.currentTagName, 'url': null, 'parentTagName': null };
+    const newTag: Tag = { name: this.currentTagName, url: null, parentTagName: null };
     this.tags.set(this.currentTagName, newTag);
     await this.getRelatedTags(newTag);
-    this.currentTagName = "";
+    this.currentTagName = '';
   }
 
   public onRemoveTag(tagName: string): void {
     this.tags.delete(tagName);
 
-    for (let key of this.relatedTags.keys()) {
-      let relatedTag = this.relatedTags.get(key);
+    for (const key of this.relatedTags.keys()) {
+      const relatedTag = this.relatedTags.get(key);
       if (relatedTag.parentTagName == tagName) {
         this.relatedTags.delete(key);
       }
@@ -85,7 +85,7 @@ export class TagsComponent implements OnInit {
   }
 
   public onClickRelatedTag(tagName: string): void {
-    const relatedTag = this.relatedTags.get(tagName)
+    const relatedTag = this.relatedTags.get(tagName);
     this.addTag(relatedTag);
     this.relatedTags.delete(relatedTag.name);
   }
@@ -103,12 +103,12 @@ export class TagsComponent implements OnInit {
       await this.getRelatedTags(tag);
     }
 
-    this.currentTagName = "";
+    this.currentTagName = '';
   }
 
   private async getRelatedTags(tag: Tag): Promise<void> {
     const relatedTags = await this.tagService.getRelatedTags(tag.name);
-    for (let relatedTag of relatedTags) {
+    for (const relatedTag of relatedTags) {
       relatedTag.parentTagName = tag.name;
       this.relatedTags.set(relatedTag.name, relatedTag);
     }

@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
   public async cleanup(): Promise<any> {
     const daysCleanup = this.daysCleanup();
     if (daysCleanup < 1) {
-      alert("Оберіть більший проміжок в часі. Мінімум = 1 день.");
+      alert('Оберіть більший проміжок в часі. Мінімум = 1 день.');
     }
 
     await this.api.cleanup(daysCleanup);
@@ -65,15 +65,15 @@ export class AdminComponent implements OnInit {
   }
 
   private bytesToSize(bytes: number): string {
-    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    if (bytes == 0) return '0 Byte';
-    var i = Math.floor(Math.log(bytes) / Math.log(1024));
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) { return '0 Byte'; }
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
     return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
   }
 
   private daysCleanup(): number {
     const date1 = new Date();
-    const date2 = new Date(this.model.year, this.model.month - 1, this.model.day);   
+    const date2 = new Date(this.model.year, this.model.month - 1, this.model.day);
     return Math.round((date1.getTime() - date2.getTime()) / (1000 * 3600 * 24));
   }
 

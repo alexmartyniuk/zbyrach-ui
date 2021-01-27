@@ -14,8 +14,8 @@ export class ArticleComponent implements OnInit {
   @Input() article: Article;
 
   public user: User;
-  
-  constructor(private articleService: ArticleService, private accountService: AccountService) { 
+
+  constructor(private articleService: ArticleService, private accountService: AccountService) {
     this.user = this.accountService.getUser();
   }
 

@@ -10,20 +10,24 @@ export class TagComponent implements OnInit {
 
   constructor(private translate: TranslateService) { }
 
-  ngOnInit() {
+  public get title() {
+    return !this.isRemovingAllowed ? this.translate.instant('Tags.AddTag') : undefined;
   }
 
   @Input() tag: string;
 
-  @Input() isRemovingAllowed: boolean = true;
+  @Input() isRemovingAllowed = true;
 
-  @Input() isActive: boolean = true;
+  @Input() isActive = true;
 
-  @Input() isSmall: boolean = false;
+  @Input() isSmall = false;
 
   @Output() onRemove: EventEmitter<string> = new EventEmitter<string>();
 
   @Output() onClick: EventEmitter<string> = new EventEmitter<string>();
+
+  ngOnInit() {
+  }
 
   onRemoveButtonClick(): void {
     this.onRemove.emit(this.tag);
@@ -31,10 +35,6 @@ export class TagComponent implements OnInit {
 
   onElementClick(): void {
     this.onClick.emit(this.tag);
-  }
-
-  public get title() {
-    return !this.isRemovingAllowed ? this.translate.instant('Tags.AddTag') : undefined
   }
 
 }

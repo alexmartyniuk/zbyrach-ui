@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   public isLogedIn: boolean;
   public userName: string;
   public userPictureUrl: string;
-  public isAdmin: boolean = false;
+  public isAdmin = false;
 
   private subscription: Subscription;
 
@@ -35,8 +35,8 @@ export class AppComponent implements OnInit {
         this.isAdmin = user.isAdmin;
         this.userPictureUrl = user.pictureUrl;
       } else {
-        this.userName = "";
-        this.userPictureUrl = "";
+        this.userName = '';
+        this.userPictureUrl = '';
         this.isAdmin = false;
       }
     });

@@ -13,20 +13,20 @@ import { SignalrService } from 'src/app/services/signalr.service';
 })
 export class ArticlesComponent implements OnInit {
 
-  public articlesOriginal: Article[] = [];  
+  public articlesOriginal: Article[] = [];
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
   private loginStateSubscription: Subscription;
   private newArticleSubscription: Subscription;
-  
+
   constructor(private router: Router,
-    private accountService: AccountService,
-    private articleService: ArticleService,
-    private route: ActivatedRoute,
-    public signalrService: SignalrService) { }
+              private accountService: AccountService,
+              private articleService: ArticleService,
+              private route: ActivatedRoute,
+              public signalrService: SignalrService) { }
 
   public get articlesFound(): boolean {
-    return this.articlesOriginal.length > 0
-  };
+    return this.articlesOriginal.length > 0;
+  }
 
   async ngOnInit() {
     this.newArticleSubscription = this.signalrService.onNewArticle$.subscribe((article: Article) => {
@@ -61,7 +61,7 @@ export class ArticlesComponent implements OnInit {
       this.articlesOriginal = await this.articleService.getLastSentArticles();
     } else {
       this.articlesOriginal = await this.articleService.getArticlesForRead();
-    }    
+    }
     this.updateTags();
   }
 
@@ -80,7 +80,7 @@ export class ArticlesComponent implements OnInit {
   }
 
   public onClickTag(tag: string): void {
-    const active = this.tagsActivity.get(tag)
+    const active = this.tagsActivity.get(tag);
     this.tagsActivity.set(tag, !active);
   }
 

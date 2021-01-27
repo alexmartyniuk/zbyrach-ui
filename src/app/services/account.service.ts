@@ -15,12 +15,12 @@ export class AccountService {
 
   public loginStateChanged$: Observable<boolean> = this.loginStateChangeSubject.asObservable();
 
-  public defaultLanguage: string = 'en';
+  public defaultLanguage = 'en';
 
   constructor(private api: ApiService, private authService: AuthService, private injector: Injector,
-    private translate: TranslateService) {
+              private translate: TranslateService) {
 
-    window.addEventListener("storage", this.storageEventListener.bind(this));
+    window.addEventListener('storage', this.storageEventListener.bind(this));
 
     const token = this.getToken();
     if (token) {
@@ -81,7 +81,7 @@ export class AccountService {
     return this.loginStateChangeSubject.value;
   }
 
-  public authenticationFailedHandler(returnUrl: string = ""): void {
+  public authenticationFailedHandler(returnUrl: string = ''): void {
     this.removeToken();
     const router = this.injector.get(Router);
     router.navigate(['greeting']);
@@ -93,7 +93,7 @@ export class AccountService {
     this.translate.setDefaultLang(language);
 
     if (this.isLogedIn() && changed) {
-      await this.api.setLanguage({ language: language });
+      await this.api.setLanguage({ language });
     }
   }
 

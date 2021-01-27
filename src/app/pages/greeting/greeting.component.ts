@@ -12,18 +12,18 @@ import { Subscription } from 'rxjs';
 })
 export class GreetingComponent implements OnInit {
 
-  public isLogedIn: boolean = false;
+  public isLogedIn = false;
   public userName: string;
-  public tagsText: string = "";
-  public scheduleText: string = "";
+  public tagsText = '';
+  public scheduleText = '';
   public numberOfTags: number;
 
   private scheduleValues: { [id: number]: string; } = {
-    0: "Greeting.Unknown",
-    1: "Greeting.Never",
-    2: "Greeting.OncePerDay",
-    3: "Greeting.OncePerWeek",
-    4: "Greeting.OncePerMonth",
+    0: 'Greeting.Unknown',
+    1: 'Greeting.Never',
+    2: 'Greeting.OncePerDay',
+    3: 'Greeting.OncePerWeek',
+    4: 'Greeting.OncePerMonth',
   };
   private returnUrl: string;
   private subscription: Subscription;
@@ -35,7 +35,7 @@ export class GreetingComponent implements OnInit {
     private router: Router) { }
 
   async ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
     this.subscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       this.isLogedIn = logedin;
 
@@ -50,7 +50,7 @@ export class GreetingComponent implements OnInit {
 
         this.router.navigateByUrl(this.returnUrl);
       } else {
-        this.userName = "";
+        this.userName = '';
       }
     });
   }
@@ -61,9 +61,9 @@ export class GreetingComponent implements OnInit {
 
   private getTagsText(numberOfTags: number): string {
     if (numberOfTags % 10 == 1 && (numberOfTags > 20 || numberOfTags < 10)) {
-      return "Greeting.ByTag";
+      return 'Greeting.ByTag';
     } else {
-      return "Greeting.ByTags";
+      return 'Greeting.ByTags';
     }
   }
 

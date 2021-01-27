@@ -14,10 +14,10 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 })
 export class MailingSettingsComponent implements OnInit {
   public userEmail: string;
-  public showContent: boolean = false;
-  public numberOfArticlesSlider: number = 0;
+  public showContent = false;
+  public numberOfArticlesSlider = 0;
   public numberOfArticlesSliderOptions: Options;
-  public scheduleSlider: number = 0;
+  public scheduleSlider = 0;
   public scheduleSliderOptions: Options;
 
   private numberOfArticlesValues: { [id: number]: number; } = {
@@ -35,17 +35,17 @@ export class MailingSettingsComponent implements OnInit {
   };
 
   private scheduleValues: { [id: number]: string; } = {
-    1: "Mailing.Never",
-    2: "Mailing.OncePerDay",
-    3: "Mailing.OncePerWeek",
-    4: "Mailing.OncePerMonth",
+    1: 'Mailing.Never',
+    2: 'Mailing.OncePerDay',
+    3: 'Mailing.OncePerWeek',
+    4: 'Mailing.OncePerMonth',
   };
 
   private loginStateSubscription: Subscription;
   private langChangeSubscription: Subscription;
 
   constructor(private router: Router, private api: ApiService, private accountService: AccountService,
-    private translate: TranslateService) { }
+              private translate: TranslateService) { }
 
   async ngOnInit() {
     this.langChangeSubscription = this.translate.onDefaultLangChange.subscribe((event: LangChangeEvent) => {
@@ -74,10 +74,10 @@ export class MailingSettingsComponent implements OnInit {
   }
 
   async save() {
-    const settings = <Mailing>{
+    const settings = {
       numberOfArticles: this.getValueByKey(this.numberOfArticlesValues, this.numberOfArticlesSlider),
       scheduleType: Number(this.scheduleSlider)
-    };
+    } as Mailing;
 
     await this.api.setMyMailingSettings(settings);
 
@@ -86,14 +86,14 @@ export class MailingSettingsComponent implements OnInit {
 
   public numberOfArticles(): number {
     return this.getValueByKey(this.numberOfArticlesValues, this.numberOfArticlesSlider);
-  };
+  }
 
   public schedule(): string {
     return this.getValueByKey(this.scheduleValues, this.scheduleSlider);
-  };
+  }
 
   private getKeyByValue(dict: { [id: number]: number; }, value: any): number {
-    for (let key in dict) {
+    for (const key in dict) {
       if (dict[key] == value) {
         return parseInt(key);
       }
@@ -115,7 +115,7 @@ export class MailingSettingsComponent implements OnInit {
       getLegend: (value: number): string => {
         return this.translate.instant(this.scheduleValues[value]);
       }
-    }
+    };
 
     this.numberOfArticlesSliderOptions = {
       floor: 1,
