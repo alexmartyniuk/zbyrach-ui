@@ -13,20 +13,25 @@ import { SignalrService } from 'src/app/services/signalr.service';
 })
 export class ArticlesComponent implements OnInit {
 
-  public articlesOriginal: Article[];
-  public articlesFound: boolean = false;
+  public articlesOriginal: Article[] = [];  
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();
   private loginStateSubscription: Subscription;
   private newArticleSubscription: Subscription;
-
+  
   constructor(private router: Router,
     private accountService: AccountService,
     private articleService: ArticleService,
     private route: ActivatedRoute,
     public signalrService: SignalrService) { }
 
+  public get articlesFound(): boolean {
+    return this.articlesOriginal.length > 0
+  };
+
   async ngOnInit() {
-    this.newArticleSubscription = this.signalrService.onNewArticle$.subscribe(this.onNewArticle);
+    this.newArticleSubscription = this.signalrService.onNewArticle$.subscribe((article: Article) => {
+      this.onNewArticle(article);
+    });
     this.loginStateSubscription = this.accountService.loginStateChanged$.subscribe(async (logedin) => {
       if (logedin) {
         this.loadArticles();
@@ -35,12 +40,6 @@ export class ArticlesComponent implements OnInit {
         this.router.navigate(['/greeting']);
       }
     });
-  }
-
-  ngOnDestroy() {
-    this.loginStateSubscription.unsubscribe();
-    this.newArticleSubscription.unsubscribe();
-    this.signalrService.stopConnection(this.accountService.getUser());
   }
 
   public get articles(): Article[] {
@@ -62,10 +61,12 @@ export class ArticlesComponent implements OnInit {
       this.articlesOriginal = await this.articleService.getLastSentArticles();
     } else {
       this.articlesOriginal = await this.articleService.getArticlesForRead();
-    }
-    this.articlesFound = this.articlesOriginal.length > 0;
-    this.tagsActivity.clear();
+    }    
+    this.updateTags();
+  }
 
+  private updateTags(): void {
+    this.tagsActivity.clear();
     this.articlesOriginal.forEach(a => {
       a.tags.forEach(t => {
         this.tagsActivity.set(t, false);
@@ -74,11 +75,18 @@ export class ArticlesComponent implements OnInit {
   }
 
   private onNewArticle(article: Article) {
-
+    this.articlesOriginal.push(article);
+    this.updateTags();
   }
 
   public onClickTag(tag: string): void {
     const active = this.tagsActivity.get(tag)
     this.tagsActivity.set(tag, !active);
+  }
+
+  ngOnDestroy() {
+    this.loginStateSubscription.unsubscribe();
+    this.newArticleSubscription.unsubscribe();
+    this.signalrService.stopConnection(this.accountService.getUser());
   }
 }

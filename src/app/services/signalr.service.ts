@@ -20,44 +20,15 @@ export class SignalrService {
   constructor(private accountService: AccountService, private http: HttpClient) { }
 
   public async startConnection(user: User): Promise<any> {
-
-    let options: signalR.IHttpConnectionOptions = {
-      httpClient: <signalR.HttpClient>{
-        getCookieString: (url) => {
-          return '';
-        },
-        post: (url, httpOptions) => {
-          return this.http.post(url, null, {
-            headers: httpOptions.headers,
-            withCredentials: false
-          })
-            .toPromise()
-            .then(
-              res => {
-                return {
-                  statusCode: 200,
-                  statusText: null,
-                  content: JSON.stringify(res)
-                };
-              },
-              err => err
-            );
-        }
-      }
-    }
-
-    // TODO: replace url
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:5001/newarticles?AuthToken=' + this.accountService.getToken())
+      .withUrl('https://zbyrach-api.herokuapp.com/newarticles?AuthToken=' + this.accountService.getToken())
       .build();
 
     try {
       await this.hubConnection.start();
-      console.log('Connection started');
 
       this.hubConnection.on('newarticle', (data) => {
         this.onNewArticleSubject.next(data);
-        console.log(data);
       });
 
       if (user) {
@@ -71,12 +42,13 @@ export class SignalrService {
   public async stopConnection(user: User) {
     try {
       if (user) {
-        this.hubConnection.invoke('Unsubscribe', user.id.toString());
+        await this.hubConnection.invoke('Unsubscribe', user.id.toString());
       }
+
+      this.hubConnection.off('newarticle');
+
       await this.hubConnection.stop();
-      console.log('Connection stoped');
-    }
-    catch (err) {
+    } catch (err) {
       console.error('Error while stoping connection: ' + err)
     }
   }
