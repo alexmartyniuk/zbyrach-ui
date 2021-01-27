@@ -42,21 +42,21 @@
     "OncePerMonth": "Раз на місяць"
   },
   "Articles": {
-    "NoArticlesFound": "Жодної статті не знайдено",
-    "CustomizePreferencesAndWait": "Налаштуйте ваші вподобання і зачекайте трохи, поки відбувається пошук",
+    "NoArticlesFound": "Поки що нічого не знайдено",
+    "CustomizePreferencesAndWait": "Налаштуйте ключові слова і зачекайте трохи, поки відбувається пошук",
     "Settings": "Налаштувати",
     "ArticlesWereFound": "Знайшлося дещо почитати",
     "Filter": "Фільтр"
   },
   "Tags": {
     "TagsSettings": "Налаштування ключових слів",
-    "TagWasNotFound": "Не вдалося знайти тег '{{tag}}'",
+    "TagWasNotFound": "Не вдалося знайти слово '{{tag}}'",
     "AddTags": "Додайте слова, що вас цікавлять",
     "Add": "Додати",
     "YouMayBeInterested": "Вас також можуть зацікавити:",
     "Save": "Зберегти",
-    "AddTag": "Додати тег",
-    "RemoveTag": "Видалити тег"
+    "AddTag": "Додати ключове слово",
+    "RemoveTag": "Видалити ключове слово"
   },
   "Unsubscribe": {
     "SubscriptionCanceled": "Підписку скасовано",

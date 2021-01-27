@@ -49,7 +49,6 @@ export class MailingSettingsComponent implements OnInit {
 
   async ngOnInit() {
     this.langChangeSubscription = this.translate.onDefaultLangChange.subscribe((event: LangChangeEvent) => {
-      console.warn('Language changed');
       this.initSliderOptions();
     });
 

@@ -42,8 +42,8 @@
     "OncePerMonth": "Once a month"
   },
   "Articles": {
-    "NoArticlesFound": "No articles found",
-    "CustomizePreferencesAndWait": "Customize your preferences and wait while I am searching",
+    "NoArticlesFound": "So far nothing has been found",
+    "CustomizePreferencesAndWait": "Adjust your keywords and wait a bit while searching",
     "Settings": "Settings",
     "ArticlesWereFound": "I've found something",
     "Filter": "Filter"
