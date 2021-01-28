@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { User } from '../models/user';
 import { AccountService } from './account.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,13 @@ export class SignalrService {
 
   public onNewArticle$: Observable<Article> = this.onNewArticleSubject.asObservable();
 
+  private baseUrl: string = environment.apiUrl;
+
   constructor(private accountService: AccountService, private http: HttpClient) { }
 
   public async startConnection(user: User): Promise<any> {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://zbyrach-api.herokuapp.com/newarticles?AuthToken=' + this.accountService.getToken())
+      .withUrl(this.baseUrl + 'newarticles?AuthToken=' + this.accountService.getToken())
       .build();
 
     try {

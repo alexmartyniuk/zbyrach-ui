@@ -5,14 +5,16 @@ import { Tag } from '../models/tag';
 import { Mailing, SettingsSummary } from '../models/mailing';
 import { Article } from '../models/article';
 import { Statistic as Statistic } from '../models/statistic';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
 
-  private baseUrl = 'https://zbyrach-api.herokuapp.com/';
+  private baseUrl: string = environment.apiUrl;
+
+  constructor(private http: HttpClient) { }
 
   public async login(token: string): Promise<LoginResponse> {
     return this.http
