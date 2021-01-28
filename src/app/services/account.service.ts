@@ -31,8 +31,8 @@ export class AccountService {
   }
 
   private storageEventListener(event: StorageEvent) {
-    if (event.storageArea == localStorage) {
-      if (event.key == 'token' && event.newValue == null) {
+    if (event.storageArea === localStorage) {
+      if (event.key === 'token' && event.newValue === null) {
         this.removeToken();
       }
     }

@@ -14,7 +14,8 @@ export class UnsubscribeComponent implements OnInit {
   public isError = false;
   public isDataLoaded = false;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService, private accountService: AccountService, private injector: Injector) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService,
+              private accountService: AccountService, private injector: Injector) { }
 
   async ngOnInit() {
     const token = this.route.snapshot.paramMap.get('token');

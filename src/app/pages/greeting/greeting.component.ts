@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ApiService } from 'src/app/services/api.service';
 import { ScheduleType } from 'src/app/models/mailing';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './greeting.component.html',
   styleUrls: ['./greeting.component.css']
 })
-export class GreetingComponent implements OnInit {
+export class GreetingComponent implements OnInit, OnDestroy {
 
   public isLogedIn = false;
   public userName: string;
@@ -60,7 +60,7 @@ export class GreetingComponent implements OnInit {
   }
 
   private getTagsText(numberOfTags: number): string {
-    if (numberOfTags % 10 == 1 && (numberOfTags > 20 || numberOfTags < 10)) {
+    if (numberOfTags % 10 === 1 && (numberOfTags > 20 || numberOfTags < 10)) {
       return 'Greeting.ByTag';
     } else {
       return 'Greeting.ByTags';

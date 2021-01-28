@@ -17,7 +17,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status == 401) {
+        if (error.status === 401) {
           this.notificationService.showErrorMessage(this.translate.instant('General.LoginAgain'));
           this.accountService.authenticationFailedHandler(req.url);
           return throwError('Request is not authorized.');

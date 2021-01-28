@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { ArticleService } from '../../services/artilcle.service';
 import { Article } from '../../models/article';
@@ -11,7 +11,7 @@ import { SignalrService } from 'src/app/services/signalr.service';
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.css']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, OnDestroy {
 
   public articlesOriginal: Article[] = [];
   public tagsActivity: Map<string, boolean> = new Map<string, boolean>();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Mailing, ScheduleType } from '../../models/mailing';
 import { ApiService } from '../../services/api.service';
 import { AccountService } from '../../services/account.service';
@@ -12,7 +12,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   templateUrl: './mailing.component.html',
   styleUrls: ['./mailing.component.css']
 })
-export class MailingSettingsComponent implements OnInit {
+export class MailingSettingsComponent implements OnInit, OnDestroy {
   public userEmail: string;
   public showContent = false;
   public numberOfArticlesSlider = 0;
@@ -94,7 +94,7 @@ export class MailingSettingsComponent implements OnInit {
 
   private getKeyByValue(dict: { [id: number]: number; }, value: any): number {
     for (const key in dict) {
-      if (dict[key] == value) {
+      if (dict[key] === value) {
         return parseInt(key);
       }
     }

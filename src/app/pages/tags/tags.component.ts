@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Tag } from '../../models/tag';
 import { TagService } from '../../services/tag.service';
 import { AccountService } from '../../services/account.service';
@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.css']
 })
-export class TagsComponent implements OnInit {
+export class TagsComponent implements OnInit, OnDestroy {
 
   private loginStateSubscription: Subscription;
 
@@ -78,7 +78,7 @@ export class TagsComponent implements OnInit {
 
     for (const key of this.relatedTags.keys()) {
       const relatedTag = this.relatedTags.get(key);
-      if (relatedTag.parentTagName == tagName) {
+      if (relatedTag.parentTagName === tagName) {
         this.relatedTags.delete(key);
       }
     }
