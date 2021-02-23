@@ -14,3 +14,4 @@ You can find working application at [http://zbyrach.martyniuk.info/](http://zbyr
 
 * [Product requirements (in Ukrainian)](https://github.com/alexmartyniuk/zbyrach-ui/blob/master/docs/requirements.md)
 * [Page transitions diagram](https://github.com/alexmartyniuk/zbyrach-ui/blob/master/docs/page_transitions.md)
+* [Zbyrach Web API repository](https://github.com/alexmartyniuk/zbyrach-api)
