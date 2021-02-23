@@ -1,5 +1,7 @@
 ﻿# Zbyrach
 
+[![Deploy to Heroku](https://github.com/alexmartyniuk/zbyrach-ui/actions/workflows/deploy-to-heroku.yml/badge.svg)](https://github.com/alexmartyniuk/zbyrach-ui/actions/workflows/deploy-to-heroku.yml)
+
 Zbyrach is a web application that helps users find articles and news by relevant keywords and sends found articles by e-mail.
 
 ![](https://github.com/alexmartyniuk/zbyrach-ui/blob/master/docs/img/web-ui-articles.png?raw=true)
